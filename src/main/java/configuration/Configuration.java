@@ -1,0 +1,48 @@
+package configuration;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public enum Configuration {
+    instance;
+
+    public String userDirectory = System.getProperty("user.dir");
+    public String lineSeparator = System.getProperty("line.separator");
+    public String fileSeparator = System.getProperty("file.separator");
+
+    public String pathToDataDirectory = userDirectory + fileSeparator + "data" + fileSeparator;
+
+    public final int numberOfPackages = 24000;
+    public final int numberOfBoxes = 600;
+    public final int numberOfPallets = 50;
+    public final int numberOfTrucks = 5;
+
+    public final int numberOfCharsPerContent = 2500;
+    public final int numberOfCharsPerZipCode= 6;
+
+    public final int numberOfCharsPerIdPackage = 6;
+    public final int numberOfCharsPerIdBox = 5;
+    public final int numberOfCharsPerIdTruck = 4;
+
+    public final int numberOfPackagesPerBox = 40;
+    public final int numberOfBoxesPerPallet = 12;
+    public final int numberOfPalletsPerTruck = 10;
+
+    public final Double rangeOfWeightMin = 1.00;
+    public final Double rangeOfWeightMax = 5.00;
+
+    public final int rangeOfZipCodeMin = 1067;
+    public final int rangeOfZipCodeMax = 99998;
+
+    public final Map<String, Double> spreadOfType = Map.of("NORMAL", 0.8, "EXPRESS", 0.15, "VALUE", 0.05);
+
+    public final String allCharsForContent = "abcdefghijklmnopqrstuvwxyz:-!";
+    public final String allLettersAndNumbersLowerCase = "abcdefghijklmnopqrstuvwxyz0123456789";
+    public final String allLettersAndNumbersUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+
+    public final String key = "dhbw";
+    public final IStrategy usedAlgorithm = new AES();
+}
