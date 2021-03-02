@@ -29,7 +29,7 @@ public class DES implements IStrategy{
     }
 
     @Override
-    public String encrypt(String strToEncrypt, IDCard idCard) {
+    public String encrypt(String strToEncrypt) {
 
         try {
             setKey(Configuration.instance.key);

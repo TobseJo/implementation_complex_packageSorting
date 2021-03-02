@@ -3,5 +3,5 @@ package configuration;
 import employee.idCard.IDCard;
 
 public interface IStrategy {
-    public String encrypt(String magnetStripe,IDCard idCard);
+    public String encrypt(String magnetStripe);
 }

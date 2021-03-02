@@ -22,18 +22,35 @@ public class ObjectGenerator {
         sortingStation = new SortingStation();
     }
 
+    public void generateAllEmployees(){
+        Employee employee1 = new Administrator(1, "Johannes Winkler", Profile.a, 1234, 123456);
+        employee1.setIdCard(generateIDCardForEmployee(employee1));
+        sortingStation.getEmployees().add(employee1);
+
+        Employee employee2 = new DataAnalyst(2, "Peter Lustig", 1212, 112233);
+        employee2.setIdCard(generateIDCardForEmployee(employee2));
+        sortingStation.getEmployees().add(employee2);
+
+        Employee employee3 = new Operator(3, "Daniel Atschi", 5895, 365821);
+        employee3.setIdCard(generateIDCardForEmployee(employee3));
+        sortingStation.getEmployees().add(employee3);
+
+        Employee employee4 = new DataAnalyst(4, "Robin Drippy", 9452, 645789);
+        employee4.setIdCard(generateIDCardForEmployee(employee4));
+        sortingStation.getEmployees().add(employee4);
+
+
+
+    }
+
     public IDCard generateIDCardForEmployee(Employee employee) {
-        IDCard idCard = new IDCard();
         StringBuilder stringBuilder = new StringBuilder();
+
         stringBuilder.append(employee.getId()+";"+employee.getName()+";"+getRoleOfEmployee(employee)+";"+employee.getPin()+";"+employee.getSuperPin());
-        String magnetStripe = stringBuilder.toString();
-        if(magnetStripe.length() < 100){
-            for (int i = 0; i < magnetStripe.length(); i++) {
-                idCard.getMagnetStripe()[i][1] = magnetStripe.charAt(i);
-            }
-        }else{
-            new RuntimeException("Error magnetStripe too long!");
-        }
+        String employeeDataString = stringBuilder.toString();
+        String encryptedString = Configuration.instance.usedAlgorithm.encrypt(employeeDataString);
+        IDCard idCard = new IDCard(encryptedString);
+
         return idCard;
     }
 

@@ -17,11 +17,6 @@ public class Application {
 
         ObjectGenerator objectGenerator = new ObjectGenerator();
         objectGenerator.generateSortingStation();
-        Employee employee = new Administrator(1, "Johannes Winkler", Profile.a, 1234, 123456);
-
-        IDCard idCard = new IDCard();
-
-        Configuration.instance.usedAlgorithm.encrypt( " ", idCard);
-        employee.setIdCard(idCard);
+        objectGenerator.generateAllEmployees();
     }
 }
