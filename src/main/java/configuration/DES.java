@@ -44,6 +44,17 @@ public class DES implements IStrategy{
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public String decrypt(String strToDecrypt) {
+        try {
+            setKey(Configuration.instance.key);
+            Cipher cipher = Cipher.getInstance("DESede");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
