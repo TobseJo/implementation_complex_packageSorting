@@ -41,7 +41,7 @@ public class ObjectGenerator {
 
     }
 
-    public IDCard generateIDCardForEmployee(Employee employee) {
+    private IDCard generateIDCardForEmployee(Employee employee) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(employee.getId() + ";" + employee.getName() + ";" + getRoleOfEmployee(employee) + ";" + employee.getPin() + ";" + employee.getSuperPin());
 
