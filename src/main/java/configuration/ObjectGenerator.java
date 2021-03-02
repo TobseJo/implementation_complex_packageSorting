@@ -22,7 +22,7 @@ public class ObjectGenerator {
         sortingStation = new SortingStation();
     }
 
-    public void generateAllEmployees(){
+    public void generateAllEmployees() {
         Employee employee1 = new Administrator(1, "Johannes Winkler", Profile.a, 1234, 123456);
         employee1.setIdCard(generateIDCardForEmployee(employee1));
         sortingStation.getEmployees().add(employee1);
@@ -39,18 +39,13 @@ public class ObjectGenerator {
         employee4.setIdCard(generateIDCardForEmployee(employee4));
         sortingStation.getEmployees().add(employee4);
 
-
-
     }
 
     public IDCard generateIDCardForEmployee(Employee employee) {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(employee.getId() + ";" + employee.getName() + ";" + getRoleOfEmployee(employee) + ";" + employee.getPin() + ";" + employee.getSuperPin());
 
-        stringBuilder.append(employee.getId()+";"+employee.getName()+";"+getRoleOfEmployee(employee)+";"+employee.getPin()+";"+employee.getSuperPin());
-        String employeeDataString = stringBuilder.toString();
-        String encryptedString = Configuration.instance.usedAlgorithm.encrypt(employeeDataString);
-        IDCard idCard = new IDCard(encryptedString);
-
+        IDCard idCard = new IDCard(Configuration.instance.usedAlgorithm.encrypt(stringBuilder.toString()));
         return idCard;
     }
 
