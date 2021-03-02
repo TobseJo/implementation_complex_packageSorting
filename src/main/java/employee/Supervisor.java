@@ -5,8 +5,8 @@ import employee.idCard.IDCard;
 public class Supervisor extends Employee{
     private boolean isSenior;
 
-    public Supervisor(int id, String name, boolean isSenior, IDCard idCard, int pin, int superPin) {
-        super(id, name, idCard, pin, superPin);
+    public Supervisor(int id, String name, boolean isSenior, int pin, int superPin) {
+        super(id, name, pin, superPin);
         this.isSenior = isSenior;
     }
 

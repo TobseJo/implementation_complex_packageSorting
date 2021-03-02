@@ -9,16 +9,19 @@ public abstract class Employee {
     protected int pin;
     protected int superPin;
 
-    public Employee(int id, String name, IDCard idCard, int pin, int superPin){
+    public Employee(int id, String name, int pin, int superPin){
         this.id = id;
         this.name = name;
-        this.idCard = idCard;
         this.pin = pin;
         this.superPin = superPin;
     }
 
     public IDCard getIdCard() {
         return idCard;
+    }
+
+    public void setIdCard(IDCard idCard) {
+        this.idCard = idCard;
     }
 
     public String getName() {
