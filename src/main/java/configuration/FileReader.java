@@ -59,9 +59,9 @@ public class FileReader {
 
                         String packageID = entry.getKey();
 
-                        if (packageID.equals(content[i + 1])) {
+                        if (packageID.equals(content[i])) {
                             packagesPerBox.add(entry.getValue());
-                            packageHashMap.remove(packageID);
+//                            packageHashMap.remove(packageID);
                             continue;
                         }
                     }
@@ -101,13 +101,14 @@ public class FileReader {
                     int position = Integer.valueOf(content[1]);
                     int level = Integer.valueOf(content[2]);
 
+
                     for (HashMap.Entry<String, Box> entry : boxHashMap.entrySet()) {
 
                         String boxID = entry.getKey();
 
-                        if (boxID.equals(content[i + 1])) {
+                        if (boxID.equals(content[3])) {
                             boxesPerPallet[position][level] = entry.getValue();
-                            boxHashMap.remove(boxID);
+//                            boxHashMap.remove(boxID);
                             continue;
                         }
                     }
@@ -159,9 +160,9 @@ public class FileReader {
 
                         int palletID = entry.getKey();
 
-                        if (palletID == Integer.valueOf(content[i + 1])) {
+                        if (palletID == Integer.valueOf(content[3])) {
                             pallets[side][position] = entry.getValue();
-                            palletHashMap.remove(palletID);
+//                            palletHashMap.remove(palletID);
                             continue;
                         }
                     }

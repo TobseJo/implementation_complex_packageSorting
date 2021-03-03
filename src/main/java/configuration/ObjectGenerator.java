@@ -73,7 +73,7 @@ public class ObjectGenerator {
             boxHashMap.put(box.getId(), box);
         }
 
-        pallets = fileReader.readPalettes("base_box.csv", boxHashMap);
+        pallets = fileReader.readPalettes("base_pallet.csv", boxHashMap);
     }
 
     public void generateTrucks() {
@@ -83,7 +83,7 @@ public class ObjectGenerator {
             truckHashMap.put(pallet.getId(), pallet);
         }
 
-        trucks = fileReader.readTruck("base_box.csv", truckHashMap);
+        trucks = fileReader.readTruck("base_truck.csv", truckHashMap);
     }
 
     public void generateAllEmployees() {
