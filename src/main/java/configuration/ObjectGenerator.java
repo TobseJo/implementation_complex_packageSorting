@@ -4,6 +4,9 @@ import SortingStation.*;
 import employee.*;
 import employee.idCard.IDCard;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 public class ObjectGenerator {
     private ZS zs;
     private ParkingPlaceForAutonomousCars parkingPlaceForAutonomousCars;
@@ -52,7 +55,7 @@ public class ObjectGenerator {
     private String getRoleOfEmployee(Employee employee) {
         String role;
         if (employee instanceof Administrator) {
-            role = "Administator";
+            role = "Administrator";
         } else if (employee instanceof DataAnalyst) {
             role = "DataAnalyst";
         } else if (employee instanceof Operator) {
@@ -63,5 +66,21 @@ public class ObjectGenerator {
             role = "Error";
         }
         return role;
+    }
+
+//    private void generatePackages() {
+//        try {
+//            FileReader fileReader = new FileReader(Configuration.instance.pathToDataDirectory + "base_package.csv");
+//            while (fileReader.re) {
+//
+//            }
+//            e.printStackTrace();
+//        } catch (FileNotFoundException e) {
+//        }
+//    }
+
+    private void generatePallets() {
+
+        Configuration.instance.pathToDataDirectory + "base_pallet.csv";
     }
 }
