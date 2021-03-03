@@ -11,7 +11,5 @@ public class Application {
         csvDataGenerator.generateBaseTruckFile();
 
         ObjectGenerator objectGenerator = new ObjectGenerator();
-        objectGenerator.generateSortingStation();
-        objectGenerator.generateAllEmployees();
     }
 }
