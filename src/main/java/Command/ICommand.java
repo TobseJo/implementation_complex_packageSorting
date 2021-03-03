@@ -3,5 +3,5 @@ package Command;
 import SortingStation.ZS;
 
 public interface ICommand {
-    public void execute();
+    public void execute(ZS zs);
 }

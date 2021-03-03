@@ -7,10 +7,7 @@ import packageSorting.Truck;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 
 public class FileReader {
@@ -32,7 +29,6 @@ public class FileReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return packages;
     }
 
@@ -62,7 +58,6 @@ public class FileReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return boxes;
     }
 
@@ -88,16 +83,8 @@ public class FileReader {
                     int position = Integer.valueOf(content[1]);
                     int level = Integer.valueOf(content[2]);
 
+                    boxesPerPallet[position][level] = boxHashMap.get(content[3]);
 
-                    for (HashMap.Entry<String, Box> entry : boxHashMap.entrySet()) {
-
-                        String boxID = entry.getKey();
-
-                        if (boxID.equals(content[3])) {
-                            boxesPerPallet[position][level] = entry.getValue();
-                            continue;
-                        }
-                    }
                 }
                 pallets.add(new Pallet(palletID, boxesPerPallet));
             }
@@ -110,8 +97,8 @@ public class FileReader {
     }
 
 
-    public Queue<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
-        Queue<Truck> trucks = new PriorityQueue<>();
+    public List<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
+        List<Truck> trucks = new Stack<Truck>();
         Pallet[][] pallets;
         BufferedReader br = null;
 
@@ -140,23 +127,14 @@ public class FileReader {
 
                     int position = Integer.valueOf(content[2]);
 
-                    for (HashMap.Entry<Integer, Pallet> entry : palletHashMap.entrySet()) {
+                    pallets[side][position] = palletHashMap.get(content[3]);
 
-                        int palletID = entry.getKey();
-
-                        if (palletID == Integer.valueOf(content[3])) {
-                            pallets[side][position] = entry.getValue();
-                            continue;
-                        }
-                    }
                 }
-
                 trucks.add(new Truck(truckID, pallets));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return trucks;
     }
 

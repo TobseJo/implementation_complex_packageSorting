@@ -12,6 +12,7 @@ import packageSorting.Truck;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class ObjectGenerator {
@@ -83,14 +84,14 @@ public class ObjectGenerator {
         pallets = fileReader.readPalettes("base_pallet.csv", boxHashMap);
     }
 
-    public Queue<Truck> generateTrucks() {
+    public List<Truck> generateTrucks() {
         HashMap<Integer, Pallet> truckHashMap = new HashMap<>();
 
         for (Pallet pallet : pallets) {
             truckHashMap.put(pallet.getId(), pallet);
         }
 
-        Queue<Truck> trucks = fileReader.readTruck("base_truck.csv", truckHashMap);
+        List<Truck> trucks = fileReader.readTruck("base_truck.csv", truckHashMap);
 
         return trucks;
     }

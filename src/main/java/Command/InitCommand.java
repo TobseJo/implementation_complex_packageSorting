@@ -1,7 +1,9 @@
 package Command;
 
 import SortingStation.WaitingZone;
+import SortingStation.ZS;
 import configuration.ObjectGenerator;
+import event.Init;
 
 public class InitCommand implements ICommand{
 
@@ -12,7 +14,7 @@ public class InitCommand implements ICommand{
         this.waitingZone = waitingZone;
     }
 
-    public void execute() {
-        waitingZone.setTrucks(objectGenerator.generateTrucks());
+    public void execute(ZS zs) {
+        zs.post(new Init());
     }
 }
