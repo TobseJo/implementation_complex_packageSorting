@@ -12,6 +12,10 @@ public class Truck {
         this.trailer = new Trailer(pallets);
     }
 
+    public Truck (String id, Pallet[][] pallets){
+        this.id = id;
+        this.trailer = new Trailer(pallets);
+    }
 
     public Trailer getTrailer() {
         return trailer;

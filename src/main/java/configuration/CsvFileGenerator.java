@@ -53,6 +53,7 @@ public class CsvFileGenerator {
     public void generateBaseBoxFile() {
         LogEngine.instance.init(Configuration.instance.pathToDataDirectory + "base_box.csv");
 
+        Collections.shuffle(packages);
         Iterator<Package> iteratorPackages = packages.iterator();
 
         HashSet<String> ids = getIds(Configuration.instance.numberOfCharsPerIdPackage, Configuration.instance.numberOfBoxes, Configuration.instance.allLettersAndNumbersLowerCase);

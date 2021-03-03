@@ -21,11 +21,16 @@ public class ObjectGenerator {
     private SortingSystem sortingSystem;
     private SortingStation sortingStation;
     private FileReader fileReader;
-    private LinkedList<Package> packages;
     private EventBus eventBus;
 
+    private LinkedList<Package> packages;
+    private LinkedList<Box> boxes;
+    private LinkedList<Pallet> pallets;
+    private LinkedList<Truck> trucks;
+
+
     public void generateSortingStation() {
-        zs = new ZS();
+        zs = new ZS(eventBus);
         fileReader = new FileReader();
         eventBus = new EventBus();
         zs = new ZS(eventBus);
@@ -78,11 +83,27 @@ public class ObjectGenerator {
     }
 
     public LinkedList<Pallet> generatePallets(){
+        HashMap<String, Box> boxHashMap = new HashMap<>();
 
+        for(Box box : boxes){
+            boxHashMap.put(box.getId(), box);
+        }
+
+        LinkedList<Pallet> pallets = fileReader.readPalettes("base_box.csv", boxHashMap);
+
+        return pallets;
     }
 
     public LinkedList<Truck> generateTrucks(){
+        HashMap<Integer, Pallet> truckHashMap = new HashMap<>();
 
+        for(Pallet pallet : pallets){
+            truckHashMap.put(pallet.getId(), pallet);
+        }
+
+        LinkedList<Truck> trucks = fileReader.readTruck("base_box.csv", truckHashMap);
+
+        return trucks;
     }
 
     private IDCard generateIDCardForEmployee(Employee employee) {
