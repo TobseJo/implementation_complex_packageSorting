@@ -46,6 +46,7 @@ public class DES implements IStrategy{
         }
     }
 
+    @Override
     public String decrypt(String strToDecrypt) {
         try {
             setKey(Configuration.instance.key);

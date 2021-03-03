@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.Base64;
 
 public class AES implements IStrategy {
-    public static String decrypt(String encryptedMessage, String key) {
+    public String decrypt(String encryptedMessage) {
         try {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE, generate(key));
+            cipher.init(Cipher.DECRYPT_MODE, generate(Configuration.instance.key));
             return new String(cipher.doFinal(Base64.getDecoder().decode(encryptedMessage)));
         } catch (Exception e) {
             System.out.println(e.getMessage());

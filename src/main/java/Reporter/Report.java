@@ -19,6 +19,22 @@ public class Report {
         dangerousPackages = builder.dangerousPackages;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public ArrayList<Package> getDangerousPackages() {
+        return dangerousPackages;
+    }
+
+    public HashMap<Type, Integer> getAmountOfScannedPakets() {
+        return amountOfScannedPakets;
+    }
+
+    public int getAmountOfTruck() {
+        return amountOfTruck;
+    }
+
     public static class Builder{
         private Date date;
         private int amountOfTruck;

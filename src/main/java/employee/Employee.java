@@ -16,6 +16,10 @@ public abstract class Employee {
         this.superPin = superPin;
     }
 
+    public IDCard swipeCard(){
+        return idCard;
+    }
+
     public IDCard getIdCard() {
         return idCard;
     }

@@ -1,6 +1,7 @@
 package configuration;
 
 import SortingStation.*;
+import com.google.common.eventbus.EventBus;
 import employee.*;
 import employee.idCard.IDCard;
 import packageSorting.Box;
@@ -16,19 +17,22 @@ import java.util.List;
 public class ObjectGenerator {
     private ZS zs;
     private ParkingPlaceForAutonomousCars parkingPlaceForAutonomousCars;
-    private ZoneForUnloadingTrucks[] zonesForUnloadingTrucks;
+    private ZoneForUnloadingTruck[] zonesForUnloadingTrucks;
     private SortingSystem sortingSystem;
     private SortingStation sortingStation;
     private FileReader fileReader;
     private LinkedList<Package> packages;
+    private EventBus eventBus;
 
     public void generateSortingStation() {
         zs = new ZS();
         fileReader = new FileReader();
+        eventBus = new EventBus();
+        zs = new ZS(eventBus);
         parkingPlaceForAutonomousCars = new ParkingPlaceForAutonomousCars();
-        zonesForUnloadingTrucks = new ZoneForUnloadingTrucks[7];
+        zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
         for (int i = 0; i < 7; i++) {
-            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTrucks();
+            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck();
         }
         sortingSystem = new SortingSystem();
         sortingStation = new SortingStation();
