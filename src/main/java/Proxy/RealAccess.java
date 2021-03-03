@@ -1,19 +1,22 @@
 package Proxy;
 
-import SortingStation.ZS;
+import Command.ICommand;
+import SortingStation.Terminal;
 import employee.Employee;
 
 public class RealAccess implements IAccess {
     private Employee employee;
-    private ZS zs;
+    private Terminal terminal;
+    private ICommand command;
 
-    public RealAccess(Employee employee, ZS zs) {
+    public RealAccess(Employee employee, Terminal terminal, ICommand command) {
         this.employee = employee;
-        this.zs = zs;
+        this.terminal = terminal;
+        this.command = command;
     }
 
     @Override
     public void grant() {
-        zs.doCommand();
+        terminal.takeCommand(command);
     }
 }
