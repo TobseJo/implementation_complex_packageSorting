@@ -3,9 +3,15 @@ package configuration;
 import SortingStation.*;
 import employee.*;
 import employee.idCard.IDCard;
+import packageSorting.Box;
+import packageSorting.Package;
+import packageSorting.Pallet;
+import packageSorting.Truck;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ObjectGenerator {
     private ZS zs;
@@ -13,9 +19,12 @@ public class ObjectGenerator {
     private ZoneForUnloadingTrucks[] zonesForUnloadingTrucks;
     private SortingSystem sortingSystem;
     private SortingStation sortingStation;
+    private FileReader fileReader;
+    private LinkedList<Package> packages;
 
     public void generateSortingStation() {
         zs = new ZS();
+        fileReader = new FileReader();
         parkingPlaceForAutonomousCars = new ParkingPlaceForAutonomousCars();
         zonesForUnloadingTrucks = new ZoneForUnloadingTrucks[7];
         for (int i = 0; i < 7; i++) {
@@ -23,6 +32,8 @@ public class ObjectGenerator {
         }
         sortingSystem = new SortingSystem();
         sortingStation = new SortingStation();
+        LinkedList<Package> packages = fileReader.readPackages("base_package.csv");
+
     }
 
     public void generateAllEmployees() {
@@ -41,6 +52,32 @@ public class ObjectGenerator {
         Employee employee4 = new DataAnalyst(4, "Robin Drippy", 9452, 645789);
         employee4.setIdCard(generateIDCardForEmployee(employee4));
         sortingStation.getEmployees().add(employee4);
+
+    }
+
+    public LinkedList<Package>  generatePackages(){
+        LinkedList<Package> packages = fileReader.readPackages("base_package.csv");
+
+        return packages;
+    }
+
+    public LinkedList<Box> generateBoxes(){
+        HashMap<String, Package> packageHashMap = new HashMap<>();
+
+        for(Package paket : packages){
+            packageHashMap.put(paket.getId(), paket);
+        }
+
+        LinkedList<Box> boxes = fileReader.readBoxes("base_box.csv", packageHashMap);
+
+        return boxes;
+    }
+
+    public LinkedList<Pallet> generatePallets(){
+
+    }
+
+    public LinkedList<Truck> generateTrucks(){
 
     }
 

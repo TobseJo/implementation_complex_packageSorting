@@ -39,6 +39,7 @@ public class Box {
             }
         }
 
+        stringBuilder.deleteCharAt(stringBuilder.length()-1);
         return stringBuilder.toString();
     }
 
