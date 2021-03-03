@@ -47,7 +47,6 @@ public class ObjectGenerator {
         }
         sortingSystem = new SortingSystem();
         sortingStation = new SortingStation();
-        LinkedList<Package> packages = fileReader.readPackages("base_package.csv");
 
     }
 
