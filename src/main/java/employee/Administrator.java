@@ -1,7 +1,5 @@
 package employee;
 
-import employee.idCard.IDCard;
-
 public class Administrator extends Employee{
     private Profile profile;
 

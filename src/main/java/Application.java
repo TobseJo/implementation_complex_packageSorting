@@ -1,10 +1,5 @@
-import configuration.Configuration;
 import configuration.CsvFileGenerator;
 import configuration.ObjectGenerator;
-import employee.Administrator;
-import employee.Employee;
-import employee.Profile;
-import employee.idCard.IDCard;
 
 public class Application {
     public static void main(String[] args) {
