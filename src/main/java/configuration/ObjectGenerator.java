@@ -68,19 +68,4 @@ public class ObjectGenerator {
         return role;
     }
 
-//    private void generatePackages() {
-//        try {
-//            FileReader fileReader = new FileReader(Configuration.instance.pathToDataDirectory + "base_package.csv");
-//            while (fileReader.re) {
-//
-//            }
-//            e.printStackTrace();
-//        } catch (FileNotFoundException e) {
-//        }
-//    }
-
-    private void generatePallets() {
-
-        Configuration.instance.pathToDataDirectory + "base_pallet.csv";
-    }
 }
