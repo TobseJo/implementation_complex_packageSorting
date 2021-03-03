@@ -29,11 +29,19 @@ public class ObjectGenerator {
     public ObjectGenerator() {
         fileReader = new FileReader();
         generatePackages();
+        System.out.println("Packages generated");
+
+        //TODO der AAl braucht fkin lang
         generateBoxes();
+        System.out.println("Boxes generated");
         generatePallets();
+        System.out.println("Pallets generated");
         generateTrucks();
+        System.out.println("Trucks generated");
         generateSortingStation();
+        System.out.println("SortingStation generated");
         generateAllEmployees();
+        System.out.println("Employees generated");
     }
 
     public void generateSortingStation() {
