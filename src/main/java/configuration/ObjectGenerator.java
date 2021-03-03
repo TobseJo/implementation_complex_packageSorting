@@ -1,6 +1,7 @@
 package configuration;
 
 import SortingStation.*;
+import SortingStation.sortingSysten.SortingSystem;
 import com.google.common.eventbus.EventBus;
 import employee.*;
 import employee.idCard.IDCard;
@@ -11,6 +12,7 @@ import packageSorting.Truck;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class ObjectGenerator {
     private ZS zs;
@@ -24,7 +26,7 @@ public class ObjectGenerator {
     private LinkedList<Package> packages;
     private LinkedList<Box> boxes;
     private LinkedList<Pallet> pallets;
-    private LinkedList<Truck> trucks;
+
 
     public ObjectGenerator() {
         fileReader = new FileReader();
@@ -75,14 +77,16 @@ public class ObjectGenerator {
         pallets = fileReader.readPalettes("base_pallet.csv", boxHashMap);
     }
 
-    public void generateTrucks() {
+    public Queue<Truck> generateTrucks() {
         HashMap<Integer, Pallet> truckHashMap = new HashMap<>();
 
         for (Pallet pallet : pallets) {
             truckHashMap.put(pallet.getId(), pallet);
         }
 
-        trucks = fileReader.readTruck("base_truck.csv", truckHashMap);
+        Queue<Truck> trucks = fileReader.readTruck("base_truck.csv", truckHashMap);
+
+        return trucks;
     }
 
     public void generateAllEmployees() {

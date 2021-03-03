@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 
 public class FileReader {
@@ -25,10 +27,7 @@ public class FileReader {
 
                 String[] content = line.split(",");
 
-                Package paket = new Package(content[0], content[1], content[2], content[3], content[4]);
-
-                packages.add(paket);
-
+                packages.add(new Package(content[0], content[1], content[2], content[3], content[4]));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,22 +54,10 @@ public class FileReader {
                 String boxId = content[0];
 
                 for (int i = 1; i <= Configuration.instance.numberOfPackagesPerBox; i++) {
-                    for (HashMap.Entry<String, Package> entry : packageHashMap.entrySet()) {
-
-                        String packageID = entry.getKey();
-
-                        if (packageID.equals(content[i])) {
-                            packagesPerBox.add(entry.getValue());
-//                            packageHashMap.remove(packageID);
-                            continue;
-                        }
-                    }
+                    packagesPerBox.add(packageHashMap.get(content[i]));
                 }
 
-                Box box = new Box(boxId, packagesPerBox);
-
-                boxes.add(box);
-
+                boxes.add(new Box(boxId, packagesPerBox));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -108,15 +95,12 @@ public class FileReader {
 
                         if (boxID.equals(content[3])) {
                             boxesPerPallet[position][level] = entry.getValue();
-//                            boxHashMap.remove(boxID);
                             continue;
                         }
                     }
                 }
-                Pallet pallet = new Pallet(palletID, boxesPerPallet);
-                pallets.add(pallet);
+                pallets.add(new Pallet(palletID, boxesPerPallet));
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -126,8 +110,8 @@ public class FileReader {
     }
 
 
-    public LinkedList<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
-        LinkedList<Truck> trucks = new LinkedList<>();
+    public Queue<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
+        Queue<Truck> trucks = new PriorityQueue<>();
         Pallet[][] pallets;
         BufferedReader br = null;
 
@@ -162,14 +146,12 @@ public class FileReader {
 
                         if (palletID == Integer.valueOf(content[3])) {
                             pallets[side][position] = entry.getValue();
-//                            palletHashMap.remove(palletID);
                             continue;
                         }
                     }
                 }
 
-                Truck truck = new Truck(truckID, pallets);
-                trucks.add(truck);
+                trucks.add(new Truck(truckID, pallets));
             }
         } catch (Exception e) {
             e.printStackTrace();
