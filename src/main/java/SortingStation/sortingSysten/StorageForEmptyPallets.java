@@ -1,4 +1,4 @@
 package SortingStation.sortingSysten;
 
-public class StorageForPallets {
+public class StorageForEmptyPallets {
 }
