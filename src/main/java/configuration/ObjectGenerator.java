@@ -1,6 +1,7 @@
 package configuration;
 
 import SortingStation.*;
+import com.google.common.eventbus.EventBus;
 import employee.*;
 import employee.idCard.IDCard;
 
@@ -13,9 +14,11 @@ public class ObjectGenerator {
     private ZoneForUnloadingTrucks[] zonesForUnloadingTrucks;
     private SortingSystem sortingSystem;
     private SortingStation sortingStation;
+    private EventBus eventBus;
 
     public void generateSortingStation() {
-        zs = new ZS();
+        eventBus = new EventBus();
+        zs = new ZS(eventBus);
         parkingPlaceForAutonomousCars = new ParkingPlaceForAutonomousCars();
         zonesForUnloadingTrucks = new ZoneForUnloadingTrucks[7];
         for (int i = 0; i < 7; i++) {
