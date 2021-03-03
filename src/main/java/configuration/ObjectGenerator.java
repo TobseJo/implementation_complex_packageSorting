@@ -26,7 +26,7 @@ public class ObjectGenerator {
     }
 
     public void generateAllEmployees() {
-        Employee employee1 = new Administrator(1, "Johannes Winkler", Profile.a, 1234, 123456);
+        Employee employee1 = new Administrator(1, "Johannes Hinkler", Profile.a, 1234, 123456);
         employee1.setIdCard(generateIDCardForEmployee(employee1));
         sortingStation.getEmployees().add(employee1);
 
