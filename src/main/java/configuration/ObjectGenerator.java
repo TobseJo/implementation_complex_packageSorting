@@ -30,8 +30,6 @@ public class ObjectGenerator {
         fileReader = new FileReader();
         generatePackages();
         System.out.println("Packages generated");
-
-        //TODO der AAl braucht fkin lang
         generateBoxes();
         System.out.println("Boxes generated");
         generatePallets();
