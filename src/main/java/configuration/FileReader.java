@@ -84,7 +84,7 @@ public class FileReader {
 
     public LinkedList<Pallet> readPalettes(String FILEPATH, HashMap<String, Box> boxHashMap) {
         LinkedList<Pallet> pallets = new LinkedList<>();
-        LinkedList<Box> boxesPerPallet;
+        Box[][] boxesPerPallet;
         BufferedReader br = null;
 
         try {
@@ -93,19 +93,22 @@ public class FileReader {
 
             for (int i = 0; i < Configuration.instance.numberOfPallets; i++) {
                 int palletID = 0;
-                boxesPerPallet = new LinkedList<>();
+                boxesPerPallet = new Box[4][3];
                 
                 for (int j = 0; j < Configuration.instance.numberOfBoxesPerPallet; j++) {
                     line = br.readLine();
                     String[] content = line.split(",");
 
-                    palletID = Integer.valueOf(content[1]);
+                    palletID = Integer.valueOf(content[0]);
+                    int position = Integer.valueOf(content[1]);
+                    int level = Integer.valueOf(content[2]);
+
                     for (HashMap.Entry<String, Box> entry : boxHashMap.entrySet()) {
 
                         String boxID = entry.getKey();
 
                         if (boxID.equals(content[i + 1])) {
-                            boxesPerPallet.add(entry.getValue());
+                            boxesPerPallet[position][level] = entry.getValue();
                             boxHashMap.remove(boxID);
                             continue;
                         }
@@ -124,8 +127,9 @@ public class FileReader {
     }
 
 
-    public LinkedList<Truck> readTruck(String FILEPATH, HashMap<String, Pallet> palletHashMap) {
+    public LinkedList<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
         LinkedList<Truck> trucks = new LinkedList<>();
+        Pallet[][] pallets;
         BufferedReader br = null;
 
         try {
@@ -133,17 +137,39 @@ public class FileReader {
             String line = null;
 
             for (int i = 0; i < Configuration.instance.numberOfTrucks; i++) {
-                int truckID = 0;
+                String truckID = "";
+                pallets = new Pallet[2][5];
 
                 for (int j = 0; j < Configuration.instance.numberOfPalletsPerTruck; j++) {
                     line = br.readLine();
                     String content[] = line.split(",");
 
-                    truckID =
+                    truckID = content[0];
+                    int side = 0;
 
+                    switch (content[1]){
+                        case "left":
+                            side = 0;
+                            break;
+                        case "right":
+                            side = 1;
+                    }
+
+                    int position = Integer.valueOf(content[2]);
+
+                    for (HashMap.Entry<Integer, Pallet> entry : palletHashMap.entrySet()) {
+
+                        int palletID = entry.getKey();
+
+                        if (palletID == Integer.valueOf(content[i + 1])) {
+                            pallets[side][position] = entry.getValue();
+                            palletHashMap.remove(palletID);
+                            continue;
+                        }
+                    }
                 }
 
-                Truck truck = new Truck();
+                Truck truck = new Truck(truckID, pallets);
                 trucks.add(truck);
             }
         } catch (Exception e) {

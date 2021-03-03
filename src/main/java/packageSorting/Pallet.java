@@ -16,6 +16,11 @@ public class Pallet {
         this.boxes = getBoxes(boxList);
     }
 
+    public Pallet(int id, Box[][] boxes){
+        this.id = id;
+        this.boxes = boxes;
+    }
+
     private Box[][] getBoxes(LinkedList<Box> boxList){
         Box[][] boxes = new Box[4][3];
 

@@ -12,6 +12,10 @@ public class Trailer {
         this.pallets = getPallets(palletList);
     }
 
+    public Trailer(Pallet[][] pallets){
+        this.pallets = pallets;
+    }
+
 
     private Pallet[][] getPallets(LinkedList<Pallet> palletList){
         Pallet[][] pallets = new Pallet[2][5];
