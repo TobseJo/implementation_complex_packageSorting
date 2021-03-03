@@ -16,8 +16,4 @@ public class RealAccess implements IAccess {
     public void grant() {
         zs.doCommand();
     }
-
-    public void doCommand(){
-
-    }
 }

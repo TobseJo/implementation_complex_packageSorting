@@ -3,53 +3,63 @@ package SortingStation;
 import configuration.Configuration;
 import employee.Employee;
 import employee.idCard.Active;
+import employee.idCard.IDCard;
 import employee.idCard.Invalid;
 import employee.idCard.Locked;
 
 public class CardReader {
 
-    public void readCardFromEmployee(Employee employee){
-        int validPin = -1;
-        int validSuperPin = -1;
-        if(employee.getIdCard().getState() instanceof Active){
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < 100; i++) {
-                stringBuilder.append(employee.getIdCard().getMagnetStripe()[i][0]);
-            }
-            validPin = Integer.valueOf(Configuration.instance.usedAlgorithm.decrypt(stringBuilder.toString()));
-
+    public void readCardFromEmployee(Employee employee) {
+        IDCard idCard = employee.swipeCard();
+        if (idCard.getState() instanceof Active) {
+            int validPin = Integer.valueOf(readMagnetStripe(idCard).split(";")[3]);
             System.out.println("Please insert your PIN!");
             int ctr = 0;
-            while(validPin != employee.getPin()){
-                if(ctr < 3){
+            while (validPin != employee.getPin()) {
+                if (ctr < 3) {
                     System.out.println("Wrong pin inserted, retry!");
                     ctr++;
-                }else {
-                    employee.getIdCard().setState(new Locked());
+                } else {
+                    idCard.promote();
                     System.out.println("Card is locked now and can be unlocked with superPin!");
+                    readCardFromEmployee(employee);
                     break;
                 }
+            }
+            if(validPin == employee.getPin()){
+                System.out.println("Pin is correct!");
             }
 
-            //TODO perhaps put this in the else tree after Locked is set
-        }else if(employee.getIdCard().getState() instanceof Locked){
+        } else if (idCard.getState() instanceof Locked) {
+
+            int validSuperPin = Integer.valueOf(readMagnetStripe(idCard).split(";")[4]);
+
             System.out.println("Please insert your SuperPIN!");
             int ctr = 0;
-            while(validSuperPin != employee.getSuperPin()){
-                if(ctr < 2){
+            while (validSuperPin != employee.getSuperPin()) {
+                if (ctr < 2) {
                     System.out.println("Wrong SuperPin inserted, retry!");
                     ctr++;
-                }else {
-                    employee.getIdCard().setState(new Invalid());
+                } else {
+                    idCard.promote();
                     System.out.println("Card is invalid now!");
+                    readCardFromEmployee(employee);
                     break;
                 }
             }
-        }else if(employee.getIdCard().getState() instanceof Invalid){
+        } else if (idCard.getState() instanceof Invalid) {
             System.out.println("This card cannot be read anymore and it cannot be unlocked by Pin/SuperPin!");
-        }else{
+        } else {
             System.out.println("This card is in unknown State so it cannot be read!");
         }
+    }
+
+    private String readMagnetStripe(IDCard idCard){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < 100; i++) {
+            stringBuilder.append(idCard.getMagnetStripe()[i][0]);
+        }
+        return stringBuilder.toString();
     }
 
 
