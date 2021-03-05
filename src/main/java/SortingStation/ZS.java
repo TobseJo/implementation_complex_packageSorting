@@ -26,32 +26,32 @@ public class ZS {
     }
 
     @Subscribe
-    public void receive(Next next){
+    public void receive(Next event){
 
     }
 
     @Subscribe
-    public void receive(Shutdown shutdown){
+    public void receive(Shutdown event){
 
     }
 
     @Subscribe
-    public void receive(Lock lock){
+    public void receive(Lock event){
 
     }
 
     @Subscribe
-    public void receive(Unlock unlock){
+    public void receive(Unlock event){
 
     }
 
     @Subscribe
-    public void receive(ShowStatistics showStatistics){
+    public void receive(ShowStatistics event){
 
     }
 
     @Subscribe
-    public void receive(ChangeSearchAlgorithm changeSearchAlogrithm){
+    public void receive(ChangeSearchAlgorithm event){
 
     }
 //    public void sendEventToRandomVehicle(int id) {
