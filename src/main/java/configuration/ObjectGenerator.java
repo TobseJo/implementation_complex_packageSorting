@@ -23,6 +23,7 @@ public class ObjectGenerator {
     private SortingStation sortingStation;
     private FileReader fileReader;
     private EventBus eventBus;
+    private Terminal terminal;
 
     private LinkedList<Package> packages;
     private LinkedList<Box> boxes;
@@ -51,11 +52,14 @@ public class ObjectGenerator {
         zs = new ZS(eventBus);
         parkingPlaceForAutonomousCars = new ParkingPlaceForAutonomousCars();
         zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
-        for (int i = 0; i < 7; i++) {
-            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck();
+        TruckDetector truckDetector = new TruckDetector();
+        for (int i = 1; i <= 7; i++) {
+            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i, zs);
+            truckDetector.addListener(zonesForUnloadingTrucks[i]);
         }
         sortingSystem = new SortingSystem();
         sortingStation = new SortingStation();
+        terminal = new Terminal(new TouchPad(), new CardReader(), zs);
 
     }
 

@@ -2,11 +2,12 @@ package SortingStation.sortingSysten.SortingTracks;
 
 import packageSorting.Box;
 
-public abstract class SortingTrack {
+public class SortingTrack {
     protected SortingTrack successor;
 
     public boolean canHandleBox(Box box){
-        return true;
+//        return (box == null) || (box.get);
+    return true;
     }
 
     public void scan(Box box){

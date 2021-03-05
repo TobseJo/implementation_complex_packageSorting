@@ -54,4 +54,7 @@ public class ZS {
     public void receive(ChangeSearchAlgorithm changeSearchAlogrithm){
 
     }
+//    public void sendEventToRandomVehicle(int id) {
+//        eventBus.post();
+//    }
 }

@@ -8,12 +8,14 @@ import java.util.List;
 public class Terminal {
     private TouchPad touchPad;
     private CardReader cardReader;
+    private ZS zs;
 
     private List<ICommand> commandList = new ArrayList<>();
 
-    public Terminal(TouchPad touchPad, CardReader cardReader) {
+    public Terminal(TouchPad touchPad, CardReader cardReader, ZS zs) {
         this.touchPad = touchPad;
         this.cardReader = cardReader;
+        this.zs = zs;
     }
 
     public void takeCommand(ICommand command){
@@ -22,7 +24,7 @@ public class Terminal {
 
     public void placeCommands() {
         for (ICommand command : commandList) {
-            command.execute();
+            command.execute(zs);
         }
         commandList.clear();
     }
