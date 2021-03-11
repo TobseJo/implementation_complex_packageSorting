@@ -1,6 +1,8 @@
 package SortingStation;
 
 import Command.ICommand;
+import Proxy.ProxyAccess;
+import employee.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +18,12 @@ public class Terminal {
         this.touchPad = touchPad;
         this.cardReader = cardReader;
         this.zs = zs;
-
         touchPad.setTerminal(this);
     }
 
-    public void takeCommand(ICommand command){
-        commandList.add(command);
+    public void tryToTakeCommand(ICommand command, Employee employee){
+        ProxyAccess proxyAccess = new ProxyAccess(employee, command, this);
+        proxyAccess.grant();
     }
 
     public void placeCommands() {
@@ -37,5 +39,9 @@ public class Terminal {
 
     public TouchPad getTouchPad() {
         return touchPad;
+    }
+
+    public ZS getZs() {
+        return zs;
     }
 }
