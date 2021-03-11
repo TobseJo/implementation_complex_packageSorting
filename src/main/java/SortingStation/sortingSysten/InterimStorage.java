@@ -8,4 +8,8 @@ public class InterimStorage {
     public InterimStorage(){
         pallets = new Pallet[5][2];
     }
+
+    public Pallet[][] getPallets() {
+        return pallets;
+    }
 }

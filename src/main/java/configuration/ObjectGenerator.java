@@ -146,4 +146,8 @@ public class ObjectGenerator {
     public ParkingPlaceForAutonomousCars getParkingPlaceForAutonomousCars() {
         return parkingPlaceForAutonomousCars;
     }
+
+    public ZoneForUnloadingTruck[] getZonesForUnloadingTrucks() {
+        return zonesForUnloadingTrucks;
+    }
 }

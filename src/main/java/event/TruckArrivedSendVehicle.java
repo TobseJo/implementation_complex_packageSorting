@@ -10,4 +10,8 @@ public class TruckArrivedSendVehicle {
     public String toString(){
         return "Event: TruckArrivedSendVehicle";
     }
+
+    public int getId() {
+        return id;
+    }
 }
