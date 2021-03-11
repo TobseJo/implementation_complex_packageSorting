@@ -55,9 +55,8 @@ public class AutonomousVehicle {
     }
 
     private void unloadTruck() {
-        //TODO ich weiß nicht ob des array [2][5] oder umgekehrt ist
         for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < Configuration.instance.numberOfPalletsPerTruck / 2; j++) {
                 palletsFromTruck.add(zoneForUnloadingTruck.getTruck().getTrailer().getPallets()[i][j]);
             }
         }

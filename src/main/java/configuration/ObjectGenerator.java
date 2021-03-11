@@ -18,6 +18,7 @@ public class ObjectGenerator {
     private ZS zs;
     private ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle;
     private ZoneForUnloadingTruck[] zonesForUnloadingTrucks;
+    private TruckDetector[] truckDetectors;
     private SortingSystem sortingSystem;
     private SortingStation sortingStation;
     private FileReader fileReader;
@@ -50,12 +51,13 @@ public class ObjectGenerator {
         zs = new ZS(eventBus);
         parkingPlaceForAutonomousVehicle = new ParkingPlaceForAutonomousVehicle(eventBus, zs, sortingSystem);
         zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
+        truckDetectors = new TruckDetector[7];
         for (int i = 1; i <= 7; i++) {
-            TruckDetector truckDetector = new TruckDetector();
+            truckDetectors[i] = new TruckDetector();
             zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i, zs);
-            truckDetector.addListener(zonesForUnloadingTrucks[i]);
+            truckDetectors[i].addListener(zonesForUnloadingTrucks[i].getSensor());
         }
-        sortingSystem = new SortingSystem();
+        sortingSystem = new SortingSystem(zs);
         terminal = new Terminal(new TouchPad(), new CardReader(), zs);
         sortingStation = new SortingStation(zs, parkingPlaceForAutonomousVehicle, zonesForUnloadingTrucks, sortingSystem, eventBus, terminal);
 

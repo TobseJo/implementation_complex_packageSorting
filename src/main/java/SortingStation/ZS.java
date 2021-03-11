@@ -82,13 +82,21 @@ public class ZS {
     @Subscribe
     public void receive(TruckArrivedSendVehicle event) {
         AutonomousVehicle autonomousVehicle = null;
+        int randomNumber = 0;
         while (autonomousVehicle == null) {
-            int randomNumber = (int) Math.random() * 5;
+            randomNumber = (int) Math.random() * 5;
             autonomousVehicle = objectGenerator.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber];
-            objectGenerator.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber] = null;
         }
+        objectGenerator.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber] = null;
+
         ZoneForUnloadingTruck zoneForUnloadingTruck = objectGenerator.getZonesForUnloadingTrucks()[event.getId()];
         autonomousVehicle.post(new UnloadTruckAndLoadInterimStorage(zoneForUnloadingTruck));
+    }
+
+    //TODO what to do after Unloading?
+    @Subscribe
+    public void receive(FinishedTruckUnload event) {
+
     }
 
     private void writeReportToData(Report report) {
