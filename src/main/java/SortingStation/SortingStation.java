@@ -14,14 +14,16 @@ public class SortingStation {
     private ZoneForUnloadingTruck[] zonesForUnloadingTrucks;
     private SortingSystem sortingSystem;
     private EventBus eventBus;
+    private Terminal terminal;
 
-    public SortingStation(ZS zs, ParkingPlaceForAutonomousCars parkingPlaceForAutonomousCars, ZoneForUnloadingTruck[] zonesForUnloadingTrucks, SortingSystem sortingSystem, EventBus eventBus){
+    public SortingStation(ZS zs, ParkingPlaceForAutonomousCars parkingPlaceForAutonomousCars, ZoneForUnloadingTruck[] zonesForUnloadingTrucks, SortingSystem sortingSystem, EventBus eventBus, Terminal terminal){
         employees = new ArrayList<>();
         this.zs = zs;
         this.parkingPlaceForAutonomousCars = parkingPlaceForAutonomousCars;
         this.zonesForUnloadingTrucks = zonesForUnloadingTrucks;
         this.sortingSystem = sortingSystem;
         this.eventBus = eventBus;
+        this.terminal = terminal;
     }
 
     public ArrayList<Employee> getEmployees() {

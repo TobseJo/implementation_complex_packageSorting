@@ -13,7 +13,6 @@ import packageSorting.Truck;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class ObjectGenerator {
     private ZS zs;
@@ -57,8 +56,8 @@ public class ObjectGenerator {
             truckDetector.addListener(zonesForUnloadingTrucks[i]);
         }
         sortingSystem = new SortingSystem();
-        sortingStation = new SortingStation(zs, parkingPlaceForAutonomousCars, zonesForUnloadingTrucks, sortingSystem, eventBus);
         terminal = new Terminal(new TouchPad(), new CardReader(), zs);
+        sortingStation = new SortingStation(zs, parkingPlaceForAutonomousCars, zonesForUnloadingTrucks, sortingSystem, eventBus, terminal);
 
     }
 
@@ -99,7 +98,7 @@ public class ObjectGenerator {
     }
 
     public void generateAllEmployees() {
-        Employee employee1 = new Administrator(1, "Johannes Hinkler", Profile.a, 1234, 123456);
+        Employee employee1 = new Administrator(1, "Johannes Hinkler", Profile.A, 1234, 123456);
         employee1.setIdCard(generateIDCardForEmployee(employee1));
         sortingStation.getEmployees().add(employee1);
 

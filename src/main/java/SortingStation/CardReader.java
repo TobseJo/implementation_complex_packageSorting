@@ -1,6 +1,5 @@
 package SortingStation;
 
-import configuration.Configuration;
 import employee.Employee;
 import employee.idCard.Active;
 import employee.idCard.IDCard;
@@ -9,6 +8,7 @@ import employee.idCard.Locked;
 
 public class CardReader {
 
+    //TODO testen fehlt noch
     public void readCardFromEmployee(Employee employee) {
         IDCard idCard = employee.swipeCard();
         if (idCard.getState() instanceof Active) {
