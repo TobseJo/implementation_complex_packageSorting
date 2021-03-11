@@ -1,7 +1,7 @@
 package employee;
 
 public enum Profile {
-    a,
-    b,
-    c
+    A,
+    B,
+    C
 }

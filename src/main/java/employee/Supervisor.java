@@ -1,6 +1,5 @@
 package employee;
 
-import employee.idCard.IDCard;
 
 public class Supervisor extends Employee{
     private boolean isSenior;
