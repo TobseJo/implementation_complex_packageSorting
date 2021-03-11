@@ -69,12 +69,11 @@ public class ObjectGenerator {
     public void generateBoxes() {
         HashMap<String, Package> packageHashMap = new HashMap<>();
 
-        for (Package packet : packages) {
-            packageHashMap.put(packet.getId(), packet);
+        for (var pack : packages) {
+            packageHashMap.put(pack.getId(), pack);
         }
 
         boxes = fileReader.readBoxes("base_box.csv", packageHashMap);
-
     }
 
     public void generatePallets() {

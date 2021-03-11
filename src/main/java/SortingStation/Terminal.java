@@ -16,10 +16,8 @@ public class Terminal {
         this.touchPad = touchPad;
         this.cardReader = cardReader;
         this.zs = zs;
-    }
 
-    public void takeCommand(ICommand command){
-        commandList.add(command);
+        touchPad.setCommandList(commandList);
     }
 
     public void placeCommands() {
@@ -27,5 +25,9 @@ public class Terminal {
             command.execute(zs);
         }
         commandList.clear();
+    }
+
+    public List<ICommand> getCommandList() {
+        return commandList;
     }
 }
