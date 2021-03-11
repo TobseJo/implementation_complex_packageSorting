@@ -70,8 +70,8 @@ public class ObjectGenerator {
     public void generateBoxes() {
         HashMap<String, Package> packageHashMap = new HashMap<>();
 
-        for (Package paket : packages) {
-            packageHashMap.put(paket.getId(), paket);
+        for (Package packet : packages) {
+            packageHashMap.put(packet.getId(), packet);
         }
 
         boxes = fileReader.readBoxes("base_box.csv", packageHashMap);
