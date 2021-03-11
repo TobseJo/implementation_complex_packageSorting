@@ -10,15 +10,15 @@ import packageSorting.Pallet;
 
 import java.util.ArrayList;
 
-public class AutonomousCar {
+public class AutonomousVehicle {
     private EventBus eventBus;
     private ZS zs;
-    private ParkingPlaceForAutonomousCars parkingPlaceForAutonomousCars;
+    private ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle;
     private ZoneForUnloadingTruck zoneForUnloadingTruck;
     private SortingSystem sortingSystem;
     private ArrayList<Pallet> palletsFromTruck;
 
-    public AutonomousCar(EventBus eventBus, ZS zs, SortingSystem sortingSystem) {
+    public AutonomousVehicle(EventBus eventBus, ZS zs, SortingSystem sortingSystem) {
         this.sortingSystem = sortingSystem;
         this.zs = zs;
         this.eventBus = eventBus;
@@ -38,7 +38,7 @@ public class AutonomousCar {
     }
 
     private void searchForFreeParkingSpace(){
-        for (var parkingSpace : parkingPlaceForAutonomousCars.getAutonomousCars()) {
+        for (var parkingSpace : parkingPlaceForAutonomousVehicle.getAutonomousVehicles()) {
             if(parkingSpace == null){
                 parkingSpace = this;
                 break;

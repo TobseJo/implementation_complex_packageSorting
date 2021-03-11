@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ObjectGenerator {
     private ZS zs;
-    private ParkingPlaceForAutonomousCars parkingPlaceForAutonomousCars;
+    private ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle;
     private ZoneForUnloadingTruck[] zonesForUnloadingTrucks;
     private SortingSystem sortingSystem;
     private SortingStation sortingStation;
@@ -48,7 +48,7 @@ public class ObjectGenerator {
     public void generateSortingStation() {
         eventBus = new EventBus();
         zs = new ZS(eventBus);
-        parkingPlaceForAutonomousCars = new ParkingPlaceForAutonomousCars(eventBus, zs, sortingSystem);
+        parkingPlaceForAutonomousVehicle = new ParkingPlaceForAutonomousVehicle(eventBus, zs, sortingSystem);
         zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
         for (int i = 1; i <= 7; i++) {
             TruckDetector truckDetector = new TruckDetector();
@@ -57,7 +57,7 @@ public class ObjectGenerator {
         }
         sortingSystem = new SortingSystem();
         terminal = new Terminal(new TouchPad(), new CardReader(), zs);
-        sortingStation = new SortingStation(zs, parkingPlaceForAutonomousCars, zonesForUnloadingTrucks, sortingSystem, eventBus, terminal);
+        sortingStation = new SortingStation(zs, parkingPlaceForAutonomousVehicle, zonesForUnloadingTrucks, sortingSystem, eventBus, terminal);
 
     }
 
@@ -140,8 +140,8 @@ public class ObjectGenerator {
         return role;
     }
 
-    public ParkingPlaceForAutonomousCars getParkingPlaceForAutonomousCars() {
-        return parkingPlaceForAutonomousCars;
+    public ParkingPlaceForAutonomousVehicle getParkingPlaceForAutonomousVehicle() {
+        return parkingPlaceForAutonomousVehicle;
     }
 
     public ZoneForUnloadingTruck[] getZonesForUnloadingTrucks() {

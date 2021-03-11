@@ -75,14 +75,14 @@ public class ZS {
 
     @Subscribe
     public void receive(TruckArrivedSendVehicle event) {
-        AutonomousCar autonomousCar = null;
-        while (autonomousCar == null) {
+        AutonomousVehicle autonomousVehicle = null;
+        while (autonomousVehicle == null) {
             int randomNumber = (int) Math.random() * 5;
-            autonomousCar = objectGenerator.getParkingPlaceForAutonomousCars().getAutonomousCars()[randomNumber];
-            objectGenerator.getParkingPlaceForAutonomousCars().getAutonomousCars()[randomNumber] = null;
+            autonomousVehicle = objectGenerator.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber];
+            objectGenerator.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber] = null;
         }
         ZoneForUnloadingTruck zoneForUnloadingTruck = objectGenerator.getZonesForUnloadingTrucks()[event.getId()];
-        autonomousCar.post(new UnloadTruckAndLoadInterimStorage(zoneForUnloadingTruck));
+        autonomousVehicle.post(new UnloadTruckAndLoadInterimStorage(zoneForUnloadingTruck));
     }
 
     private void writeReportToData(Report report) {
