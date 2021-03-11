@@ -12,6 +12,7 @@ public enum Configuration {
     public String lineSeparator = System.getProperty("line.separator");
     public String fileSeparator = System.getProperty("file.separator");
 
+    public String commonPathToJavaArchive = userDirectory + fileSeparator + "components" + fileSeparator;
     public String pathToDataDirectory = userDirectory + fileSeparator + "data" + fileSeparator;
 
     public final int numberOfPackages = 24000;
@@ -38,10 +39,12 @@ public enum Configuration {
 
     public final Map<String, Double> spreadOfType = Map.of("NORMAL", 0.8, "EXPRESS", 0.15, "VALUE", 0.05);
 
+    public String pathToBoyerMooreJavaArchive = commonPathToJavaArchive + "BoyerMoore" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "boyerMoore.jar";
+    public String pathToRobinKarpJavaArchive = commonPathToJavaArchive + "RobinKarp" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "robinKarp.jar";
+
     public final String allCharsForContent = "abcdefghijklmnopqrstuvwxyz:-!";
     public final String allLettersAndNumbersLowerCase = "abcdefghijklmnopqrstuvwxyz0123456789";
     public final String allLettersAndNumbersUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
 
     public final String key = "dhbw";
     public final IStrategy usedAlgorithm = new AES();

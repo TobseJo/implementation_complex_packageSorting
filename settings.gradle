@@ -1,2 +1,6 @@
 rootProject.name = 'implementation_complex_packageSorting'
+include 'components/BoyerMoore'
+include 'components/RabinKarp'
 
+project(':components/BoyerMoore').name = 'BoyerMoore'
+project(':components/RabinKarp').name = 'RabinKarp'

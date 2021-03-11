@@ -1,18 +1,35 @@
 package SortingStation;
 
-import Command.ICommand;
+import Command.*;
+import event.ChangeSearchAlgorithm;
 
 import java.util.List;
 
 public class TouchPad {
 
-    private List<ICommand> commandList;
+    private Terminal terminal;
 
-    public void takeCommand(ICommand command){
-        commandList.add(command);
+    public void init(InitCommand initCommand){
+        terminal.takeCommand(initCommand);
     }
 
-    public void setCommandList(List<ICommand> commandList) {
-        this.commandList = commandList;
+    public void showStatistics(ShowStatisticsCommand showStatisticsCommand){
+        terminal.takeCommand(showStatisticsCommand);
+    }
+
+    public void unlockSortingSystem(UnlockCommand unlockCommand){
+        terminal.takeCommand(unlockCommand);
+    }
+
+    public void lockSortingSystem(LockCommand lockCommand){
+        terminal.takeCommand(lockCommand);
+    }
+
+    public void changeSearchAlgorithm(ChangeSearchAlgoCommandTo searchAlgorithmCommand){
+        terminal.takeCommand(searchAlgorithmCommand);
+    }
+
+    public void setTerminal(Terminal terminal) {
+        this.terminal = terminal;
     }
 }

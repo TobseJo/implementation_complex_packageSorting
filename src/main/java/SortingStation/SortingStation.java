@@ -23,9 +23,15 @@ public class SortingStation {
         this.sortingSystem = sortingSystem;
         this.eventBus = eventBus;
         this.terminal = terminal;
+
+        zs.setSortingStation(this);
     }
 
     public ArrayList<Employee> getEmployees() {
         return employees;
+    }
+
+    public SortingSystem getSortingSystem() {
+        return sortingSystem;
     }
 }

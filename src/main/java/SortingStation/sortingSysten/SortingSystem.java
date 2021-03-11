@@ -1,11 +1,12 @@
 package SortingStation.sortingSysten;
 
-import SortingStation.sortingSysten.SortingTracks.ExpressSortingTrack;
-import SortingStation.sortingSysten.SortingTracks.NormalSortingTrack;
-import SortingStation.sortingSysten.SortingTracks.SortingTrack;
-import SortingStation.sortingSysten.SortingTracks.ValueSortingTrack;
+import SortingStation.sortingSysten.state.IState;
+import SortingStation.sortingSysten.SortingTracks.*;
+import SortingStation.sortingSysten.state.Locked;
+import SortingStation.sortingSysten.state.Unlocked;
 
 public class SortingSystem {
+    private IState state = new Unlocked();
     private InterimStorage interimStorage;
     private Robot robot;
     private StorageForEmptyBoxes storageForEmptyBoxes;
@@ -23,12 +24,28 @@ public class SortingSystem {
             warehouseTracks[i] = new WarehouseTrack();
         }
         sortingTracks = new SortingTrack[3];
-        sortingTracks[0] = new NormalSortingTrack();
-        sortingTracks[1] = new ExpressSortingTrack();
-        sortingTracks[2] = new ValueSortingTrack();
+        sortingTracks[0] = new NormalSortingTrack(new Scanner());
+        sortingTracks[1] = new ExpressSortingTrack(new Scanner());
+        sortingTracks[2] = new ValueSortingTrack(new Scanner());
     }
 
     public InterimStorage getInterimStorage() {
         return interimStorage;
+    }
+
+    public SortingTrack[] getSortingTracks() {
+        return sortingTracks;
+    }
+
+    public void unlock(){
+        setState(new Unlocked());
+    }
+
+    public void lock(){
+        setState(new Locked());
+    }
+
+    public void setState(IState state) {
+        this.state = state;
     }
 }

@@ -17,7 +17,11 @@ public class Terminal {
         this.cardReader = cardReader;
         this.zs = zs;
 
-        touchPad.setCommandList(commandList);
+        touchPad.setTerminal(this);
+    }
+
+    public void takeCommand(ICommand command){
+        commandList.add(command);
     }
 
     public void placeCommands() {

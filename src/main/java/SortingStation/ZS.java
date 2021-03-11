@@ -1,6 +1,7 @@
 package SortingStation;
 
 import Reporter.Report;
+import SortingStation.sortingSysten.SortingTracks.SortingTrack;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
@@ -20,6 +21,8 @@ public class ZS {
     private ObjectGenerator objectGenerator = new ObjectGenerator();
     private EventBus eventBus;
     private WaitingZone waitingZone;
+
+    private SortingStation sortingStation;
 
     public ZS(EventBus eventBus) {
         this.eventBus = eventBus;
@@ -58,18 +61,21 @@ public class ZS {
     @Subscribe
     public void receive(ShowStatistics event) {
         //TODO where to get data | not tested
-        HashMap<Type, Integer> amountOfScannedPaketsPerPakets;
-        amountOfScannedPaketsPerPakets = new HashMap<>();
+        HashMap<Type, Integer> amountOfScannedPakets;
+        amountOfScannedPakets = new HashMap<>();
 
         int amountOfTrucks = 0;
 
         ArrayList<Package> dangerousPackages = new ArrayList<>();
-        Report report = new Report.Builder().amountOfScannedPakets(amountOfScannedPaketsPerPakets).amountOfTruck(amountOfTrucks).dangerousPackages(dangerousPackages).date(new Date()).build();
+        Report report = new Report.Builder().amountOfScannedPakets(amountOfScannedPakets).amountOfTruck(amountOfTrucks).dangerousPackages(dangerousPackages).date(new Date()).build();
         writeReportToData(report);
     }
 
     @Subscribe
     public void receive(ChangeSearchAlgorithm event) {
+        for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()){
+            sortingTrack.getScanner().setUsedAlgorithm(event.getAlgorithm());
+        }
 
     }
 
@@ -106,4 +112,7 @@ public class ZS {
         LogEngine.instance.close();
     }
 
+    public void setSortingStation(SortingStation sortingStation) {
+        this.sortingStation = sortingStation;
+    }
 }
