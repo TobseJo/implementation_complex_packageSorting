@@ -47,7 +47,6 @@ public class ObjectGenerator {
     }
 
     public void generateSortingStation() {
-        zs = new ZS(eventBus);
         eventBus = new EventBus();
         zs = new ZS(eventBus);
         parkingPlaceForAutonomousCars = new ParkingPlaceForAutonomousCars();
@@ -58,7 +57,7 @@ public class ObjectGenerator {
             truckDetector.addListener(zonesForUnloadingTrucks[i]);
         }
         sortingSystem = new SortingSystem();
-        sortingStation = new SortingStation();
+        sortingStation = new SortingStation(zs, parkingPlaceForAutonomousCars, zonesForUnloadingTrucks, sortingSystem, eventBus);
         terminal = new Terminal(new TouchPad(), new CardReader(), zs);
 
     }
