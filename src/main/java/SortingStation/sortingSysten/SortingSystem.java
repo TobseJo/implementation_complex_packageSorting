@@ -2,8 +2,12 @@ package SortingStation.sortingSysten;
 
 import SortingStation.ZS;
 import SortingStation.sortingSysten.SortingTracks.*;
+import SortingStation.sortingSysten.state.IState;
+import SortingStation.sortingSysten.state.Locked;
+import SortingStation.sortingSysten.state.Unlocked;
 
 public class SortingSystem {
+    private IState state = new Locked();
     private InterimStorage interimStorage;
     private Robot robot;
     private StorageForEmptyBoxes storageForEmptyBoxes;
@@ -62,6 +66,10 @@ public class SortingSystem {
         return warehouseTracks;
     }
 
+    public SortingTrack[] getSortingTracks() {
+        return sortingTracks;
+    }
+
     public void setWarehouseTracks(WarehouseTrack[] warehouseTracks) {
         this.warehouseTracks = warehouseTracks;
     }
@@ -70,13 +78,8 @@ public class SortingSystem {
         this.sortingTracks = sortingTracks;
     }
 
-
-    public void unlock(){
-        setState(new Unlocked());
-    }
-
-    public void lock(){
-        setState(new Locked());
+    public void switchState(){
+        state.switchState(this);
     }
 
     public void setState(IState state) {

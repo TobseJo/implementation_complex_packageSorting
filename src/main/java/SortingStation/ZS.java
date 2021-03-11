@@ -50,12 +50,12 @@ public class ZS {
 
     @Subscribe
     public void receive(Lock event) {
-
+        sortingStation.getSortingSystem().switchState();
     }
 
     @Subscribe
     public void receive(Unlock event) {
-
+        sortingStation.getSortingSystem().switchState();
     }
 
     @Subscribe

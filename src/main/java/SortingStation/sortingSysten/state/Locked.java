@@ -5,7 +5,7 @@ import SortingStation.sortingSysten.SortingSystem;
 public class Locked implements IState{
 
     public void switchState(SortingSystem sortingSystem) {
-        System.out.println("State switched unlocked -> locked");
-        sortingSystem.lock();
+        System.out.println("State switched locked -> unlocked");
+        sortingSystem.setState(new Unlocked());
     }
 }
