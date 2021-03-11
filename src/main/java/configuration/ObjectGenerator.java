@@ -54,7 +54,7 @@ public class ObjectGenerator {
         zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
         for (int i = 1; i <= 7; i++) {
             TruckDetector truckDetector = new TruckDetector();
-            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i, zs, truckDetector);
+            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i, zs);
             truckDetector.addListener(zonesForUnloadingTrucks[i]);
         }
         sortingSystem = new SortingSystem();
