@@ -4,6 +4,7 @@ import SortingStation.sortingSysten.SortingSystem;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
+import event.FinishedTruckUnload;
 import event.UnloadTruckAndLoadInterimStorage;
 import packageSorting.Pallet;
 
@@ -11,12 +12,16 @@ import java.util.ArrayList;
 
 public class AutonomousCar {
     private EventBus eventBus;
+    private ZS zs;
+    private ParkingPlaceForAutonomousCars parkingPlaceForAutonomousCars;
     private ZoneForUnloadingTruck zoneForUnloadingTruck;
     private SortingSystem sortingSystem;
     private ArrayList<Pallet> palletsFromTruck;
 
-    public AutonomousCar(EventBus eventBus, SortingSystem sortingSystem) {
+    public AutonomousCar(EventBus eventBus, ZS zs, ZoneForUnloadingTruck zoneForUnloadingTruck, SortingSystem sortingSystem) {
         this.sortingSystem = sortingSystem;
+        this.zs = zs;
+        this.zoneForUnloadingTruck = zoneForUnloadingTruck;
         this.eventBus = eventBus;
         palletsFromTruck = new ArrayList<>();
     }
@@ -29,9 +34,17 @@ public class AutonomousCar {
     public void receive(UnloadTruckAndLoadInterimStorage event) {
         unloadTruck();
         loadInterimStorage();
-        //Drive Back to parkingAutonomVehicle
-        //sendEvent TruckIsUnloaded To ZS
-        //TODO sind beide Eventbusse dieseleben und woher kommt die connection zum Parkplatz
+        searchForFreeParkingSpace();
+        zs.post(new FinishedTruckUnload());
+    }
+
+    private void searchForFreeParkingSpace(){
+        for (var parkingSpace : parkingPlaceForAutonomousCars.getAutonomousCars()) {
+            if(parkingSpace == null){
+                parkingSpace = this;
+                break;
+            }
+        }
     }
 
     private void loadInterimStorage() {
@@ -44,8 +57,8 @@ public class AutonomousCar {
 
     private void unloadTruck() {
         //TODO ich weiß nicht ob des array [2][5] oder umgekehrt ist
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 5; j++) {
                 palletsFromTruck.add(zoneForUnloadingTruck.getTruck().getTrailer().getPallets()[i][j]);
             }
         }

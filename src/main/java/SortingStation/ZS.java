@@ -59,9 +59,11 @@ public class ZS {
     public void receive(TruckArrivedSendVehicle event){
         AutonomousCar autonomousCar = null;
         while (autonomousCar == null){
-            autonomousCar = objectGenerator.getParkingPlaceForAutonomousCars().getAutonomousCars()[(int)(Math.random()*5)];
+            int randomNumber = (int)Math.random()*5;
+            autonomousCar = objectGenerator.getParkingPlaceForAutonomousCars().getAutonomousCars()[randomNumber];
+            objectGenerator.getParkingPlaceForAutonomousCars().getAutonomousCars()[randomNumber] = null;
         }
-        ZoneForUnloadingTruck zoneForUnloadingTruck = objectGenerator.getZonesForUnloadingTrucks()[((TruckArrivedSendVehicle)event).getId()];
+        ZoneForUnloadingTruck zoneForUnloadingTruck = objectGenerator.getZonesForUnloadingTrucks()[event.getId()];
         autonomousCar.post(new UnloadTruckAndLoadInterimStorage(zoneForUnloadingTruck));
     }
 
