@@ -18,10 +18,9 @@ public class AutonomousCar {
     private SortingSystem sortingSystem;
     private ArrayList<Pallet> palletsFromTruck;
 
-    public AutonomousCar(EventBus eventBus, ZS zs, ZoneForUnloadingTruck zoneForUnloadingTruck, SortingSystem sortingSystem) {
+    public AutonomousCar(EventBus eventBus, ZS zs, SortingSystem sortingSystem) {
         this.sortingSystem = sortingSystem;
         this.zs = zs;
-        this.zoneForUnloadingTruck = zoneForUnloadingTruck;
         this.eventBus = eventBus;
         palletsFromTruck = new ArrayList<>();
     }

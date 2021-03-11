@@ -48,7 +48,7 @@ public class ObjectGenerator {
     public void generateSortingStation() {
         eventBus = new EventBus();
         zs = new ZS(eventBus);
-        parkingPlaceForAutonomousCars = new ParkingPlaceForAutonomousCars();
+        parkingPlaceForAutonomousCars = new ParkingPlaceForAutonomousCars(eventBus, zs, sortingSystem);
         zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
         for (int i = 1; i <= 7; i++) {
             TruckDetector truckDetector = new TruckDetector();
