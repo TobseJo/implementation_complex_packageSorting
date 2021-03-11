@@ -30,4 +30,8 @@ public class Terminal {
     public List<ICommand> getCommandList() {
         return commandList;
     }
+
+    public TouchPad getTouchPad() {
+        return touchPad;
+    }
 }

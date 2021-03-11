@@ -17,6 +17,6 @@ public class RealAccess implements IAccess {
 
     @Override
     public void grant() {
-        terminal.takeCommand(command);
+        terminal.getTouchPad().takeCommand(command);
     }
 }
