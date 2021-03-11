@@ -1,8 +1,13 @@
 package SortingStation.sortingSysten;
 
-public class SensorForFilling {
+public class SensorForFilling implements ITrackObserver{
 
     private void sendEvent(){
+
+    }
+
+    @Override
+    public void trackIsFull() {
 
     }
 }

@@ -1,9 +1,10 @@
 package configuration;
 
-import packageSorting.Box;
-import packageSorting.Package;
+
 import packageSorting.Pallet;
 import packageSorting.Truck;
+import packageSorting.Box;
+import packageSorting.Package;
 
 import java.util.*;
 

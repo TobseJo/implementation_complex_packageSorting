@@ -39,6 +39,7 @@ public class Robot {
                                 for (int o = 0; o < 4; o++) {
                                     Package currentPackage = currentBox.getPackages()[m][n][o];
                                     sortingSystem.getWarehouseTracks()[trackCtr].packageTrack.add(currentPackage);
+
                                     currentBox.getPackages()[m][n][o] = null;
                                     if(trackCtr < 7){
                                         trackCtr++;
