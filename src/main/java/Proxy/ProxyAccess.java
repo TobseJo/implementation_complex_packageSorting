@@ -24,7 +24,7 @@ public class ProxyAccess implements IAccess {
     public void grant() {
         if (employee instanceof Supervisor) {
             giveRealAccess();
-        } else if (employee instanceof Administrator && command instanceof ShutdownCommand || command instanceof ShowStatisticsCommand) {
+        } else if (employee instanceof Administrator && (command instanceof ShutdownCommand || command instanceof ShowStatisticsCommand)) {
             giveRealAccess();
         } else if (employee instanceof Operator && (command instanceof NextCommand || command instanceof ShowStatisticsCommand)) {
             giveRealAccess();
