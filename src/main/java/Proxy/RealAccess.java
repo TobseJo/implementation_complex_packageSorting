@@ -17,6 +17,7 @@ public class RealAccess implements IAccess {
 
     @Override
     public void grant() {
+        System.out.println("Access granted for Employee");
         terminal.getCommandList().add(command);
         terminal.placeCommands();
     }

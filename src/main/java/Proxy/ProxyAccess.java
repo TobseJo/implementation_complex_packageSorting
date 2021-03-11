@@ -5,7 +5,6 @@ import Command.NextCommand;
 import Command.ShowStatisticsCommand;
 import Command.ShutdownCommand;
 import SortingStation.Terminal;
-import SortingStation.ZS;
 import employee.*;
 
 public class ProxyAccess implements IAccess {
