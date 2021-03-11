@@ -52,9 +52,9 @@ public class ObjectGenerator {
         zs = new ZS(eventBus);
         parkingPlaceForAutonomousCars = new ParkingPlaceForAutonomousCars();
         zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
-        TruckDetector truckDetector = new TruckDetector();
         for (int i = 1; i <= 7; i++) {
-            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i, zs);
+            TruckDetector truckDetector = new TruckDetector();
+            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i, zs, truckDetector);
             truckDetector.addListener(zonesForUnloadingTrucks[i]);
         }
         sortingSystem = new SortingSystem();
@@ -143,4 +143,7 @@ public class ObjectGenerator {
         return role;
     }
 
+    public ParkingPlaceForAutonomousCars getParkingPlaceForAutonomousCars() {
+        return parkingPlaceForAutonomousCars;
+    }
 }

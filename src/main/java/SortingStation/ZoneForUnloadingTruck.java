@@ -1,5 +1,7 @@
 package SortingStation;
 
+import event.TruckArrivedSendVehicle;
+
 public class ZoneForUnloadingTruck implements ITruckArriving{
     private int id;
     private ZS zs;
@@ -13,6 +15,6 @@ public class ZoneForUnloadingTruck implements ITruckArriving{
 
     @Override
     public void informZsTruckArriving() {
-        zs.sendEventToRandomVehicle(id);
+        zs.post(new TruckArrivedSendVehicle(id));
     }
 }

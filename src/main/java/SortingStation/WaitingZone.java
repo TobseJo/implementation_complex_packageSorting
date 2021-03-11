@@ -3,8 +3,6 @@ package SortingStation;
 import packageSorting.Truck;
 
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Stack;
 
 public class WaitingZone {

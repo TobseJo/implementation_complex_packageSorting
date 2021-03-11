@@ -7,4 +7,8 @@ public class ParkingPlaceForAutonomousCars {
     public ParkingPlaceForAutonomousCars(){
         autonomousCars = new AutonomousCar[5];
     }
+
+    public AutonomousCar[] getAutonomousCars() {
+        return autonomousCars;
+    }
 }

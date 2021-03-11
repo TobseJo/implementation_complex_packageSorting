@@ -5,6 +5,8 @@ import com.google.common.eventbus.Subscribe;
 import configuration.ObjectGenerator;
 import event.*;
 
+import javax.print.attribute.AttributeSetUtilities;
+
 public class ZS {
 
     private ObjectGenerator objectGenerator = new ObjectGenerator();
@@ -54,7 +56,17 @@ public class ZS {
     public void receive(ChangeSearchAlgorithm event){
 
     }
-//    public void sendEventToRandomVehicle(int id) {
-//        eventBus.post();
-//    }
+
+    @Subscribe
+    public void receive(TruckArrivedSendVehicle event){
+        AutonomousCar autonomousCar = null;
+        while (autonomousCar == null){
+            autonomousCar = objectGenerator.getParkingPlaceForAutonomousCars().getAutonomousCars()[(int)(Math.random()*5)];
+        }
+        sendEventToAutonomousCar(autonomousCar);
+    }
+
+    private void sendEventToAutonomousCar(AutonomousCar autonomousCar) {
+
+    }
 }
