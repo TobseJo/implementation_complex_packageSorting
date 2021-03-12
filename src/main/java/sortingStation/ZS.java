@@ -48,7 +48,7 @@ public class ZS {
     @Subscribe
     public void receive(Next event) {
         System.out.println(event);
-        int randomNumber = (int) Math.random() * sortingStation.getZonesForUnloadingTrucks().length;
+        int randomNumber = (int)(Math.random() * sortingStation.getZonesForUnloadingTrucks().length);
 
         sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruck(sortingStation.getWaitingZone().getTrucks().pop());
     }
@@ -79,7 +79,6 @@ public class ZS {
     @Subscribe
     public void receive(ShowStatistics event) {
         System.out.println(event);
-        //not tested
         HashMap<Type, Integer> amountOfScannedPackets;
         amountOfScannedPackets = new HashMap<>();
         amountOfScannedPackets.put(Type.VALUE, sortingStation.getSortingSystem().getSortingTracks()[0].getAmountOfScannedPackages());
@@ -107,7 +106,7 @@ public class ZS {
         AutonomousVehicle autonomousVehicle = null;
         int randomNumber = 0;
         while (autonomousVehicle == null) {
-            randomNumber = (int) Math.random() * 5;
+            randomNumber = (int) (Math.random() * 5);
             autonomousVehicle = sortingStation.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber];
         }
         sortingStation.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber] = null;
@@ -115,6 +114,7 @@ public class ZS {
         for (var currentZone : sortingStation.getZonesForUnloadingTrucks()) {
             if(currentZone.getTruck() != null){
                 zone = currentZone;
+                break;
             }
         }
         autonomousVehicle.post(new UnloadTruckAndLoadInterimStorage(zone));
@@ -131,6 +131,7 @@ public class ZS {
         System.out.println(event);
         if(amountOfFullTracks == 7){
             ((NormalSortingTrack)sortingStation.getSortingSystem().getSortingTracks()[2]).post(new SortEveryThing(sortingStation.getSortingSystem()));
+            amountOfFullTracks = 0;
         }else{
             amountOfFullTracks++;
         }

@@ -9,7 +9,6 @@ import employee.idCard.Locked;
 
 public class CardReader {
 
-    //TODO testen fehlt noch
     public void readCardFromEmployee(Employee employee) {
         IDCard idCard = employee.swipeCard();
         if (idCard.getState() instanceof Active) {
