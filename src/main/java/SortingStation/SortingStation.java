@@ -34,4 +34,8 @@ public class SortingStation {
     public SortingSystem getSortingSystem() {
         return sortingSystem;
     }
+
+    public ZoneForUnloadingTruck[] getZonesForUnloadingTrucks() {
+        return zonesForUnloadingTrucks;
+    }
 }
