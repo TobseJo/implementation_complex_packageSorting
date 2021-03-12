@@ -7,9 +7,9 @@ import java.util.Map;
 public enum Configuration {
     instance;
 
-    public String userDirectory = System.getProperty("user.dir");
-    public String lineSeparator = System.getProperty("line.separator");
-    public String fileSeparator = System.getProperty("file.separator");
+    public final String userDirectory = System.getProperty("user.dir");
+    public final String lineSeparator = System.getProperty("line.separator");
+    public final String fileSeparator = System.getProperty("file.separator");
 
     public String commonPathToJavaArchive = userDirectory + fileSeparator + "components" + fileSeparator;
     public String pathToDataDirectory = userDirectory + fileSeparator + "data" + fileSeparator;

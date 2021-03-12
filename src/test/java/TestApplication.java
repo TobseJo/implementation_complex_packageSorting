@@ -1,28 +1,25 @@
-import SortingStation.SortingStation;
-import command.InitCommand;
 import configuration.ObjectGenerator;
 import org.junit.jupiter.api.*;
 import sortingStation.SortingStation;
-import sortingStation.sortingSysten.sortingTracks.SortingTrack;
 
-import java.lang.reflect.Method;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestApplication {
     ObjectGenerator objectGenerator;
+    SortingStation sortingStation;
 
     @BeforeEach
     public void init() {
         objectGenerator = new ObjectGenerator();
+         sortingStation = objectGenerator.generateSortingStation();
     }
 
     @Test
     @Order(1)
     public void setup() {
-        SortingStation sortingStation = objectGenerator.generateSortingStation();
 
+        Assertions.assertNotNull(sortingStation);
         Assertions.assertNotNull(sortingStation.getZs());
         Assertions.assertEquals(sortingStation.getZonesForUnloadingTrucks().length, 7);
         for (int i = 0; i < sortingStation.getZonesForUnloadingTrucks().length; i++) {
@@ -30,13 +27,12 @@ public class TestApplication {
         }
         Assertions.assertNotNull(sortingStation.getParkingPlaceForAutonomousVehicle());
         Assertions.assertEquals(sortingStation.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles().length, 5);
-        Assertions.assertNotNull(sortingStation.getSortingSystem());
 
+        Assertions.assertNotNull(sortingStation.getSortingSystem());
         Assertions.assertNotNull(sortingStation.getSortingSystem().getSortingTracks());
         Assertions.assertEquals(sortingStation.getSortingSystem().getSortingTracks().length, 3);
         Assertions.assertNotNull(sortingStation.getSortingSystem().getInterimStorage());
         Assertions.assertNotNull(sortingStation.getSortingSystem().getRobot());
-        Assertions.assertNotNull(sortingStation.getSortingSystem().getPackagesWithExplosive());
         Assertions.assertNotNull(sortingStation.getSortingSystem().getStorageForEmptyBoxes());
         Assertions.assertNotNull(sortingStation.getSortingSystem().getStorageForEmptyPallets());
         Assertions.assertNotNull(sortingStation.getSortingSystem().getWarehouseTracks());
