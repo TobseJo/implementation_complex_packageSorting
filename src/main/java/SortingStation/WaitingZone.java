@@ -7,14 +7,13 @@ import java.util.Stack;
 
 public class WaitingZone {
 
-    private List<Truck> trucks = new Stack<>();
+    private Stack<Truck> trucks = new Stack<>();
 
-
-    public List<Truck> getTrucks() {
+    public Stack<Truck> getTrucks() {
         return trucks;
     }
 
-    public void setTrucks(List<Truck> trucks) {
+    public void setTrucks(Stack<Truck> trucks) {
         this.trucks = trucks;
     }
 }
