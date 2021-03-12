@@ -87,7 +87,9 @@ public class TestApplication {
     @Test
     @Order(7)
     public void showStatistics() {
-        sortingStation.getTerminal().getTouchPad().takeCommand(new ShutdownCommand(), sortingStation.getEmployees().get(0));
+        sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
+        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
+        sortingStation.getTerminal().getTouchPad().takeCommand(new ShowStatisticsCommand(), sortingStation.getEmployees().get(0));
     }
 
 }
