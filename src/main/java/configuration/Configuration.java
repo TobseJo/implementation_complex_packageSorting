@@ -11,8 +11,8 @@ public enum Configuration {
     public String lineSeparator = System.getProperty("line.separator");
     public String fileSeparator = System.getProperty("file.separator");
 
-    public String commonPathToJavaArchive = userDirectory + fileSeparator + "implementation_complex_packageSorting" + fileSeparator + "components" + fileSeparator;
-    public String pathToDataDirectory = userDirectory + fileSeparator + "implementation_complex_packageSorting" + fileSeparator + "data" + fileSeparator;
+    public String commonPathToJavaArchive = userDirectory  + fileSeparator + "components" + fileSeparator;
+    public String pathToDataDirectory = userDirectory + fileSeparator +  "data" + fileSeparator;
 
     public final int numberOfPackages = 24000;
     public final int numberOfBoxes = 600;
