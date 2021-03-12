@@ -1,6 +1,8 @@
 package SortingStation.sortingSysten;
 
+import SortingStation.TruckDetector;
 import SortingStation.ZS;
+import SortingStation.ZoneForUnloadingTruck;
 import SortingStation.sortingSysten.SortingTracks.*;
 import SortingStation.sortingSysten.state.IState;
 import SortingStation.sortingSysten.state.Unlocked;
@@ -18,7 +20,7 @@ public class SortingSystem {
     private SortingTrack[] sortingTracks;
     private ArrayList<Package> packagesWithExplosive;
 
-    public SortingSystem(ZS zs){
+    public SortingSystem(ZS zs) {
         interimStorage = new InterimStorage();
         packagesWithExplosive = new ArrayList<>();
         storageForEmptyBoxes = new StorageForEmptyBoxes();
@@ -83,7 +85,7 @@ public class SortingSystem {
         this.sortingTracks = sortingTracks;
     }
 
-    public void switchState(){
+    public void switchState() {
         state.switchState(this);
     }
 
@@ -94,4 +96,6 @@ public class SortingSystem {
     public ArrayList<Package> getPackagesWithExplosive() {
         return packagesWithExplosive;
     }
+
+
 }
