@@ -31,11 +31,11 @@ public class Robot {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 2; j++) {
                 Pallet currentPallet = sortingSystem.getInterimStorage().getPallets()[i][j];
-//                if(currentPallet != null){
+                if(currentPallet != null){
                     for (int k = 0; k < 4; k++) {
                         for (int l = 0; l < 3; l++) {
                             Box currentBox = currentPallet.getBoxes()[k][l];
-//                            if(currentBox != null){
+                            if(currentBox != null){
 
                                 for (int m = 0; m < 5; m++) {
                                     for (int n = 0; n < 2; n++) {
@@ -49,13 +49,13 @@ public class Robot {
                                 }
                                 sortingSystem.getStorageForEmptyBoxes().getBoxes().add(currentPallet.getBoxes()[k][l]);
                                 currentPallet.getBoxes()[k][l] = null;
-//                            }
+                            }
                         }
                     }
                     sortingSystem.getStorageForEmptyPallets().getPallets().add(currentPallet);
                     sortingSystem.getInterimStorage().getPallets()[i][j] = null;
                 }
-//            }
+            }
         }
     }
 
