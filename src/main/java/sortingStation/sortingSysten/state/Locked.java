@@ -4,12 +4,12 @@ import sortingStation.sortingSysten.SortingSystem;
 
 public class Locked implements IState{
 
-    public void unlocked(SortingSystem sortingSystem) {
-        throw new RuntimeException("Not allowed");
+    public void unlock(SortingSystem sortingSystem) {
+        System.out.println("State set unlocked");
+        sortingSystem.setState(new Unlocked());
     }
 
-    public void locked(SortingSystem sortingSystem){
-        System.out.println("State set locked");
-        sortingSystem.setState(new Locked());
+    public void lock(SortingSystem sortingSystem){
+        System.out.println("State is already locked");
     }
 }

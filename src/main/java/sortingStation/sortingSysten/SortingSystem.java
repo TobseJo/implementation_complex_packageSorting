@@ -84,13 +84,12 @@ public class SortingSystem {
     }
 
     public void setLocked() {
-        state.locked(this);
+        state.lock(this);
     }
 
     public void setUnlocked() {
-        state.unlocked(this);
+        state.unlock(this);
     }
-
 
     public void setState(IState state) {
         this.state = state;
