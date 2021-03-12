@@ -51,8 +51,6 @@ public class Robot {
                     }
                     sortingSystem.getStorageForEmptyPallets().getPallets().add(currentPallet);
                     sortingSystem.getInterimStorage().getPallets()[i][j] = null;
-                }else{
-                    System.out.println("yeah");
                 }
             }
         }

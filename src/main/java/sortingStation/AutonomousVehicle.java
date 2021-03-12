@@ -21,7 +21,7 @@ public class AutonomousVehicle {
     public AutonomousVehicle(EventBus eventBus, ZS zs, SortingSystem sortingSystem, ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle) {
         this.sortingSystem = sortingSystem;
         this.zs = zs;
-        this.eventBus = eventBus;
+        this.eventBus = new EventBus();
         palletsFromTruck = new ArrayList<>();
         this.eventBus.register(this);
         this.parkingPlaceForAutonomousVehicle = parkingPlaceForAutonomousVehicle;

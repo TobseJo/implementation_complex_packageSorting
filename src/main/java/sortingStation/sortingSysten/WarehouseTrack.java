@@ -22,7 +22,6 @@ public class WarehouseTrack {
         isFull = false;
     }
 
-    //returnt false bis es voll ist
     public boolean addToPackageTrack(Package currentPackage) {
         if (!isFull) {
             packageTrack.add(currentPackage);
