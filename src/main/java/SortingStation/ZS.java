@@ -23,6 +23,7 @@ public class ZS {
     private ObjectGenerator objectGenerator;
     private EventBus eventBus;
     private WaitingZone waitingZone;
+    private int amountOfFullTracks;
 
     private SortingStation sortingStation;
 
@@ -30,6 +31,7 @@ public class ZS {
         this.objectGenerator = objectGenerator;
         this.eventBus = eventBus;
         this.waitingZone = new WaitingZone();
+        amountOfFullTracks = 0;
     }
 
     public void post(Object object) {
@@ -109,6 +111,11 @@ public class ZS {
     //TODO what to do after Unloading?
     @Subscribe
     public void receive(FinishedTruckUnload event) {
+
+    }
+
+    @Subscribe
+    public void receive(TrackIsFull event){
 
     }
 

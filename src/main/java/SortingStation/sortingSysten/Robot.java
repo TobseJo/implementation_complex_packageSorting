@@ -37,8 +37,7 @@ public class Robot {
                         for (int m = 0; m < 5; m++) {
                             for (int n = 0; n < 2; n++) {
                                 for (int o = 0; o < 4; o++) {
-                                    Package currentPackage = currentBox.getPackages()[m][n][o];
-                                    putCurrentPackageToWarehouseTrack(currentPackage, trackCtr);
+                                    putCurrentPackageToWarehouseTrack(currentBox.getPackages()[m][n][o], trackCtr);
                                     currentBox.getPackages()[m][n][o] = null;
                                 }
                             }
@@ -56,7 +55,6 @@ public class Robot {
     private void putCurrentPackageToWarehouseTrack(Package currentPackage, int trackCtr) {
         int breakCtr = 0;
         while(sortingSystem.getWarehouseTracks()[trackCtr].addToPackageTrack(currentPackage)){
-
             if(breakCtr < 8){
                 setTrackCtr(trackCtr);
             }else{

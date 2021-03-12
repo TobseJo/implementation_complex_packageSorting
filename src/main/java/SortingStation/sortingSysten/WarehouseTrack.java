@@ -1,5 +1,6 @@
 package SortingStation.sortingSysten;
 
+import SortingStation.ZS;
 import packageSorting.Package;
 
 import java.util.ArrayList;
@@ -8,14 +9,16 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class WarehouseTrack {
+    private ZS zs;
     private Queue<Package> packageTrack;
     private ArrayList<ITrackObserver> listeners;
     private boolean isFull;
 
-    public WarehouseTrack() {
+    public WarehouseTrack(ZS zs, int id) {
+        this.zs = zs;
         packageTrack = new PriorityQueue<>();
         listeners = new ArrayList<>();
-        listeners.add( new SensorForFilling());
+        listeners.add( new SensorForFilling(zs, id));
         isFull = false;
     }
 

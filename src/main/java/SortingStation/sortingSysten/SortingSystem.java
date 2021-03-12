@@ -27,7 +27,7 @@ public class SortingSystem {
         storageForEmptyPallets = new StorageForEmptyPallets();
         warehouseTracks = new WarehouseTrack[8];
         for (int i = 0; i < 8; i++) {
-            warehouseTracks[i] = new WarehouseTrack();
+            warehouseTracks[i] = new WarehouseTrack(zs, i);
         }
         sortingTracks = new SortingTrack[3];
         sortingTracks[0] = new ValueSortingTrack(new Scanner(), this);
