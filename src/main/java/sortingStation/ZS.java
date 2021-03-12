@@ -66,13 +66,13 @@ public class ZS {
     @Subscribe
     public void receive(Lock event) {
         System.out.println(event);
-        sortingStation.getSortingSystem().switchState();
+        sortingStation.getSortingSystem().setLocked();
     }
 
     @Subscribe
     public void receive(Unlock event) {
         System.out.println(event);
-        sortingStation.getSortingSystem().switchState();
+        sortingStation.getSortingSystem().setUnlocked();
     }
 
     @Subscribe
