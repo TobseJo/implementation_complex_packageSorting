@@ -2,6 +2,7 @@ package command;
 
 import sortingStation.ZS;
 
+//SOLID-design: interface-segregation
 public interface ICommand {
-    public void execute(ZS zs);
+    void execute(ZS zs);
 }
