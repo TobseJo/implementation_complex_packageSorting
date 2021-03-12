@@ -26,6 +26,7 @@ public class WarehouseTrack {
         if (!isFull) {
             packageTrack.add(currentPackage);
             if (packageTrack.size() < 600) {
+
             }else {
                 notifyViaEventbus();
                 isFull = true;
@@ -50,5 +51,9 @@ public class WarehouseTrack {
 
     public Queue<Package> getPackageTrack() {
         return packageTrack;
+    }
+
+    public void setFull(boolean full) {
+        isFull = full;
     }
 }

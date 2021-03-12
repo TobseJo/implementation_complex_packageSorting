@@ -16,7 +16,7 @@ public class Robot {
     public Robot(ZS zs, SortingSystem sortingSystem) {
         this.sortingSystem = sortingSystem;
         this.zs = zs;
-        this.eventBus = zs.getEventBus();
+        this.eventBus = new EventBus();
         this.eventBus.register(this);
     }
 
@@ -43,7 +43,7 @@ public class Robot {
                                             Package currentPackage = currentBox.getPackages()[m][n][o];
 
                                             trackCtr = putCurrentPackageToWarehouseTrack(currentPackage, trackCtr);
-                                            currentBox.getPackages()[m][n][o] = null;
+                                            currentPackage = null;
                                         }
                                     }
                                 }

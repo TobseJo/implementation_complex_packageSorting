@@ -40,6 +40,7 @@ public class NormalSortingTrack extends SortingTrack {
             while(!track.getPackageTrack().isEmpty()) {
                 scan(track.getPackageTrack().poll());
             }
+            track.setFull(false);
         }
     }
 }
