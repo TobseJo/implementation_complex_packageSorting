@@ -14,6 +14,7 @@ public class ExpressSortingTrack extends SortingTrack {
         super(scanner, sortingSystem);
         this.setSuccessor(successor);
         this.eventBus = eventBus;
+        this.eventBus.register(this);
     }
 
     public void scan(Package currentPackage) {

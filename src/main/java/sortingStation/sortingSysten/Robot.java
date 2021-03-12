@@ -16,8 +16,9 @@ public class Robot {
     public Robot(ZS zs, SortingSystem sortingSystem) {
         this.sortingSystem = sortingSystem;
         this.zs = zs;
-        this.eventBus = new EventBus();
-   }
+        this.eventBus = zs.getEventBus();
+        this.eventBus.register(this);
+    }
 
     public void post(Object object) {
         eventBus.post(object);

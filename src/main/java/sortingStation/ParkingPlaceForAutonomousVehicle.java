@@ -10,7 +10,7 @@ public class ParkingPlaceForAutonomousVehicle {
     public ParkingPlaceForAutonomousVehicle(EventBus eventBus, ZS zs, SortingSystem sortingSystem){
         autonomousVehicles = new AutonomousVehicle[5];
         for (int i = 0; i < 5; i++) {
-            autonomousVehicles[i] = new AutonomousVehicle(eventBus, zs, sortingSystem);
+            autonomousVehicles[i] = new AutonomousVehicle(eventBus, zs, sortingSystem, this);
         }
     }
 
