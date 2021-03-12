@@ -23,25 +23,8 @@ public class ObjectGenerator {
     private EventBus eventBus;
     private Terminal terminal;
 
-    private LinkedList<packageSorting.Package> packages;
-    private LinkedList<Box> boxes;
-    private LinkedList<Pallet> pallets;
-
-
     public ObjectGenerator() {
         fileReader = new FileReader();
-        generatePackages();
-        System.out.println("Packages generated");
-        generateBoxes();
-        System.out.println("Boxes generated");
-        generatePallets();
-        System.out.println("Pallets generated");
-        generateTrucks();
-        System.out.println("Trucks generated");
-        generateSortingStation();
-        System.out.println("SortingStation generated");
-        generateAllEmployees();
-        System.out.println("Employees generated");
     }
 
     public SortingStation generateSortingStation() {
@@ -60,34 +43,46 @@ public class ObjectGenerator {
         terminal = new Terminal(new TouchPad(), new CardReader(), zs);
         sortingStation = new SortingStation(zs, parkingPlaceForAutonomousVehicle, zonesForUnloadingTrucks, sortingSystem, eventBus, terminal, generateAllEmployees());
 
+        System.out.println("SortingStation generated");
         return sortingStation;
     }
 
-    public void generatePackages() {
-        packages = fileReader.readPackages("base_package.csv");
+    private LinkedList<Package> generatePackages() {
+        LinkedList<Package> packages = fileReader.readPackages("base_package.csv");
+        System.out.println("Packages generated");
+
+        return packages;
     }
 
-    public void generateBoxes() {
+    private LinkedList<Box> generateBoxes() {
+        LinkedList<packageSorting.Package> packages = generatePackages();
+
         HashMap<String, Package> packageHashMap = new HashMap<>();
 
         for (var pack : packages) {
             packageHashMap.put(pack.getId(), pack);
         }
 
-        boxes = fileReader.readBoxes("base_box.csv", packageHashMap);
+        LinkedList<Box> boxes = fileReader.readBoxes("base_box.csv", packageHashMap);
+        System.out.println("Boxes generated");
+        return boxes;
     }
 
-    public void generatePallets() {
+    private LinkedList<Pallet> generatePallets() {
+        LinkedList<Box> boxes = generateBoxes();
         HashMap<String, Box> boxHashMap = new HashMap<>();
 
         for (Box box : boxes) {
             boxHashMap.put(box.getId(), box);
         }
 
-        pallets = fileReader.readPalettes("base_pallet.csv", boxHashMap);
+        LinkedList<Pallet> pallets = fileReader.readPalettes("base_pallet.csv", boxHashMap);
+        System.out.println("Pallets generated");
+        return pallets;
     }
 
     public Stack<Truck> generateTrucks() {
+        LinkedList<Pallet> pallets = generatePallets();
         HashMap<Integer, Pallet> truckHashMap = new HashMap<>();
 
         for (Pallet pallet : pallets) {
@@ -96,6 +91,7 @@ public class ObjectGenerator {
 
         Stack<Truck> trucks = fileReader.readTruck("base_truck.csv", truckHashMap);
 
+        System.out.println("Trucks generated");
         return trucks;
     }
 
@@ -118,6 +114,7 @@ public class ObjectGenerator {
         employee4.setIdCard(generateIDCardForEmployee(employee4));
         employees.add(employee4);
 
+        System.out.println("Employees generated");
         return employees;
     }
 
