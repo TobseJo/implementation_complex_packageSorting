@@ -31,9 +31,9 @@ public class ObjectGenerator {
         //TODO einen eventBus oder jeder einen eigenen
         eventBus = new EventBus();
         zs = new ZS(eventBus, this);
-        zonesForUnloadingTrucks = new ZoneForUnloadingTruck[8];
-        truckDetectors = new TruckDetector[8];
-        for (int i = 0; i < 8; i++) {
+        zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
+        truckDetectors = new TruckDetector[7];
+        for (int i = 0; i < 7; i++) {
             truckDetectors[i] = new TruckDetector();
             zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i+1, zs);
             truckDetectors[i].addListener(zonesForUnloadingTrucks[i].getSensor());
