@@ -1,7 +1,10 @@
 import command.*;
+import configuration.Configuration;
 import configuration.ObjectGenerator;
 import event.Lock;
 import org.junit.jupiter.api.*;
+import packageSorting.Pallet;
+import packageSorting.Truck;
 import sortingStation.SortingStation;
 import sortingStation.ZoneForUnloadingTruck;
 import sortingStation.sortingSysten.sortingTracks.SortingTrack;
@@ -47,6 +50,22 @@ public class TestApplication {
     @Order(2)
     public void initCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
+        for (int i = 0; i < Configuration.instance.numberOfTrucks; i++) {
+            Truck truck = sortingStation.getWaitingZone().getTrucks().peek();
+
+            Assertions.assertNotNull(truck);
+            for (int j = 0; j < 2; j++){
+                for (int k = 0; k < 5; k++){
+                    Assertions.assertNotNull(truck.getTrailer().getPallets()[j][k]);
+                    for (int l = 0; l < 4; l++) {
+                        for (int m = 0; m < 3; m++) {
+                            Assertions.assertNotNull(truck.getTrailer().getPallets()[j][k].getBoxes()[l][m]);
+                            Assertions.assertNotNull(truck.getTrailer().getPallets()[j][k].getBoxes()[l][m].getPackages());
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @Test

@@ -99,7 +99,6 @@ public class FileReader {
 
     public Stack<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
         Stack<Truck> trucks = new Stack<Truck>();
-        Pallet[][] pallets;
         BufferedReader br = null;
 
         try {
@@ -108,7 +107,7 @@ public class FileReader {
 
             for (int i = 0; i < Configuration.instance.numberOfTrucks; i++) {
                 String truckID = "";
-                pallets = new Pallet[2][5];
+                Pallet[][] palletsArray = new Pallet[2][5];
 
                 for (int j = 0; j < Configuration.instance.numberOfPalletsPerTruck; j++) {
                     line = br.readLine();
@@ -127,10 +126,9 @@ public class FileReader {
 
                     int position = Integer.valueOf(content[2]);
 
-                    pallets[side][position] = palletHashMap.get(content[3]);
-
+                    palletsArray[side][position] = palletHashMap.get(Integer.valueOf(content[3]));
                 }
-                trucks.add(new Truck(truckID, pallets));
+                trucks.add(new Truck(truckID, palletsArray));
             }
         } catch (Exception e) {
             e.printStackTrace();
