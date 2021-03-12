@@ -30,6 +30,7 @@ public class ZS {
     public ZS(EventBus eventBus, ObjectGenerator objectGenerator) {
         this.objectGenerator = objectGenerator;
         this.eventBus = eventBus;
+        eventBus.register(this);
         amountOfFullTracks = 0;
     }
 
@@ -39,11 +40,13 @@ public class ZS {
 
     @Subscribe
     public void receive(Init event) {
+        System.out.println(event);
         sortingStation.getWaitingZone().setTrucks(objectGenerator.generateTrucks());
     }
 
     @Subscribe
     public void receive(Next event) {
+        System.out.println(event);
         int randomNumber = (int) Math.random() * sortingStation.getZonesForUnloadingTrucks().length;
 
         sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruck(sortingStation.getWaitingZone().getTrucks().pop());
@@ -51,6 +54,7 @@ public class ZS {
 
     @Subscribe
     public void receive(Shutdown event) {
+        System.out.println(event);
         for(ZoneForUnloadingTruck zoneForUnloadingTruck : sortingStation.getZonesForUnloadingTrucks()){
             zoneForUnloadingTruck.getSensor().setState(new Locked());
         }
@@ -61,16 +65,19 @@ public class ZS {
 
     @Subscribe
     public void receive(Lock event) {
+        System.out.println(event);
         sortingStation.getSortingSystem().switchState();
     }
 
     @Subscribe
     public void receive(Unlock event) {
+        System.out.println(event);
         sortingStation.getSortingSystem().switchState();
     }
 
     @Subscribe
     public void receive(ShowStatistics event) {
+        System.out.println(event);
         //not tested
         HashMap<Type, Integer> amountOfScannedPackets;
         amountOfScannedPackets = new HashMap<>();
@@ -87,6 +94,7 @@ public class ZS {
 
     @Subscribe
     public void receive(ChangeSearchAlgorithm event) {
+        System.out.println(event);
         for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()){
             sortingTrack.getScanner().setUsedAlgorithm(event.getAlgorithm());
         }
@@ -94,6 +102,7 @@ public class ZS {
 
     @Subscribe
     public void receive(TruckArrivedSendVehicle event) {
+        System.out.println(event);
         AutonomousVehicle autonomousVehicle = null;
         int randomNumber = 0;
         while (autonomousVehicle == null) {
@@ -112,11 +121,13 @@ public class ZS {
 
     @Subscribe
     public void receive(FinishedTruckUnload event) {
+        System.out.println(event);
         sortingStation.getSortingSystem().getRobot().post(new UnloadBoxOfPallets());
     }
 
     @Subscribe
     public void receive(TrackIsFull event){
+        System.out.println(event);
         if(amountOfFullTracks == 7){
             ((ExpressSortingTrack)sortingStation.getSortingSystem().getSortingTracks()[2]).post(new SortEveryThing(sortingStation.getSortingSystem()));
         }else{
