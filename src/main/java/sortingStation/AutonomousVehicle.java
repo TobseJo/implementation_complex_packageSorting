@@ -31,6 +31,7 @@ public class AutonomousVehicle {
 
     @Subscribe
     public void receive(UnloadTruckAndLoadInterimStorage event) {
+        System.out.println(event);
         unloadTruck();
         loadInterimStorage();
         searchForFreeParkingSpace();

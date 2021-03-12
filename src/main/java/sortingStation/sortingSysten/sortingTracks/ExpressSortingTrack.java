@@ -33,6 +33,7 @@ public class ExpressSortingTrack extends SortingTrack {
 
     @Subscribe
     public void receive(SortEveryThing event) {
+        System.out.println(event);
         for (var track : event.getSortingSystem().getWarehouseTracks()) {
             while(!track.getPackageTrack().isEmpty()) {
                 scan(track.getPackageTrack().poll());
