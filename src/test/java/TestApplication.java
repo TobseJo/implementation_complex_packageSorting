@@ -6,6 +6,7 @@ import sortingStation.SortingStation;
 import sortingStation.ZoneForUnloadingTruck;
 import sortingStation.sortingSysten.sortingTracks.SortingTrack;
 import sortingStation.sortingSysten.state.Locked;
+import sortingStation.sortingSysten.state.Unlocked;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -71,13 +72,16 @@ public class TestApplication {
     @Order(5)
     public void lockCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new LockCommand(), sortingStation.getEmployees().get(0));
-        Assertions.assertEquals(sortingStation.getSortingSystem().getState(), Lock.class);
+        Assertions.assertEquals(sortingStation.getSortingSystem().getState(), Locked.class);
     }
 
     @Test
     @Order(6)
     public void unlockCommand() {
+        Assertions.assertEquals(sortingStation.getSortingSystem().getState(), Unlocked.class);
+        sortingStation.getTerminal().getTouchPad().takeCommand(new LockCommand(), sortingStation.getEmployees().get(0));
         sortingStation.getTerminal().getTouchPad().takeCommand(new UnlockCommand(), sortingStation.getEmployees().get(0));
+        Assertions.assertEquals(sortingStation.getSortingSystem().getState(), Unlocked.class);
     }
 
     @Test
