@@ -26,7 +26,8 @@ public class WarehouseTrack {
     public boolean addToPackageTrack(Package currentPackage) {
         if (!isFull) {
             packageTrack.add(currentPackage);
-            if (packageTrack.size() == 599) {
+            if (packageTrack.size() < 600) {
+            }else {
                 notifyViaEventbus();
                 isFull = true;
             }

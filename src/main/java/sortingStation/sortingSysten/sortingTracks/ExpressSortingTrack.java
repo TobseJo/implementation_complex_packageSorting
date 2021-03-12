@@ -1,7 +1,6 @@
 package sortingStation.sortingSysten.sortingTracks;
 
 import sortingStation.sortingSysten.SortingSystem;
-import com.google.common.eventbus.EventBus;
 import packageSorting.Package;
 import packageSorting.Type;
 
