@@ -77,7 +77,6 @@ public class ZS {
         for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()){
             sortingTrack.getScanner().setUsedAlgorithm(event.getAlgorithm());
         }
-
     }
 
     @Subscribe
@@ -86,12 +85,16 @@ public class ZS {
         int randomNumber = 0;
         while (autonomousVehicle == null) {
             randomNumber = (int) Math.random() * 5;
-            autonomousVehicle = objectGenerator.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber];
+            autonomousVehicle = sortingStation.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber];
         }
-        objectGenerator.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber] = null;
-
-        ZoneForUnloadingTruck zoneForUnloadingTruck = objectGenerator.getZonesForUnloadingTrucks()[event.getId()];
-        autonomousVehicle.post(new UnloadTruckAndLoadInterimStorage(zoneForUnloadingTruck));
+        sortingStation.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber] = null;
+        ZoneForUnloadingTruck zone = null;
+        for (var currentZone : sortingStation.getZonesForUnloadingTrucks()) {
+            if(currentZone.getTruck() != null){
+                zone = currentZone;
+            }
+        }
+        autonomousVehicle.post(new UnloadTruckAndLoadInterimStorage(zone));
     }
 
     //TODO what to do after Unloading?
