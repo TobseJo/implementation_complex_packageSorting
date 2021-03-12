@@ -1,3 +1,4 @@
+import configuration.Configuration;
 import configuration.CsvFileGenerator;
 import configuration.ObjectGenerator;
 

@@ -14,7 +14,6 @@ public class SortingSystem {
     private StorageForEmptyPallets storageForEmptyPallets;
     private WarehouseTrack[] warehouseTracks;
     private SortingTrack[] sortingTracks;
-    private IState state;
 
     public SortingSystem(ZS zs){
         interimStorage = new InterimStorage();
@@ -82,10 +81,6 @@ public class SortingSystem {
 
     public void switchState(){
         state.switchState(this);
-    }
-
-    public SortingTrack[] getSortingTracks() {
-        return sortingTracks;
     }
 
     public void setState(IState state) {

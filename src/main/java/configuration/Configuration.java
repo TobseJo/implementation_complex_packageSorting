@@ -12,8 +12,8 @@ public enum Configuration {
     public String lineSeparator = System.getProperty("line.separator");
     public String fileSeparator = System.getProperty("file.separator");
 
-    public String commonPathToJavaArchive = userDirectory + fileSeparator + "components" + fileSeparator;
-    public String pathToDataDirectory = userDirectory + fileSeparator + "data" + fileSeparator;
+    public String commonPathToJavaArchive = userDirectory + fileSeparator + "implementation_complex_packageSorting" + fileSeparator + "components" + fileSeparator;
+    public String pathToDataDirectory = userDirectory + fileSeparator + "implementation_complex_packageSorting" + fileSeparator + "data" + fileSeparator;
 
     public final int numberOfPackages = 24000;
     public final int numberOfBoxes = 600;
@@ -40,7 +40,7 @@ public enum Configuration {
     public final Map<String, Double> spreadOfType = Map.of("NORMAL", 0.8, "EXPRESS", 0.15, "VALUE", 0.05);
 
     public String pathToBoyerMooreJavaArchive = commonPathToJavaArchive + "BoyerMoore" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "boyerMoore.jar";
-    public String pathToRobinKarpJavaArchive = commonPathToJavaArchive + "RobinKarp" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "robinKarp.jar";
+    public String pathToRabinKarpJavaArchive = commonPathToJavaArchive + "RabinKarp" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "rabinKarp.jar";
 
     public final String allCharsForContent = "abcdefghijklmnopqrstuvwxyz:-!";
     public final String allLettersAndNumbersLowerCase = "abcdefghijklmnopqrstuvwxyz0123456789";

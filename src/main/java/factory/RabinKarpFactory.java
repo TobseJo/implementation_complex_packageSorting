@@ -11,9 +11,9 @@ public class RabinKarpFactory {
         Object RabinKarpPort = null;
 
         try {
-            URL[] urls = {new File(Configuration.instance.pathToBoyerMooreJavaArchive).toURI().toURL()};
+            URL[] urls = {new File(Configuration.instance.pathToRabinKarpJavaArchive).toURI().toURL()};
             URLClassLoader urlClassLoader = new URLClassLoader(urls, BoyerMooreFactory.class.getClassLoader());
-            Class RabinKarpClass = Class.forName("CameraV1", true, urlClassLoader);
+            Class RabinKarpClass = Class.forName("RabinKarp", true, urlClassLoader);
 
             Object RabinKarpInstance = RabinKarpClass.getMethod("getInstance").invoke(null);
 

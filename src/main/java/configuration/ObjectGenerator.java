@@ -48,19 +48,18 @@ public class ObjectGenerator {
 
     public void generateSortingStation() {
         eventBus = new EventBus();
-        zs = new ZS(eventBus);
+        zs = new ZS(eventBus, this);
         parkingPlaceForAutonomousVehicle = new ParkingPlaceForAutonomousVehicle(eventBus, zs, sortingSystem);
         zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
         truckDetectors = new TruckDetector[7];
-        for (int i = 1; i <= 7; i++) {
+        for (int i = 0; i <= 6; i++) {
             truckDetectors[i] = new TruckDetector();
-            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i, zs);
+            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i+1, zs);
             truckDetectors[i].addListener(zonesForUnloadingTrucks[i].getSensor());
         }
         sortingSystem = new SortingSystem(zs);
         terminal = new Terminal(new TouchPad(), new CardReader(), zs);
         sortingStation = new SortingStation(zs, parkingPlaceForAutonomousVehicle, zonesForUnloadingTrucks, sortingSystem, eventBus, terminal);
-
     }
 
     public void generatePackages() {

@@ -13,7 +13,7 @@ public class BoyerMooreFactory {
         try {
             URL[] urls = {new File(Configuration.instance.pathToBoyerMooreJavaArchive).toURI().toURL()};
             URLClassLoader urlClassLoader = new URLClassLoader(urls, BoyerMooreFactory.class.getClassLoader());
-            Class BoyerMooreClass = Class.forName("CameraV1", true, urlClassLoader);
+            Class BoyerMooreClass = Class.forName("BoyerMoore", true, urlClassLoader);
 
             Object BoyerMooreInstance = BoyerMooreClass.getMethod("getInstance").invoke(null);
 

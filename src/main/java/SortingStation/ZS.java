@@ -18,13 +18,14 @@ import java.util.Map;
 
 public class ZS {
 
-    private ObjectGenerator objectGenerator = new ObjectGenerator();
+    private ObjectGenerator objectGenerator;
     private EventBus eventBus;
     private WaitingZone waitingZone;
 
     private SortingStation sortingStation;
 
-    public ZS(EventBus eventBus) {
+    public ZS(EventBus eventBus, ObjectGenerator objectGenerator) {
+        this.objectGenerator = objectGenerator;
         this.eventBus = eventBus;
         this.waitingZone = new WaitingZone();
     }

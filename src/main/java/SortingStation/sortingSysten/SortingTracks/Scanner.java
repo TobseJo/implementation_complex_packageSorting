@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 
 public class Scanner {
 
-    private BoyerMooreFactory boyerMoore = (BoyerMooreFactory) BoyerMooreFactory.build();
-    private RabinKarpFactory rabinKarp = (RabinKarpFactory) RabinKarpFactory.build();
+    private Object boyerMoore = BoyerMooreFactory.build();
+    private Object rabinKarp = RabinKarpFactory.build();
 
     private Object usedAlgorithm = rabinKarp;
 
@@ -18,11 +18,11 @@ public class Scanner {
         String searchPattern = "exp!os:ve";
 
         if(usedAlgorithm instanceof RabinKarpFactory){
-            Method searchMethod = rabinKarp.getClass().getDeclaredMethod("search", String.class, String.class, int.class);
+            Method searchMethod = usedAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class, int.class);
 
             result = (int) searchMethod.invoke(searchPattern, txt, 7);
         }else if(usedAlgorithm instanceof BoyerMooreFactory){
-            Method searchMethod = boyerMoore.getClass().getDeclaredMethod("search", String.class, String.class);
+            Method searchMethod = usedAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class);
 
             result = (int) searchMethod.invoke(searchMethod, txt);
         }else {
