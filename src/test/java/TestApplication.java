@@ -1,5 +1,4 @@
-import command.InitCommand;
-import command.NextCommand;
+import command.*;
 import configuration.ObjectGenerator;
 import org.junit.jupiter.api.*;
 import sortingStation.SortingStation;
@@ -56,21 +55,25 @@ public class TestApplication {
     @Test
     @Order(4)
     public void shutdownCommand() {
+        sortingStation.getTerminal().getTouchPad().takeCommand(new ShutdownCommand(), sortingStation.getEmployees().get(0));
     }
 
     @Test
     @Order(5)
     public void lockCommand() {
+        sortingStation.getTerminal().getTouchPad().takeCommand(new LockCommand(), sortingStation.getEmployees().get(0));
     }
 
     @Test
     @Order(6)
     public void unlockCommand() {
+        sortingStation.getTerminal().getTouchPad().takeCommand(new UnlockCommand(), sortingStation.getEmployees().get(0));
     }
 
     @Test
     @Order(7)
     public void showStatistics() {
+        sortingStation.getTerminal().getTouchPad().takeCommand(new ShutdownCommand(), sortingStation.getEmployees().get(0));
     }
 
 }
