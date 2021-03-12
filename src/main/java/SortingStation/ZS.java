@@ -1,7 +1,6 @@
 package SortingStation;
 
 import SortingStation.sortingSysten.state.Locked;
-import SortingStation.sortingSysten.state.Unlocked;
 import reporter.Report;
 import SortingStation.sortingSysten.SortingTracks.SortingTrack;
 import com.google.common.eventbus.EventBus;
@@ -116,7 +115,11 @@ public class ZS {
 
     @Subscribe
     public void receive(TrackIsFull event){
-
+        if(amountOfFullTracks == 6){
+            sortingStation.getSortingSystem().getSortingTracks()[2].scan();
+        }else{
+            amountOfFullTracks++;
+        }
     }
 
     private void writeReportToData(Report report) {

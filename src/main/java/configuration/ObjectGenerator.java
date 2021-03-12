@@ -48,6 +48,7 @@ public class ObjectGenerator {
     }
 
     public void generateSortingStation() {
+        //TODO einen eventBus oder jeder einen eigenen
         eventBus = new EventBus();
         zs = new ZS(eventBus, this);
         parkingPlaceForAutonomousVehicle = new ParkingPlaceForAutonomousVehicle(eventBus, zs, sortingSystem);
