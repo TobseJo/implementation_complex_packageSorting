@@ -17,6 +17,7 @@ public class ZoneForUnloadingTruck {
 
     public void setTruck(Truck truck) {
         this.truck = truck;
+        sensor.informZsTruckArriving();
     }
 
 
