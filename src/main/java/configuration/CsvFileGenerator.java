@@ -21,7 +21,14 @@ public class CsvFileGenerator {
         this.trucks = new ArrayList<>();
     }
 
-    public void generateBasePackageFile() {
+    public void generateAllFiles(){
+        generateBasePackageFile();
+        generateBaseBoxFile();
+        generateBasePalletFile();
+        generateBaseTruckFile();
+    }
+
+    private void generateBasePackageFile() {
         LogEngine.instance.init(Configuration.instance.pathToDataDirectory + "base_package.csv");
 
         LinkedList<String> types = getTypes();
@@ -50,7 +57,7 @@ public class CsvFileGenerator {
         LogEngine.instance.close();
     }
 
-    public void generateBaseBoxFile() {
+    private void generateBaseBoxFile() {
         LogEngine.instance.init(Configuration.instance.pathToDataDirectory + "base_box.csv");
 
         Collections.shuffle(packages);
@@ -75,7 +82,7 @@ public class CsvFileGenerator {
         LogEngine.instance.close();
     }
 
-    public void generateBasePalletFile(){
+    private void generateBasePalletFile(){
         LogEngine.instance.init(Configuration.instance.pathToDataDirectory + "base_pallet.csv");
 
         Iterator<Box> iteratorBox = boxes.iterator();
@@ -95,7 +102,7 @@ public class CsvFileGenerator {
     }
 
 
-    public void generateBaseTruckFile() {
+    private void generateBaseTruckFile() {
         LogEngine.instance.init(Configuration.instance.pathToDataDirectory + "base_truck.csv");
 
         Iterator<Pallet> iteratorPallets = pallets.iterator();

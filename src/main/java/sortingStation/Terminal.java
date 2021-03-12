@@ -28,6 +28,7 @@ public class Terminal {
 
     public void placeCommands() {
         for (ICommand command : commandList) {
+            System.out.println(command.toString() + " is executed!");
             command.execute(zs);
         }
         commandList.clear();
