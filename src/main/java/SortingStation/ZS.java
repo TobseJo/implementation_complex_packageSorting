@@ -1,5 +1,7 @@
 package SortingStation;
 
+import SortingStation.sortingSysten.state.Locked;
+import SortingStation.sortingSysten.state.Unlocked;
 import reporter.Report;
 import SortingStation.sortingSysten.SortingTracks.SortingTrack;
 import com.google.common.eventbus.EventBus;
@@ -41,12 +43,16 @@ public class ZS {
 
     @Subscribe
     public void receive(Next event) {
+        int randomNumber = (int) Math.random() * sortingStation.getZonesForUnloadingTrucks().length;
 
+        sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruck(waitingZone.getTrucks().pop());
     }
 
     @Subscribe
     public void receive(Shutdown event) {
-
+        for(ZoneForUnloadingTruck zoneForUnloadingTruck : sortingStation.getZonesForUnloadingTrucks()){
+            zoneForUnloadingTruck.getSensor().setState(new Locked());
+        }
     }
 
     @Subscribe
