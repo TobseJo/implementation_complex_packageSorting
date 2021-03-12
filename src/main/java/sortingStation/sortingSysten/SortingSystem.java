@@ -83,9 +83,14 @@ public class SortingSystem {
         this.sortingTracks = sortingTracks;
     }
 
-    public void switchState() {
-        state.switchState(this);
+    public void setLocked() {
+        state.locked(this);
     }
+
+    public void setUnlocked() {
+        state.unlocked(this);
+    }
+
 
     public void setState(IState state) {
         this.state = state;
