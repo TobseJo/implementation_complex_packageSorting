@@ -24,6 +24,16 @@ public class TestApplication {
 
     @Test
     @Order(1)
+    public void idCard(){
+        sortingStation.getTerminal().getCardReader().readCardFromEmployee(sortingStation.getEmployees().get(0));
+        sortingStation.getTerminal().getCardReader().readCardFromEmployee(sortingStation.getEmployees().get(1));
+        sortingStation.getTerminal().getCardReader().readCardFromEmployee(sortingStation.getEmployees().get(2));
+        sortingStation.getTerminal().getCardReader().readCardFromEmployee(sortingStation.getEmployees().get(3));
+    }
+
+
+    @Test
+    @Order(2)
     public void setup() {
         Assertions.assertNotNull(sortingStation);
         Assertions.assertNotNull(sortingStation.getZs());
@@ -46,7 +56,7 @@ public class TestApplication {
     }
 
     @Test
-    @Order(2)
+    @Order(3)
     public void initCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
         for (int i = 0; i < Configuration.instance.numberOfTrucks; i++) {
@@ -68,7 +78,7 @@ public class TestApplication {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     public void nextCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
         for (int i = 0; i < 5; i++) {
@@ -84,7 +94,7 @@ public class TestApplication {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     public void shutdownCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new ShutdownCommand(), sortingStation.getEmployees().get(0));
         for(ZoneForUnloadingTruck zoneForUnloadingTruck : sortingStation.getZonesForUnloadingTrucks()){
@@ -96,14 +106,14 @@ public class TestApplication {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     public void lockCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new LockCommand(), sortingStation.getEmployees().get(0));
         Assertions.assertEquals(sortingStation.getSortingSystem().getState().getClass(), Locked.class);
     }
 
     @Test
-    @Order(6)
+    @Order(7)
     public void unlockCommand() {
         Assertions.assertEquals(sortingStation.getSortingSystem().getState().getClass(), Unlocked.class);
         sortingStation.getTerminal().getTouchPad().takeCommand(new LockCommand(), sortingStation.getEmployees().get(0));
@@ -112,7 +122,7 @@ public class TestApplication {
     }
 
     @Test
-    @Order(7)
+    @Order(8)
     public void showStatistics() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
         sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));

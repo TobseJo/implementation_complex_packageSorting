@@ -34,6 +34,10 @@ public class Terminal {
         commandList.clear();
     }
 
+    public CardReader getCardReader() {
+        return cardReader;
+    }
+
     public List<ICommand> getCommandList() {
         return commandList;
     }

@@ -1,5 +1,6 @@
 package sortingStation;
 
+import configuration.Configuration;
 import employee.Employee;
 import employee.idCard.Active;
 import employee.idCard.IDCard;
@@ -57,10 +58,10 @@ public class CardReader {
     private String readMagnetStripe(IDCard idCard){
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 100; i++) {
-            stringBuilder.append(idCard.getMagnetStripe()[i][0]);
+            if(idCard.getMagnetStripe()[i][0] != 0){
+                stringBuilder.append(idCard.getMagnetStripe()[i][0]);
+            }
         }
-        return stringBuilder.toString();
+        return Configuration.instance.usedAlgorithm.decrypt(stringBuilder.toString());
     }
-
-
 }
