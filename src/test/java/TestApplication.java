@@ -19,7 +19,6 @@ public class TestApplication {
     @Test
     @Order(1)
     public void setup() {
-
         Assertions.assertNotNull(sortingStation);
         Assertions.assertNotNull(sortingStation.getZs());
         Assertions.assertEquals(sortingStation.getZonesForUnloadingTrucks().length, 7);
