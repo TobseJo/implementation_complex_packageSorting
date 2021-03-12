@@ -140,13 +140,12 @@ public class ZS {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append(report.getDate()).append(";").append(report.getAmountOfTruck()).append(";");
+        stringBuilder.append(report.getDate()).append("; AmountOfTrucks: ").append(report.getAmountOfTruck()).append("; ");
         for(Map.Entry<Type, Integer> entry : report.getAmountOfScannedPackets().entrySet()) {
             Type type = entry.getKey();
             Integer value = entry.getValue();
-            stringBuilder.append(type.toString() + " : " + value);
+            stringBuilder.append(type.toString() + " : " + value + "; ");
         }
-        stringBuilder.append(";");
         for (Package packageEntity : report.getDangerousPackages()) {
             stringBuilder.append(packageEntity.getId() + ",");
         }
