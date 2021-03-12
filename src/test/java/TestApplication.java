@@ -72,16 +72,16 @@ public class TestApplication {
     @Order(5)
     public void lockCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new LockCommand(), sortingStation.getEmployees().get(0));
-        Assertions.assertEquals(sortingStation.getSortingSystem().getState(), Locked.class);
+        Assertions.assertEquals(sortingStation.getSortingSystem().getState().getClass(), Locked.class);
     }
 
     @Test
     @Order(6)
     public void unlockCommand() {
-        Assertions.assertEquals(sortingStation.getSortingSystem().getState(), Unlocked.class);
+        Assertions.assertEquals(sortingStation.getSortingSystem().getState().getClass(), Unlocked.class);
         sortingStation.getTerminal().getTouchPad().takeCommand(new LockCommand(), sortingStation.getEmployees().get(0));
         sortingStation.getTerminal().getTouchPad().takeCommand(new UnlockCommand(), sortingStation.getEmployees().get(0));
-        Assertions.assertEquals(sortingStation.getSortingSystem().getState(), Unlocked.class);
+        Assertions.assertEquals(sortingStation.getSortingSystem().getState().getClass(), Unlocked.class);
     }
 
     @Test
