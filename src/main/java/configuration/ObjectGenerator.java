@@ -1,7 +1,5 @@
 package configuration;
 
-import sortingStation.*;
-import sortingStation.sortingSysten.SortingSystem;
 import com.google.common.eventbus.EventBus;
 import employee.*;
 import employee.idCard.IDCard;
@@ -9,10 +7,10 @@ import packageSorting.Box;
 import packageSorting.Package;
 import packageSorting.Pallet;
 import packageSorting.Truck;
+import sortingStation.*;
+import sortingStation.sortingSysten.SortingSystem;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Stack;
+import java.util.*;
 
 public class ObjectGenerator {
     private ZS zs;
@@ -25,7 +23,7 @@ public class ObjectGenerator {
     private EventBus eventBus;
     private Terminal terminal;
 
-    private LinkedList<Package> packages;
+    private LinkedList<packageSorting.Package> packages;
     private LinkedList<Box> boxes;
     private LinkedList<Pallet> pallets;
 
@@ -46,7 +44,7 @@ public class ObjectGenerator {
         System.out.println("Employees generated");
     }
 
-    public void generateSortingStation() {
+    public SortingStation generateSortingStation() {
         //TODO einen eventBus oder jeder einen eigenen
         eventBus = new EventBus();
         zs = new ZS(eventBus, this);
@@ -60,7 +58,9 @@ public class ObjectGenerator {
         }
         sortingSystem = new SortingSystem(zs);
         terminal = new Terminal(new TouchPad(), new CardReader(), zs);
-        sortingStation = new SortingStation(zs, parkingPlaceForAutonomousVehicle, zonesForUnloadingTrucks, sortingSystem, eventBus, terminal);
+        sortingStation = new SortingStation(zs, parkingPlaceForAutonomousVehicle, zonesForUnloadingTrucks, sortingSystem, eventBus, terminal, generateAllEmployees());
+
+        return sortingStation;
     }
 
     public void generatePackages() {
@@ -99,23 +99,26 @@ public class ObjectGenerator {
         return trucks;
     }
 
-    public void generateAllEmployees() {
+    private ArrayList<Employee> generateAllEmployees() {
+        ArrayList<Employee> employees = new ArrayList<>();
+
         Employee employee1 = new Administrator(1, "Johannes Hinkler", Profile.A, 1234, 123456);
         employee1.setIdCard(generateIDCardForEmployee(employee1));
-        sortingStation.getEmployees().add(employee1);
+        employees.add(employee1);
 
         Employee employee2 = new DataAnalyst(2, "Peter Lustig", 1212, 112233);
         employee2.setIdCard(generateIDCardForEmployee(employee2));
-        sortingStation.getEmployees().add(employee2);
+        employees.add(employee2);
 
         Employee employee3 = new Operator(3, "Daniel Atschi", 5895, 365821);
         employee3.setIdCard(generateIDCardForEmployee(employee3));
-        sortingStation.getEmployees().add(employee3);
+        employees.add(employee3);
 
         Employee employee4 = new DataAnalyst(4, "Robin Drippy", 9452, 645789);
         employee4.setIdCard(generateIDCardForEmployee(employee4));
-        sortingStation.getEmployees().add(employee4);
+        employees.add(employee4);
 
+        return employees;
     }
 
     private IDCard generateIDCardForEmployee(Employee employee) {

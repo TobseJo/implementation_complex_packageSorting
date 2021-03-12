@@ -1,8 +1,8 @@
 package sortingStation.sortingSysten.sortingTracks;
 
 import sortingStation.sortingSysten.SortingSystem;
-import packageSorting.Package;
 import packageSorting.Type;
+import packageSorting.Package;
 
 public class SortingTrack {
     protected SortingTrack successor;

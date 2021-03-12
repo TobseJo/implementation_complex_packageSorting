@@ -1,6 +1,5 @@
 package configuration;
 
-
 import packageSorting.Pallet;
 import packageSorting.Truck;
 import packageSorting.Box;

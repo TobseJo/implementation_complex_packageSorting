@@ -23,7 +23,6 @@ public class ZS {
 
     private ObjectGenerator objectGenerator;
     private EventBus eventBus;
-    private WaitingZone waitingZone;
     private int amountOfFullTracks;
 
     private SortingStation sortingStation;
@@ -31,7 +30,6 @@ public class ZS {
     public ZS(EventBus eventBus, ObjectGenerator objectGenerator) {
         this.objectGenerator = objectGenerator;
         this.eventBus = eventBus;
-        this.waitingZone = new WaitingZone();
         amountOfFullTracks = 0;
     }
 
@@ -41,14 +39,14 @@ public class ZS {
 
     @Subscribe
     public void receive(Init event) {
-        waitingZone.setTrucks(objectGenerator.generateTrucks());
+        sortingStation.getWaitingZone().setTrucks(objectGenerator.generateTrucks());
     }
 
     @Subscribe
     public void receive(Next event) {
         int randomNumber = (int) Math.random() * sortingStation.getZonesForUnloadingTrucks().length;
 
-        sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruck(waitingZone.getTrucks().pop());
+        sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruck(sortingStation.getWaitingZone().getTrucks().pop());
     }
 
     @Subscribe

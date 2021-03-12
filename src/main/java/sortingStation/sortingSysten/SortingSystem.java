@@ -1,10 +1,10 @@
 package sortingStation.sortingSysten;
 
+import packageSorting.Package;
 import sortingStation.ZS;
 import sortingStation.sortingSysten.sortingTracks.*;
 import sortingStation.sortingSysten.state.IState;
 import sortingStation.sortingSysten.state.Unlocked;
-import packageSorting.Package;
 
 import java.util.ArrayList;
 

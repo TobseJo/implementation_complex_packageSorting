@@ -15,15 +15,16 @@ public class SortingStation {
     private SortingSystem sortingSystem;
     private EventBus eventBus;
     private Terminal terminal;
+    private WaitingZone waitingZone = new WaitingZone();
 
-    public SortingStation(ZS zs, ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle, ZoneForUnloadingTruck[] zonesForUnloadingTrucks, SortingSystem sortingSystem, EventBus eventBus, Terminal terminal){
-        employees = new ArrayList<>();
+    public SortingStation(ZS zs, ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle, ZoneForUnloadingTruck[] zonesForUnloadingTrucks, SortingSystem sortingSystem, EventBus eventBus, Terminal terminal, ArrayList<Employee> employees){
         this.zs = zs;
         this.parkingPlaceForAutonomousVehicle = parkingPlaceForAutonomousVehicle;
         this.zonesForUnloadingTrucks = zonesForUnloadingTrucks;
         this.sortingSystem = sortingSystem;
         this.eventBus = eventBus;
         this.terminal = terminal;
+        this.employees = employees;
         zs.setSortingStation(this);
         amountOfTrucks = 0;
     }
@@ -40,6 +41,10 @@ public class SortingStation {
         return parkingPlaceForAutonomousVehicle;
     }
 
+    public void setEmployees(ArrayList<Employee> employees) {
+        this.employees = employees;
+    }
+
     public ZoneForUnloadingTruck[] getZonesForUnloadingTrucks() {
         return zonesForUnloadingTrucks;
     }
@@ -50,5 +55,21 @@ public class SortingStation {
 
     public void increaseAmountOfTrucks() {
         amountOfTrucks++;
+    }
+
+    public EventBus getEventBus() {
+        return eventBus;
+    }
+
+    public Terminal getTerminal() {
+        return terminal;
+    }
+
+    public ZS getZs() {
+        return zs;
+    }
+
+    public WaitingZone getWaitingZone() {
+        return waitingZone;
     }
 }

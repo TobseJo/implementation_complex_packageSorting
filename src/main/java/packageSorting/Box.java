@@ -1,6 +1,6 @@
 package packageSorting;
 
-import java.util.ArrayList;
+import packageSorting.Package;
 import java.util.LinkedList;
 
 public class Box {

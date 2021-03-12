@@ -1,19 +1,10 @@
 package command;
 
-import sortingStation.WaitingZone;
-import sortingStation.ZS;
-import configuration.ObjectGenerator;
 import event.Init;
+import sortingStation.ZS;
 
-public class InitCommand implements ICommand{
-
-    private ObjectGenerator objectGenerator = new ObjectGenerator();
-    private WaitingZone waitingZone;
-
-    public InitCommand (WaitingZone waitingZone){
-        this.waitingZone = waitingZone;
-    }
-
+public class InitCommand implements ICommand {
+    @Override
     public void execute(ZS zs) {
         zs.post(new Init());
     }

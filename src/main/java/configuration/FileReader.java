@@ -1,9 +1,9 @@
 package configuration;
 
 import packageSorting.Box;
-import packageSorting.Package;
 import packageSorting.Pallet;
 import packageSorting.Truck;
+import packageSorting.Package;
 
 import java.io.BufferedReader;
 import java.io.File;

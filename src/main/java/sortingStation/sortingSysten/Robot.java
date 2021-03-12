@@ -5,8 +5,8 @@ import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import event.UnloadBoxOfPallets;
 import packageSorting.Box;
-import packageSorting.Package;
 import packageSorting.Pallet;
+import packageSorting.Package;
 
 public class Robot {
     private EventBus eventBus;

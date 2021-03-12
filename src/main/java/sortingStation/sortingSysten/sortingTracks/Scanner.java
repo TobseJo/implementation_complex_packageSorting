@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 
 public class Scanner {
 
-    private Object usedAlgorithm = Configuration.instance.usedSearchAlgorithm;
+    private Object usedAlgorithm;
 
     public boolean scanForExplosive(String txt){
         try {
