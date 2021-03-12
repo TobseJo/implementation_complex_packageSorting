@@ -1,7 +1,7 @@
 package SortingStation;
 
 import Command.ICommand;
-import Proxy.ProxyAccess;
+import proxy.ProxyAccess;
 import employee.Employee;
 
 import java.util.ArrayList;

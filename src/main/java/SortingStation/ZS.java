@@ -1,6 +1,6 @@
 package SortingStation;
 
-import Reporter.Report;
+import reporter.Report;
 import SortingStation.sortingSysten.SortingTracks.SortingTrack;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;

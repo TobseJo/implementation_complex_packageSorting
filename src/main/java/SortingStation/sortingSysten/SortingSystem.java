@@ -3,20 +3,24 @@ package SortingStation.sortingSysten;
 import SortingStation.ZS;
 import SortingStation.sortingSysten.SortingTracks.*;
 import SortingStation.sortingSysten.state.IState;
-import SortingStation.sortingSysten.state.Locked;
 import SortingStation.sortingSysten.state.Unlocked;
+import packageSorting.Package;
+
+import java.util.ArrayList;
 
 public class SortingSystem {
-    private IState state = new Locked();
+    private IState state;
     private InterimStorage interimStorage;
     private Robot robot;
     private StorageForEmptyBoxes storageForEmptyBoxes;
     private StorageForEmptyPallets storageForEmptyPallets;
     private WarehouseTrack[] warehouseTracks;
     private SortingTrack[] sortingTracks;
+    private ArrayList<Package> packagesWithExplosive;
 
     public SortingSystem(ZS zs){
         interimStorage = new InterimStorage();
+        packagesWithExplosive = new ArrayList<>();
         storageForEmptyBoxes = new StorageForEmptyBoxes();
         storageForEmptyPallets = new StorageForEmptyPallets();
         warehouseTracks = new WarehouseTrack[8];
@@ -24,9 +28,9 @@ public class SortingSystem {
             warehouseTracks[i] = new WarehouseTrack();
         }
         sortingTracks = new SortingTrack[3];
-        sortingTracks[0] = new NormalSortingTrack(new Scanner());
-        sortingTracks[1] = new ExpressSortingTrack(new Scanner());
-        sortingTracks[2] = new ValueSortingTrack(new Scanner());
+        sortingTracks[0] = new ValueSortingTrack(new Scanner(), this);
+        sortingTracks[1] = new ExpressSortingTrack(new Scanner(), sortingTracks[0], this);
+        sortingTracks[2] = new NormalSortingTrack(new Scanner(), sortingTracks[1], this);
         robot = new Robot(zs, this);
         state = new Unlocked();
     }
@@ -85,5 +89,9 @@ public class SortingSystem {
 
     public void setState(IState state) {
         this.state = state;
+    }
+
+    public ArrayList<Package> getPackagesWithExplosive() {
+        return packagesWithExplosive;
     }
 }
