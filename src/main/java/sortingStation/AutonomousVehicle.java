@@ -18,11 +18,13 @@ public class AutonomousVehicle {
     private SortingSystem sortingSystem;
     private ArrayList<Pallet> palletsFromTruck;
 
-    public AutonomousVehicle(EventBus eventBus, ZS zs, SortingSystem sortingSystem) {
+    public AutonomousVehicle(EventBus eventBus, ZS zs, SortingSystem sortingSystem, ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle) {
         this.sortingSystem = sortingSystem;
         this.zs = zs;
         this.eventBus = eventBus;
         palletsFromTruck = new ArrayList<>();
+        this.eventBus.register(this);
+        this.parkingPlaceForAutonomousVehicle = parkingPlaceForAutonomousVehicle;
     }
 
     public void post(Object object) {
@@ -31,6 +33,8 @@ public class AutonomousVehicle {
 
     @Subscribe
     public void receive(UnloadTruckAndLoadInterimStorage event) {
+        System.out.println(event);
+        zoneForUnloadingTruck = event.getZoneForUnloadingTruck();
         unloadTruck();
         loadInterimStorage();
         searchForFreeParkingSpace();

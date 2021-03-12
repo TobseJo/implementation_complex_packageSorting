@@ -14,6 +14,7 @@ public class ExpressSortingTrack extends SortingTrack {
         super(scanner, sortingSystem);
         this.setSuccessor(successor);
         this.eventBus = eventBus;
+        this.eventBus.register(this);
     }
 
     public void scan(Package currentPackage) {
@@ -33,6 +34,7 @@ public class ExpressSortingTrack extends SortingTrack {
 
     @Subscribe
     public void receive(SortEveryThing event) {
+        System.out.println(event);
         for (var track : event.getSortingSystem().getWarehouseTracks()) {
             while(!track.getPackageTrack().isEmpty()) {
                 scan(track.getPackageTrack().poll());

@@ -31,7 +31,6 @@ public class ObjectGenerator {
         //TODO einen eventBus oder jeder einen eigenen
         eventBus = new EventBus();
         zs = new ZS(eventBus, this);
-        parkingPlaceForAutonomousVehicle = new ParkingPlaceForAutonomousVehicle(eventBus, zs, sortingSystem);
         zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
         truckDetectors = new TruckDetector[7];
         for (int i = 0; i <= 6; i++) {
@@ -40,6 +39,7 @@ public class ObjectGenerator {
             truckDetectors[i].addListener(zonesForUnloadingTrucks[i].getSensor());
         }
         sortingSystem = new SortingSystem(zs);
+        parkingPlaceForAutonomousVehicle = new ParkingPlaceForAutonomousVehicle(eventBus, zs, sortingSystem);
         terminal = new Terminal(new TouchPad(), new CardReader(), zs);
         sortingStation = new SortingStation(zs, parkingPlaceForAutonomousVehicle, zonesForUnloadingTrucks, sortingSystem, eventBus, terminal, generateAllEmployees());
 

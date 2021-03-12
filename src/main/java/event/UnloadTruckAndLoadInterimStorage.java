@@ -12,4 +12,8 @@ public class UnloadTruckAndLoadInterimStorage {
     public String toString(){
         return "Event: UnloadTruck";
     }
+
+    public ZoneForUnloadingTruck getZoneForUnloadingTruck() {
+        return zoneForUnloadingTruck;
+    }
 }
