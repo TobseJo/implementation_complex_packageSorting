@@ -1,3 +1,5 @@
+import command.InitCommand;
+import command.NextCommand;
 import configuration.ObjectGenerator;
 import org.junit.jupiter.api.*;
 import sortingStation.SortingStation;
@@ -42,37 +44,33 @@ public class TestApplication {
     @Test
     @Order(2)
     public void initCommand() {
-        SortingStation sortingStation = objectGenerator.generateSortingStation();
-//        sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand());
+        sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
     }
 
     @Test
     @Order(3)
-    public void on() {
+    public void nextCommand() {
+        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
     }
 
     @Test
     @Order(4)
-    public void off() {
+    public void shutdownCommand() {
     }
 
     @Test
     @Order(5)
-    public void startup() {
+    public void lockCommand() {
     }
 
     @Test
     @Order(6)
-    public void landing() {
+    public void unlockCommand() {
     }
 
     @Test
     @Order(7)
-    public void shutdown() {
-    }
-
-    @AfterEach
-    public void close() {
+    public void showStatistics() {
     }
 
 }
