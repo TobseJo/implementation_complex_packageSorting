@@ -47,5 +47,6 @@ public enum Configuration {
 
     public final String key = "dhbw";
     public final IStrategy usedAlgorithm = new AES();
+    public String usedSearchAlgorithm = "br";
     public final int numberOfLengthForMagnetStripe = 10;
 }

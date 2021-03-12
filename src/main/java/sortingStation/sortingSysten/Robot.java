@@ -61,7 +61,7 @@ public class Robot {
     private int putCurrentPackageToWarehouseTrack(Package currentPackage, int trackCtr) {
         int breakCtr = 0;
         while(!sortingSystem.getWarehouseTracks()[trackCtr].addToPackageTrack(currentPackage)){
-            if(breakCtr < 8){
+            if(breakCtr < 7){
                 setTrackCtr(trackCtr);
             }else{
                 return -1;
@@ -71,7 +71,7 @@ public class Robot {
     }
 
     private int setTrackCtr(int trackCtr){
-        if(trackCtr < 8){
+        if(trackCtr < 7){
             trackCtr++;
         }else {
             trackCtr = 0;

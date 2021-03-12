@@ -1,8 +1,8 @@
 package event;
 
 public class ChangeSearchAlgorithm {
-    private Object algorithm;
-    public ChangeSearchAlgorithm(Object algorithm){
+    private String algorithm;
+    public ChangeSearchAlgorithm(String algorithm){
         this.algorithm = algorithm;
     }
 
@@ -10,7 +10,7 @@ public class ChangeSearchAlgorithm {
         return "Event: ChangeSearchAlgorithm";
     }
 
-    public Object getAlgorithm() {
+    public String getAlgorithm() {
         return algorithm;
     }
 }

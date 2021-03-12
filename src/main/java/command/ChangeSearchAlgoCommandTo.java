@@ -5,7 +5,7 @@ import event.ChangeSearchAlgorithm;
 
 public class ChangeSearchAlgoCommandTo implements ICommand{
 
-    public void execute(ZS zs, Object algorithm) {
+    public void execute(ZS zs, String algorithm) {
         zs.post(new ChangeSearchAlgorithm(algorithm));
     }
 

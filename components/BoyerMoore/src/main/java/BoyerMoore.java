@@ -61,5 +61,6 @@ public class BoyerMoore {
         public int search(String pat, String txt) {
             return innerSearch(pat, txt);
         }
+
     }
 }
