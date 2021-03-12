@@ -91,6 +91,10 @@ public class SortingSystem {
         this.state = state;
     }
 
+    public IState getState() {
+        return state;
+    }
+
     public ArrayList<Package> getPackagesWithExplosive() {
         return packagesWithExplosive;
     }

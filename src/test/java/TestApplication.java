@@ -1,8 +1,11 @@
 import command.*;
 import configuration.ObjectGenerator;
+import event.Lock;
 import org.junit.jupiter.api.*;
 import sortingStation.SortingStation;
-
+import sortingStation.ZoneForUnloadingTruck;
+import sortingStation.sortingSysten.sortingTracks.SortingTrack;
+import sortingStation.sortingSysten.state.Locked;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -13,7 +16,7 @@ public class TestApplication {
     @BeforeEach
     public void init() {
         objectGenerator = new ObjectGenerator();
-         sortingStation = objectGenerator.generateSortingStation();
+        sortingStation = objectGenerator.generateSortingStation();
     }
 
     @Test
@@ -48,6 +51,7 @@ public class TestApplication {
     @Test
     @Order(3)
     public void nextCommand() {
+        sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
         sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
     }
 
@@ -55,12 +59,19 @@ public class TestApplication {
     @Order(4)
     public void shutdownCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new ShutdownCommand(), sortingStation.getEmployees().get(0));
+        for(ZoneForUnloadingTruck zoneForUnloadingTruck : sortingStation.getZonesForUnloadingTrucks()){
+            Assertions.assertEquals(zoneForUnloadingTruck.getSensor().getState().getClass(), Locked.class);
+        }
+        for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()){
+            Assertions.assertNull(sortingTrack.getScanner().getUsedAlgorithm());
+        }
     }
 
     @Test
     @Order(5)
     public void lockCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new LockCommand(), sortingStation.getEmployees().get(0));
+        Assertions.assertEquals(sortingStation.getSortingSystem().getState(), Lock.class);
     }
 
     @Test

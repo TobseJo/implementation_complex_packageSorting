@@ -6,7 +6,11 @@ import java.util.Stack;
 
 public class WaitingZone {
 
-    private Stack<Truck> trucks = new Stack<>();
+    private Stack<Truck> trucks;
+
+    public WaitingZone(){
+        trucks = new Stack<>();
+    }
 
     public Stack<Truck> getTrucks() {
         return trucks;

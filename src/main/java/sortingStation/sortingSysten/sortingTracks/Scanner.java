@@ -41,4 +41,8 @@ public class Scanner {
     public void setUsedAlgorithm(Object usedAlgorithm) {
         this.usedAlgorithm = usedAlgorithm;
     }
+
+    public Object getUsedAlgorithm() {
+        return usedAlgorithm;
+    }
 }

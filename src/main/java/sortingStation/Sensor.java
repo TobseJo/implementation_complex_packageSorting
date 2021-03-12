@@ -29,4 +29,8 @@ public class Sensor implements ITruckArriving {
     public void setState(IState state) {
         this.state = state;
     }
+
+    public IState getState() {
+        return state;
+    }
 }

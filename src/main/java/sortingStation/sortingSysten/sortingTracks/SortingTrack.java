@@ -46,4 +46,5 @@ public class SortingTrack {
     public SortingSystem getSortingSystem() {
         return sortingSystem;
     }
+
 }
