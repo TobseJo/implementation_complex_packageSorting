@@ -23,7 +23,6 @@ public class SortingStation {
         this.sortingSystem = sortingSystem;
         this.eventBus = eventBus;
         this.terminal = terminal;
-
         zs.setSortingStation(this);
     }
 
@@ -33,6 +32,10 @@ public class SortingStation {
 
     public SortingSystem getSortingSystem() {
         return sortingSystem;
+    }
+
+    public ParkingPlaceForAutonomousVehicle getParkingPlaceForAutonomousVehicle() {
+        return parkingPlaceForAutonomousVehicle;
     }
 
     public ZoneForUnloadingTruck[] getZonesForUnloadingTrucks() {
