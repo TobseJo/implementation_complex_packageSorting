@@ -15,11 +15,14 @@ public class ZoneForUnloadingTruck {
         sensor = new Sensor(zs, id);
     }
 
-    public void setTruck(Truck truck) {
+    public void setTruckAndNotify(Truck truck) {
         this.truck = truck;
         sensor.informZsTruckArriving();
     }
 
+    public void setTruck(Truck truck) {
+        this.truck = truck;
+    }
 
     public Truck getTruck() {
         return truck;

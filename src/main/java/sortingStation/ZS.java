@@ -1,7 +1,6 @@
 package sortingStation;
 
 import packageSorting.Package;
-import sortingStation.sortingSysten.sortingTracks.ExpressSortingTrack;
 import sortingStation.sortingSysten.sortingTracks.NormalSortingTrack;
 import sortingStation.sortingSysten.state.Locked;
 import reporter.Report;
@@ -50,7 +49,7 @@ public class ZS {
         System.out.println(event);
         int randomNumber = (int)(Math.random() * sortingStation.getZonesForUnloadingTrucks().length);
 
-        sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruck(sortingStation.getWaitingZone().getTrucks().pop());
+        sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruckAndNotify(sortingStation.getWaitingZone().getTrucks().pop());
     }
 
     @Subscribe

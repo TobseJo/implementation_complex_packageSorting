@@ -10,11 +10,11 @@ public class TruckDetector {
         listeners = new ArrayList<>();
     }
 
-    public void notifyViaEventbus() {
-        for (var listener : listeners) {
-            listener.informZsTruckArriving();
-        }
-    }
+//    public void notifyViaEventbus() {
+//        for (var listener : listeners) {
+//            listener.informZsTruckArriving();
+//        }
+//    }
 
     public void addListener(ITruckArriving listener) {
         listeners.add(listener);

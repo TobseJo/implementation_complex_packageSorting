@@ -36,6 +36,7 @@ public class AutonomousVehicle {
         System.out.println(event);
         zoneForUnloadingTruck = event.getZoneForUnloadingTruck();
         unloadTruck();
+        zoneForUnloadingTruck.setTruck(null);
         loadInterimStorage();
         searchForFreeParkingSpace();
         zs.post(new FinishedTruckUnload());

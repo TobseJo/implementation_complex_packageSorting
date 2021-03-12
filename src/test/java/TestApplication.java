@@ -81,13 +81,18 @@ public class TestApplication {
     @Order(4)
     public void nextCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
-        for (int i = 0; i < 5; i++) {
-            sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
-        }
+        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
+        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
+
+//        for (int i = 0; i < 5; i++) {
+//            sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
+//        }
         for (var zone : sortingStation.getZonesForUnloadingTrucks()) {
             for (int i = 0; i < 2; i++) {
                 for (int j = 0; j < 5; j++) {
-                    Assertions.assertNull(zone.getTruck().getTrailer().getPallets()[i][j]);
+                    if(zone.getTruck() != null){
+                        Assertions.assertNull(zone.getTruck().getTrailer().getPallets()[i][j]);
+                    }
                 }
             }
         }
