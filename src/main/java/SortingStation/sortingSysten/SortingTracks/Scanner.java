@@ -1,5 +1,6 @@
 package SortingStation.sortingSysten.SortingTracks;
 
+import configuration.Configuration;
 import factory.BoyerMooreFactory;
 import factory.RabinKarpFactory;
 
@@ -8,10 +9,7 @@ import java.lang.reflect.Method;
 
 public class Scanner {
 
-    private Object boyerMoore = BoyerMooreFactory.build();
-    private Object rabinKarp = RabinKarpFactory.build();
-
-    private Object usedAlgorithm = rabinKarp;
+    private Object usedAlgorithm = Configuration.instance.usedSearchAlgorithm;
 
     public boolean scanForExplosive(String txt){
         try {

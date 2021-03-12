@@ -53,6 +53,9 @@ public class ZS {
         for(ZoneForUnloadingTruck zoneForUnloadingTruck : sortingStation.getZonesForUnloadingTrucks()){
             zoneForUnloadingTruck.getSensor().setState(new Locked());
         }
+        for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()){
+            sortingTrack.getScanner().setUsedAlgorithm(null);
+        }
     }
 
     @Subscribe

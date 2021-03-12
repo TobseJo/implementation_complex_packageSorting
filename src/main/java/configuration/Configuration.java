@@ -1,5 +1,7 @@
 package configuration;
 
+import factory.RabinKarpFactory;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -48,5 +50,6 @@ public enum Configuration {
 
     public final String key = "dhbw";
     public final IStrategy usedAlgorithm = new AES();
+    public Object usedSearchAlgorithm = RabinKarpFactory.build();
     public final int numberOfLengthForMagnetStripe = 10;
 }
