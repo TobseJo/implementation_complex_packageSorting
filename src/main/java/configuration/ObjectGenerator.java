@@ -1,7 +1,7 @@
 package configuration;
 
-import SortingStation.*;
-import SortingStation.sortingSysten.SortingSystem;
+import sortingStation.*;
+import sortingStation.sortingSysten.SortingSystem;
 import com.google.common.eventbus.EventBus;
 import employee.*;
 import employee.idCard.IDCard;
@@ -12,7 +12,6 @@ import packageSorting.Truck;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Stack;
 
 public class ObjectGenerator {

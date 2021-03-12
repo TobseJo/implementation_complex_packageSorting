@@ -1,10 +1,10 @@
 package proxy;
 
-import Command.ICommand;
-import Command.NextCommand;
-import Command.ShowStatisticsCommand;
-import Command.ShutdownCommand;
-import SortingStation.Terminal;
+import command.ICommand;
+import command.NextCommand;
+import command.ShowStatisticsCommand;
+import command.ShutdownCommand;
+import sortingStation.Terminal;
 import employee.*;
 
 public class ProxyAccess implements IAccess {

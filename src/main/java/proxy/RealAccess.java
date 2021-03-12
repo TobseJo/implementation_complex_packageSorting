@@ -1,7 +1,7 @@
 package proxy;
 
-import Command.ICommand;
-import SortingStation.Terminal;
+import command.ICommand;
+import sortingStation.Terminal;
 import employee.Employee;
 
 public class RealAccess implements IAccess {

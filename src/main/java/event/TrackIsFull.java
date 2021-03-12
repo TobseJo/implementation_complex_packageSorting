@@ -6,4 +6,8 @@ public class TrackIsFull {
     public TrackIsFull(int id){
         this.id = id;
     }
+
+    public String toString(){
+        return "Event: TrackIsFull";
+    }
 }

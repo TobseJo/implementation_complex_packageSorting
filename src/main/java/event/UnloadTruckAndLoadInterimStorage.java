@@ -1,6 +1,6 @@
 package event;
 
-import SortingStation.ZoneForUnloadingTruck;
+import sortingStation.ZoneForUnloadingTruck;
 
 public class UnloadTruckAndLoadInterimStorage {
     private ZoneForUnloadingTruck zoneForUnloadingTruck;
