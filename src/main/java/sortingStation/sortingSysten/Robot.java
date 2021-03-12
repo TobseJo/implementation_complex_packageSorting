@@ -31,39 +31,43 @@ public class Robot {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 2; j++) {
                 Pallet currentPallet = sortingSystem.getInterimStorage().getPallets()[i][j];
+                if(currentPallet != null){
+                    for (int k = 0; k < 4; k++) {
+                        for (int l = 0; l < 3; l++) {
+                            Box currentBox = currentPallet.getBoxes()[k][l];
 
-                for (int k = 0; k < 4; k++) {
-                    for (int l = 0; l < 3; l++) {
-                        Box currentBox = currentPallet.getBoxes()[k][l];
-
-                        for (int m = 0; m < 5; m++) {
-                            for (int n = 0; n < 2; n++) {
-                                for (int o = 0; o < 4; o++) {
-                                    putCurrentPackageToWarehouseTrack(currentBox.getPackages()[m][n][o], trackCtr);
-                                    currentBox.getPackages()[m][n][o] = null;
+                            for (int m = 0; m < 5; m++) {
+                                for (int n = 0; n < 2; n++) {
+                                    for (int o = 0; o < 4; o++) {
+                                        Package currentPackage = currentBox.getPackages()[m][n][o];
+                                        trackCtr = putCurrentPackageToWarehouseTrack(currentPackage, trackCtr);
+                                        currentBox.getPackages()[m][n][o] = null;
+                                    }
                                 }
                             }
+                            sortingSystem.getStorageForEmptyBoxes().getBoxes().add(currentPallet.getBoxes()[k][l]);
+                            currentPallet.getBoxes()[k][l] = null;
                         }
-                        sortingSystem.getStorageForEmptyBoxes().getBoxes().add(currentPallet.getBoxes()[k][l]);
-                        currentPallet.getBoxes()[k][l] = null;
                     }
+                    sortingSystem.getStorageForEmptyPallets().getPallets().add(currentPallet);
+                    sortingSystem.getInterimStorage().getPallets()[i][j] = null;
+                }else{
+                    System.out.println("yeah");
                 }
-                sortingSystem.getStorageForEmptyPallets().getPallets().add(currentPallet);
-                sortingSystem.getInterimStorage().getPallets()[i][j] = null;
             }
         }
     }
 
-    private void putCurrentPackageToWarehouseTrack(Package currentPackage, int trackCtr) {
+    private int putCurrentPackageToWarehouseTrack(Package currentPackage, int trackCtr) {
         int breakCtr = 0;
-        while(sortingSystem.getWarehouseTracks()[trackCtr].addToPackageTrack(currentPackage)){
+        while(!sortingSystem.getWarehouseTracks()[trackCtr].addToPackageTrack(currentPackage)){
             if(breakCtr < 8){
                 setTrackCtr(trackCtr);
             }else{
-                return;
+                return -1;
             }
         }
-        setTrackCtr(trackCtr);
+        return setTrackCtr(trackCtr);
     }
 
     private int setTrackCtr(int trackCtr){

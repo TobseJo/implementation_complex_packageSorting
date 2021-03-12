@@ -29,8 +29,8 @@ public class SortingSystem {
         }
         sortingTracks = new SortingTrack[3];
         sortingTracks[0] = new ValueSortingTrack(new Scanner(), this);
-        sortingTracks[1] = new ExpressSortingTrack(new Scanner(), sortingTracks[0], this, zs.getEventBus());
-        sortingTracks[2] = new NormalSortingTrack(new Scanner(), sortingTracks[1], this);
+        sortingTracks[1] = new ExpressSortingTrack(new Scanner(), sortingTracks[0], this);
+        sortingTracks[2] = new NormalSortingTrack(new Scanner(), sortingTracks[1], this, zs.getEventBus());
         robot = new Robot(zs, this);
         state = new Unlocked();
     }

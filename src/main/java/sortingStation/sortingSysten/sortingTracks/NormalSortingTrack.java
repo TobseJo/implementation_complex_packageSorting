@@ -1,13 +1,20 @@
 package sortingStation.sortingSysten.sortingTracks;
 
+import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
+import event.SortEveryThing;
 import sortingStation.sortingSysten.SortingSystem;
 import packageSorting.Package;
 import packageSorting.Type;
 
 public class NormalSortingTrack extends SortingTrack {
-    public NormalSortingTrack(Scanner scanner, SortingTrack successor, SortingSystem sortingSystem) {
+    private EventBus eventBus;
+
+    public NormalSortingTrack(Scanner scanner, SortingTrack successor, SortingSystem sortingSystem, EventBus eventBus) {
         super(scanner, sortingSystem);
         this.setSuccessor(successor);
+        this.eventBus = eventBus;
+        this.eventBus.register(this);
     }
 
     public void scan(Package currentPackage) {
@@ -18,6 +25,20 @@ public class NormalSortingTrack extends SortingTrack {
             }
         } else {
             super.scan(currentPackage);
+        }
+    }
+
+    public void post(Object object) {
+        eventBus.post(object);
+    }
+
+    @Subscribe
+    public void receive(SortEveryThing event) {
+        System.out.println(event);
+        for (var track : event.getSortingSystem().getWarehouseTracks()) {
+            while(!track.getPackageTrack().isEmpty()) {
+                scan(track.getPackageTrack().poll());
+            }
         }
     }
 }

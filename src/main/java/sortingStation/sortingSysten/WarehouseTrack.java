@@ -4,6 +4,7 @@ import sortingStation.ZS;
 import packageSorting.Package;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -15,7 +16,7 @@ public class WarehouseTrack {
 
     public WarehouseTrack(ZS zs, int id) {
         this.zs = zs;
-        packageTrack = new PriorityQueue<>();
+        packageTrack = new LinkedList<>();
         listeners = new ArrayList<>();
         listeners.add( new SensorForFilling(zs, id));
         isFull = false;

@@ -2,6 +2,7 @@ package sortingStation;
 
 import packageSorting.Package;
 import sortingStation.sortingSysten.sortingTracks.ExpressSortingTrack;
+import sortingStation.sortingSysten.sortingTracks.NormalSortingTrack;
 import sortingStation.sortingSysten.state.Locked;
 import reporter.Report;
 import sortingStation.sortingSysten.sortingTracks.SortingTrack;
@@ -129,7 +130,7 @@ public class ZS {
     public void receive(TrackIsFull event){
         System.out.println(event);
         if(amountOfFullTracks == 7){
-            ((ExpressSortingTrack)sortingStation.getSortingSystem().getSortingTracks()[2]).post(new SortEveryThing(sortingStation.getSortingSystem()));
+            ((NormalSortingTrack)sortingStation.getSortingSystem().getSortingTracks()[2]).post(new SortEveryThing(sortingStation.getSortingSystem()));
         }else{
             amountOfFullTracks++;
         }
@@ -146,6 +147,7 @@ public class ZS {
             Integer value = entry.getValue();
             stringBuilder.append(type.toString() + " : " + value + "; ");
         }
+        stringBuilder.append("Dangerous Packages: ");
         for (Package packageEntity : report.getDangerousPackages()) {
             stringBuilder.append(packageEntity.getId() + ",");
         }
