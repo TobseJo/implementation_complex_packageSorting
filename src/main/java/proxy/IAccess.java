@@ -1,5 +1,6 @@
 package proxy;
 
+//SOLID-design: interface-segregation
 public interface IAccess {
-    public void grant();
+    void grant();
 }
