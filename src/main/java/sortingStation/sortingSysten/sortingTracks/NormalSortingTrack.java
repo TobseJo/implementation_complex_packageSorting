@@ -6,6 +6,7 @@ import event.SortEveryThing;
 import sortingStation.sortingSysten.SortingSystem;
 import packageSorting.Package;
 import packageSorting.Type;
+import sortingStation.sortingSysten.WarehouseTrack;
 
 public class NormalSortingTrack extends SortingTrack {
     private EventBus eventBus;
@@ -13,7 +14,7 @@ public class NormalSortingTrack extends SortingTrack {
     public NormalSortingTrack(Scanner scanner, SortingTrack successor, SortingSystem sortingSystem, EventBus eventBus) {
         super(scanner, sortingSystem);
         this.setSuccessor(successor);
-        this.eventBus = eventBus;
+        this.eventBus = new EventBus();
         this.eventBus.register(this);
     }
 
@@ -35,7 +36,7 @@ public class NormalSortingTrack extends SortingTrack {
     @Subscribe
     public void receive(SortEveryThing event) {
         System.out.println(event);
-        for (var track : event.getSortingSystem().getWarehouseTracks()) {
+        for (WarehouseTrack track : event.getSortingSystem().getWarehouseTracks()) {
             while(!track.getPackageTrack().isEmpty()) {
                 scan(track.getPackageTrack().poll());
             }

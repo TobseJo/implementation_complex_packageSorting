@@ -48,7 +48,7 @@ public class ZS {
     @Subscribe
     public void receive(Next event) {
         System.out.println(event);
-        int randomNumber = (int) Math.random() * sortingStation.getZonesForUnloadingTrucks().length;
+        int randomNumber = (int)(Math.random() * sortingStation.getZonesForUnloadingTrucks().length);
 
         sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruck(sortingStation.getWaitingZone().getTrucks().pop());
     }
@@ -131,6 +131,7 @@ public class ZS {
         System.out.println(event);
         if(amountOfFullTracks == 7){
             ((NormalSortingTrack)sortingStation.getSortingSystem().getSortingTracks()[2]).post(new SortEveryThing(sortingStation.getSortingSystem()));
+            amountOfFullTracks = 0;
         }else{
             amountOfFullTracks++;
         }
