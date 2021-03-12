@@ -19,6 +19,7 @@ public class Sensor implements ITruckArriving {
     public void informZsTruckArriving() {
         if(state instanceof Unlocked) {
             System.out.println("Truck is arriving!");
+            zs.getSortingStation().increaseAmountOfTrucks();
             zs.post(new TruckArrivedSendVehicle(id));
         }else {
             throw new RuntimeException("Sensor State is locked");

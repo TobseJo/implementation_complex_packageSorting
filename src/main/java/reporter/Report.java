@@ -1,5 +1,6 @@
 package reporter;
 
+import packageSorting.Package;
 import packageSorting.Type;
 
 import java.util.ArrayList;
@@ -9,13 +10,13 @@ import java.util.HashMap;
 public class Report {
     private final Date date;
     private final int amountOfTruck;
-    private final HashMap<Type, Integer> amountOfScannedPakets;
+    private final HashMap<Type, Integer> amountOfScannedPackets;
     private final ArrayList<Package> dangerousPackages;
 
     private Report(Builder builder){
         date = builder.date;
         amountOfTruck = builder.amountOfTruck;
-        amountOfScannedPakets = builder.amountOfScannedPakets;
+        amountOfScannedPackets = builder.amountOfScannedPackets;
         dangerousPackages = builder.dangerousPackages;
     }
 
@@ -27,8 +28,8 @@ public class Report {
         return dangerousPackages;
     }
 
-    public HashMap<Type, Integer> getAmountOfScannedPakets() {
-        return amountOfScannedPakets;
+    public HashMap<Type, Integer> getAmountOfScannedPackets() {
+        return amountOfScannedPackets;
     }
 
     public int getAmountOfTruck() {
@@ -38,7 +39,7 @@ public class Report {
     public static class Builder{
         private Date date;
         private int amountOfTruck;
-        private HashMap<Type, Integer> amountOfScannedPakets;
+        private HashMap<Type, Integer> amountOfScannedPackets;
         private ArrayList<Package> dangerousPackages;
 
         public Builder date(Date date){
@@ -51,8 +52,8 @@ public class Report {
             return this;
         }
 
-        public Builder amountOfScannedPakets(HashMap<Type, Integer> amountOfScannedPakets){
-            this.amountOfScannedPakets = amountOfScannedPakets;
+        public Builder amountOfScannedPackets(HashMap<Type, Integer> amountOfScannedPackets){
+            this.amountOfScannedPackets = amountOfScannedPackets;
             return this;
         }
 

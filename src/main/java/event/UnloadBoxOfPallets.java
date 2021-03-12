@@ -1,6 +1,6 @@
 package event;
 
-public class UnloadBoxOfPallet {
+public class UnloadBoxOfPallets {
     public String toString(){
         return "Event: UnloadBoxOfPallet";
     }

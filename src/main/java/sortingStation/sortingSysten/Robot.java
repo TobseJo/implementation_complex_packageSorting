@@ -3,7 +3,7 @@ package sortingStation.sortingSysten;
 import sortingStation.ZS;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
-import event.UnloadBoxOfPallet;
+import event.UnloadBoxOfPallets;
 import packageSorting.Box;
 import packageSorting.Package;
 import packageSorting.Pallet;
@@ -24,7 +24,7 @@ public class Robot {
     }
 
     @Subscribe
-    public void receive(UnloadBoxOfPallet event) {
+    public void receive(UnloadBoxOfPallets event) {
         int trackCtr = 0;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 2; j++) {

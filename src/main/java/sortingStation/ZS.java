@@ -1,5 +1,6 @@
 package sortingStation;
 
+import packageSorting.Package;
 import sortingStation.sortingSysten.sortingTracks.ExpressSortingTrack;
 import sortingStation.sortingSysten.state.Locked;
 import reporter.Report;
@@ -72,14 +73,17 @@ public class ZS {
 
     @Subscribe
     public void receive(ShowStatistics event) {
-        //TODO where to get data | not tested
-        HashMap<Type, Integer> amountOfScannedPakets;
-        amountOfScannedPakets = new HashMap<>();
+        //not tested
+        HashMap<Type, Integer> amountOfScannedPackets;
+        amountOfScannedPackets = new HashMap<>();
+        amountOfScannedPackets.put(Type.VALUE, sortingStation.getSortingSystem().getSortingTracks()[0].getAmountOfScannedPackages());
+        amountOfScannedPackets.put(Type.EXPRESS, sortingStation.getSortingSystem().getSortingTracks()[1].getAmountOfScannedPackages());
+        amountOfScannedPackets.put(Type.NORMAL, sortingStation.getSortingSystem().getSortingTracks()[2].getAmountOfScannedPackages());
 
-        int amountOfTrucks = 0;
+        int amountOfTrucks = sortingStation.getAmountOfTrucks();
 
-        ArrayList<Package> dangerousPackages = new ArrayList<>();
-        Report report = new Report.Builder().amountOfScannedPakets(amountOfScannedPakets).amountOfTruck(amountOfTrucks).dangerousPackages(dangerousPackages).date(new Date()).build();
+        ArrayList<Package> dangerousPackages = sortingStation.getSortingSystem().getPackagesWithExplosive();
+        Report report = new Report.Builder().amountOfScannedPackets(amountOfScannedPackets).amountOfTruck(amountOfTrucks).dangerousPackages(dangerousPackages).date(new Date()).build();
         writeReportToData(report);
     }
 
@@ -108,10 +112,9 @@ public class ZS {
         autonomousVehicle.post(new UnloadTruckAndLoadInterimStorage(zone));
     }
 
-    //TODO what to do after Unloading?
     @Subscribe
     public void receive(FinishedTruckUnload event) {
-
+        sortingStation.getSortingSystem().getRobot().post(new UnloadBoxOfPallets());
     }
 
     @Subscribe
@@ -129,18 +132,16 @@ public class ZS {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(report.getDate()).append(";").append(report.getAmountOfTruck()).append(";");
-        for(Map.Entry<Type, Integer> entry : report.getAmountOfScannedPakets().entrySet()) {
+        for(Map.Entry<Type, Integer> entry : report.getAmountOfScannedPackets().entrySet()) {
             Type type = entry.getKey();
             Integer value = entry.getValue();
             stringBuilder.append(type.toString() + " : " + value);
         }
         stringBuilder.append(";");
         for (Package packageEntity : report.getDangerousPackages()) {
-            stringBuilder.append(packageEntity.getName() + ",");
+            stringBuilder.append(packageEntity.getId() + ",");
         }
         LogEngine.instance.write(stringBuilder.toString());
-
-
         LogEngine.instance.close();
     }
 
@@ -150,5 +151,9 @@ public class ZS {
 
     public EventBus getEventBus() {
         return eventBus;
+    }
+
+    public SortingStation getSortingStation() {
+        return sortingStation;
     }
 }

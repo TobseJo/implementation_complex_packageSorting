@@ -11,6 +11,7 @@ public class SortingStation {
     private ZS zs;
     private ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle;
     private ZoneForUnloadingTruck[] zonesForUnloadingTrucks;
+    private int amountOfTrucks;
     private SortingSystem sortingSystem;
     private EventBus eventBus;
     private Terminal terminal;
@@ -24,6 +25,7 @@ public class SortingStation {
         this.eventBus = eventBus;
         this.terminal = terminal;
         zs.setSortingStation(this);
+        amountOfTrucks = 0;
     }
 
     public ArrayList<Employee> getEmployees() {
@@ -40,5 +42,13 @@ public class SortingStation {
 
     public ZoneForUnloadingTruck[] getZonesForUnloadingTrucks() {
         return zonesForUnloadingTrucks;
+    }
+
+    public int getAmountOfTrucks() {
+        return amountOfTrucks;
+    }
+
+    public void increaseAmountOfTrucks() {
+        amountOfTrucks++;
     }
 }
