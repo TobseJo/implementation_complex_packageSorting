@@ -1,4 +1,4 @@
-package sortingStation.sortingSysten.SortingTracks;
+package sortingStation.sortingSysten.sortingTracks;
 
 import configuration.Configuration;
 import factory.BoyerMooreFactory;

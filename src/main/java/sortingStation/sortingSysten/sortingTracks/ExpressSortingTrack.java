@@ -1,4 +1,4 @@
-package sortingStation.sortingSysten.SortingTracks;
+package sortingStation.sortingSysten.sortingTracks;
 
 import sortingStation.sortingSysten.SortingSystem;
 import com.google.common.eventbus.EventBus;

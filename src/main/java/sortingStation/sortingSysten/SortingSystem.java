@@ -1,7 +1,7 @@
 package sortingStation.sortingSysten;
 
 import sortingStation.ZS;
-import sortingStation.sortingSysten.SortingTracks.*;
+import sortingStation.sortingSysten.sortingTracks.*;
 import sortingStation.sortingSysten.state.IState;
 import sortingStation.sortingSysten.state.Unlocked;
 import packageSorting.Package;

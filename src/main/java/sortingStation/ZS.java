@@ -1,9 +1,9 @@
 package sortingStation;
 
-import sortingStation.sortingSysten.SortingTracks.ExpressSortingTrack;
+import sortingStation.sortingSysten.sortingTracks.ExpressSortingTrack;
 import sortingStation.sortingSysten.state.Locked;
 import reporter.Report;
-import sortingStation.sortingSysten.SortingTracks.SortingTrack;
+import sortingStation.sortingSysten.sortingTracks.SortingTrack;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
