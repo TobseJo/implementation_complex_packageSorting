@@ -97,8 +97,8 @@ public class FileReader {
     }
 
 
-    public List<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
-        List<Truck> trucks = new Stack<Truck>();
+    public Stack<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
+        Stack<Truck> trucks = new Stack<Truck>();
         Pallet[][] pallets;
         BufferedReader br = null;
 
