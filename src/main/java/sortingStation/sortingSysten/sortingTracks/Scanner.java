@@ -32,8 +32,6 @@ public class Scanner {
 
             if (result != -1) {
                 return true;
-            }else if(result == -2){
-                System.out.println("Scur");
             }
         }catch (Exception e){
             e.printStackTrace();
