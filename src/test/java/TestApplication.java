@@ -84,19 +84,15 @@ public class TestApplication {
     @Order(4)
     public void nextCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
-
         for (int i = 0; i < 5; i++) {
             sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
         }
         for (var zone : sortingStation.getZonesForUnloadingTrucks()) {
-            for (int i = 0; i < 2; i++) {
-                for (int j = 0; j < 5; j++) {
-                    if (zone.getTruck() != null) {
-                        Assertions.assertNull(zone.getTruck().getTrailer().getPallets()[i][j]);
-                    }
-                }
+            if (zone.getTruck() != null) {
+                Assertions.fail();
             }
         }
+
     }
 
     @Test
@@ -131,12 +127,15 @@ public class TestApplication {
     @Order(8)
     public void showStatistics() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
-        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
-        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
-        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
-        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
-        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
+        for (int i = 0; i < 5; i++) {
+            sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
+        }
         sortingStation.getTerminal().getTouchPad().takeCommand(new ShowStatisticsCommand(), sortingStation.getEmployees().get(0));
+        Assertions.assertEquals(5, sortingStation.getZs().getReport().getAmountOfTruck());
+        Assertions.assertEquals(4, sortingStation.getZs().getReport().getDangerousPackages().size());
+        Assertions.assertEquals(3600, sortingStation.getZs().getReport().getAmountOfScannedPackets().get(Type.EXPRESS));
+        Assertions.assertEquals(19200, sortingStation.getZs().getReport().getAmountOfScannedPackets().get(Type.NORMAL));
+        Assertions.assertEquals(1200, sortingStation.getZs().getReport().getAmountOfScannedPackets().get(Type.VALUE));
 
     }
 
@@ -183,9 +182,9 @@ public class TestApplication {
         autonomousVehicle.loadInterimStorage();
         autonomousVehicle.searchForFreeParkingSpace();
 
-        for (var yeah : sortingStation.getSortingSystem().getInterimStorage().getPallets()) {
-            for (var yeah2 : yeah) {
-                if (yeah2 != null) {
+        for (var pallets : sortingStation.getSortingSystem().getInterimStorage().getPallets()) {
+            for (var pallet : pallets) {
+                if (pallet != null) {
                     palletCtr++;
                 }
             }

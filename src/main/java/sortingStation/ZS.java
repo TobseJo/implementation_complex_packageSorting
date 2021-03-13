@@ -20,11 +20,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ZS {
-
     private ObjectGenerator objectGenerator;
     private EventBus eventBus;
     private int amountOfFullTracks;
-
+    private Report report;
     private SortingStation sortingStation;
 
     public ZS(EventBus eventBus, ObjectGenerator objectGenerator) {
@@ -87,7 +86,7 @@ public class ZS {
         int amountOfTrucks = sortingStation.getAmountOfTrucks();
 
         ArrayList<Package> dangerousPackages = sortingStation.getSortingSystem().getPackagesWithExplosive();
-        Report report = new Report.Builder().amountOfScannedPackets(amountOfScannedPackets).amountOfTruck(amountOfTrucks).dangerousPackages(dangerousPackages).date(new Date()).build();
+        report = new Report.Builder().amountOfScannedPackets(amountOfScannedPackets).amountOfTruck(amountOfTrucks).dangerousPackages(dangerousPackages).date(new Date()).build();
         writeReportToData(report);
     }
 
@@ -166,5 +165,9 @@ public class ZS {
 
     public SortingStation getSortingStation() {
         return sortingStation;
+    }
+
+    public Report getReport() {
+        return report;
     }
 }
