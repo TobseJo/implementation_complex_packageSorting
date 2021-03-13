@@ -7,6 +7,8 @@ public class Application {
         csvDataGenerator.generateAllFiles();
 
         ObjectGenerator objectGenerator = new ObjectGenerator();
+        objectGenerator.generateSortingStation();
+        objectGenerator.generateTrucks();
 //        objectGenerator.generateSortingStation();
 //        objectGenerator.generateTrucks();
     }

@@ -12,10 +12,12 @@ public class SortingTrack {
     protected Scanner scanner;
     protected int amountOfScannedPackages;
     protected SortingSystem sortingSystem;
+    protected ArrayList<Package> packages;
 
     public SortingTrack(Scanner scanner, SortingSystem sortingSystem){
         this.sortingSystem = sortingSystem;
         this.scanner = scanner;
+        packages = new ArrayList<>();
     }
 
     protected boolean canHandlePackage(Package currentPackage, Type currentTrackType){
@@ -59,4 +61,7 @@ public class SortingTrack {
         return sortingSystem;
     }
 
+    public ArrayList<Package> getPackages() {
+        return packages;
+    }
 }

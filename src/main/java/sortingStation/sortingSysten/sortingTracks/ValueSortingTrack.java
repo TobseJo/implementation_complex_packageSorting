@@ -12,6 +12,7 @@ public class ValueSortingTrack extends SortingTrack {
     public void scan(Package currentPackage) {
         if (canHandlePackage(currentPackage, Type.VALUE)) {
             amountOfScannedPackages++;
+            getPackages().add(currentPackage);
             if (getScanner().scanForExplosive(currentPackage.getContentAsString())) {
                 sortingSystem.getPackagesWithExplosive().add(currentPackage);
             }

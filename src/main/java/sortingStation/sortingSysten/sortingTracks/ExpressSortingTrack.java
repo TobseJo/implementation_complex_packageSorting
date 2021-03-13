@@ -14,6 +14,7 @@ public class ExpressSortingTrack extends SortingTrack {
     public void scan(Package currentPackage) {
         if (canHandlePackage(currentPackage, Type.EXPRESS)) {
             amountOfScannedPackages++;
+            getPackages().add(currentPackage);
             if (getScanner().scanForExplosive(currentPackage.getContentAsString())) {
                 sortingSystem.getPackagesWithExplosive().add(currentPackage);
             }

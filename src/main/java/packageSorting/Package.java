@@ -11,6 +11,9 @@ public class Package {
     public Package(String id, String content, String zipCode, String type, String weight){
         this.id = id;
         this.content = getContentArray(content);
+        if(zipCode == null){
+            System.out.println("");
+        }
         this.zipCode = Integer.valueOf(zipCode);
         this.type = getType(type);
         this.weight = Double.valueOf(weight);

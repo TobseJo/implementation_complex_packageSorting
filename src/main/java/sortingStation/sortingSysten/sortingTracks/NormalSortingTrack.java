@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class NormalSortingTrack extends SortingTrack {
     private EventBus eventBus;
 
-    public NormalSortingTrack(Scanner scanner, SortingTrack successor, SortingSystem sortingSystem, EventBus eventBus) {
+    public NormalSortingTrack(Scanner scanner, SortingTrack successor, SortingSystem sortingSystem) {
         super(scanner, sortingSystem);
         this.setSuccessor(successor);
         this.eventBus = new EventBus();
@@ -24,6 +24,7 @@ public class NormalSortingTrack extends SortingTrack {
     public void scan(Package currentPackage) {
         if (canHandlePackage(currentPackage, Type.NORMAL)) {
             amountOfScannedPackages++;
+            getPackages().add(currentPackage);
             if (getScanner().scanForExplosive(currentPackage.getContentAsString())) {
                 sortingSystem.getPackagesWithExplosive().add(currentPackage);
             }
@@ -41,7 +42,10 @@ public class NormalSortingTrack extends SortingTrack {
         System.out.println(event);
         for (WarehouseTrack track : event.getSortingSystem().getWarehouseTracks()) {
             while(!track.getPackageTrack().isEmpty()) {
-                scan(track.getPackageTrack().poll());
+                Package currentPackage = track.getPackageTrack().poll();
+                if(currentPackage != null){
+                    scan(currentPackage);
+                }
             }
             track.setFull(false);
         }

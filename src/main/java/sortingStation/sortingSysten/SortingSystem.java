@@ -28,9 +28,12 @@ public class SortingSystem {
             warehouseTracks[i] = new WarehouseTrack(zs, i);
         }
         sortingTracks = new SortingTrack[3];
-        sortingTracks[0] = new ValueSortingTrack(new Scanner(), this);
-        sortingTracks[1] = new ExpressSortingTrack(new Scanner(), sortingTracks[0], this);
-        sortingTracks[2] = new NormalSortingTrack(new Scanner(), sortingTracks[1], this, zs.getEventBus());
+        SortingTrack sortingTrack1 = new ValueSortingTrack(new Scanner(), this);
+        sortingTracks[0] = sortingTrack1;
+        SortingTrack sortingTrack2 = new ExpressSortingTrack(new Scanner(), sortingTracks[0], this);
+        sortingTracks[1] = sortingTrack2;
+        SortingTrack sortingTrack3 = new NormalSortingTrack(new Scanner(), sortingTracks[1], this);
+        sortingTracks[2] = sortingTrack3;
         robot = new Robot(zs, this);
         state = new Unlocked();
     }
@@ -102,6 +105,4 @@ public class SortingSystem {
     public ArrayList<Package> getPackagesWithExplosive() {
         return packagesWithExplosive;
     }
-
-
 }
