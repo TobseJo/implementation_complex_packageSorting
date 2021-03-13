@@ -1,14 +1,18 @@
 package sortingStation.sortingSysten.sortingTracks;
 
+import org.checkerframework.checker.units.qual.A;
 import sortingStation.sortingSysten.SortingSystem;
 import packageSorting.Type;
 import packageSorting.Package;
+
+import java.util.ArrayList;
 
 public class SortingTrack {
     protected SortingTrack successor;
     protected Scanner scanner;
     protected int amountOfScannedPackages;
     protected SortingSystem sortingSystem;
+    protected ArrayList<Package> packages = new ArrayList<>();
 
     public SortingTrack(Scanner scanner, SortingSystem sortingSystem){
         this.sortingSystem = sortingSystem;
@@ -16,7 +20,7 @@ public class SortingTrack {
     }
 
     protected boolean canHandlePackage(Package currentPackage, Type currentTrackType){
-            return (currentPackage == null) || (currentPackage.getType().equals(currentTrackType));
+            return (currentPackage != null) && (currentPackage.getType() == currentTrackType);
     }
 
     public void scan(Package currentPackage){
@@ -25,6 +29,19 @@ public class SortingTrack {
         } else {
             System.out.println("Unable to find the correct sortingTrack for the package: " + currentPackage.getId());
         }
+    }
+
+    public String execute(String message){
+        if(getSuccessor() != null){
+            return getSuccessor().execute(message);
+        }else {
+            System.out.println("unable to find the correct ControlCenter for the message : " + message);
+            return null;
+        }
+    }
+
+    public ArrayList<Package> getPackages() {
+        return packages;
     }
 
     public Scanner getScanner() {

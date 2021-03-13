@@ -36,6 +36,8 @@ public class CsvFileGenerator {
         HashSet<String> ids = getIds(Configuration.instance.numberOfCharsPerIdPackage, Configuration.instance.numberOfPackages, Configuration.instance.allLettersAndNumbersLowerCase);
         Iterator<String> iterator = ids.iterator();
 
+
+
         for (int i = 1; i <= Configuration.instance.numberOfPackages; i++) {
             StringBuilder stringBuilder = new StringBuilder();
 
