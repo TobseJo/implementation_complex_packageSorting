@@ -147,13 +147,12 @@ public class CsvFileGenerator {
         }
 
         if (packageNumber % 6000 == 0) {
-            String exp = "exp!os:ve";
-            int position = (int) (Configuration.instance.numberOfCharsPerContent * Math.random());
+            String exp = Configuration.instance.explosiveString;
+            int position = (int) ((Configuration.instance.numberOfCharsPerContent - exp.length()) * Math.random());
 
             stringBuilder.replace(position, position + exp.length(), exp);
             System.out.println("Added " + exp + " at package: " + packageNumber + " at position: " + position);
         }
-
         return stringBuilder.toString();
     }
 

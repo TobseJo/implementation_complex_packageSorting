@@ -46,6 +46,7 @@ public enum Configuration {
     public final String allLettersAndNumbersUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     public final String key = "dhbw";
+    public final String explosiveString = "exp!os:ve";
     public final IStrategy usedAlgorithm = new DES();
     public String usedSearchAlgorithm = "br";
     public final int numberOfLengthForMagnetStripe = 10;

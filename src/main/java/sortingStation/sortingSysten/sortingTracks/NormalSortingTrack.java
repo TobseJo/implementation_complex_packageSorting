@@ -2,14 +2,13 @@ package sortingStation.sortingSysten.sortingTracks;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+import configuration.Configuration;
 import event.SortEveryThing;
-import org.checkerframework.checker.units.qual.A;
 import sortingStation.sortingSysten.SortingSystem;
 import packageSorting.Package;
 import packageSorting.Type;
 import sortingStation.sortingSysten.WarehouseTrack;
 
-import java.util.ArrayList;
 
 public class NormalSortingTrack extends SortingTrack {
     private EventBus eventBus;

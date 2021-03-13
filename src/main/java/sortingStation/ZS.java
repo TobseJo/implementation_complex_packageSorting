@@ -47,7 +47,7 @@ public class ZS {
     @Subscribe
     public void receive(Next event) {
         System.out.println(event);
-        int randomNumber = (int)(Math.random() * sortingStation.getZonesForUnloadingTrucks().length);
+        int randomNumber = (int) (Math.random() * sortingStation.getZonesForUnloadingTrucks().length);
 
         sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruckAndNotify(sortingStation.getWaitingZone().getTrucks().pop());
     }
@@ -55,10 +55,10 @@ public class ZS {
     @Subscribe
     public void receive(Shutdown event) {
         System.out.println(event);
-        for(ZoneForUnloadingTruck zoneForUnloadingTruck : sortingStation.getZonesForUnloadingTrucks()){
+        for (ZoneForUnloadingTruck zoneForUnloadingTruck : sortingStation.getZonesForUnloadingTrucks()) {
             zoneForUnloadingTruck.getSensor().setState(new Locked());
         }
-        for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()){
+        for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()) {
             sortingTrack.getScanner().setUsedAlgorithm(null);
         }
     }
@@ -94,7 +94,7 @@ public class ZS {
     @Subscribe
     public void receive(ChangeSearchAlgorithm event) {
         System.out.println(event);
-        for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()){
+        for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()) {
             sortingTrack.getScanner().setUsedAlgorithm(event.getAlgorithm());
         }
     }
@@ -111,7 +111,7 @@ public class ZS {
         sortingStation.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber] = null;
         ZoneForUnloadingTruck zone = null;
         for (var currentZone : sortingStation.getZonesForUnloadingTrucks()) {
-            if(currentZone.getTruck() != null){
+            if (currentZone.getTruck() != null) {
                 zone = currentZone;
                 break;
             }
@@ -126,12 +126,12 @@ public class ZS {
     }
 
     @Subscribe
-    public void receive(TrackIsFull event){
+    public void receive(TrackIsFull event) {
         System.out.println(event);
-        if(amountOfFullTracks == 7){
-            ((NormalSortingTrack)sortingStation.getSortingSystem().getSortingTracks()[2]).post(new SortEveryThing(sortingStation.getSortingSystem()));
+        if (amountOfFullTracks == 7) {
+            ((NormalSortingTrack) sortingStation.getSortingSystem().getSortingTracks()[2]).post(new SortEveryThing(sortingStation.getSortingSystem()));
             amountOfFullTracks = 0;
-        }else{
+        } else {
             amountOfFullTracks++;
         }
     }
@@ -142,15 +142,16 @@ public class ZS {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(report.getDate()).append("; AmountOfTrucks: ").append(report.getAmountOfTruck()).append("; ");
-        for(Map.Entry<Type, Integer> entry : report.getAmountOfScannedPackets().entrySet()) {
+        for (Map.Entry<Type, Integer> entry : report.getAmountOfScannedPackets().entrySet()) {
             Type type = entry.getKey();
             Integer value = entry.getValue();
             stringBuilder.append(type.toString() + " : " + value + "; ");
         }
-        stringBuilder.append("Dangerous Packages: ");
+        stringBuilder.append(report.getDangerousPackages().size() + " Dangerous Packages: ");
         for (Package packageEntity : report.getDangerousPackages()) {
-            stringBuilder.append(packageEntity.getId() + ",");
+            stringBuilder.append(packageEntity.getId() + ", ");
         }
+        stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "");
         LogEngine.instance.write(stringBuilder.toString());
         LogEngine.instance.close();
     }

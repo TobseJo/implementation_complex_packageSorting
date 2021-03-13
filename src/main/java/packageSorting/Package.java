@@ -56,7 +56,6 @@ public class Package {
                 }
             }
         }
-
         return stringBuilder.toString();
     }
 

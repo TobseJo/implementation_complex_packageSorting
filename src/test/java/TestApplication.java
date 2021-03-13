@@ -1,18 +1,14 @@
 import command.*;
 import configuration.Configuration;
+import configuration.CsvFileGenerator;
 import configuration.ObjectGenerator;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.*;
 import packageSorting.*;
-import packageSorting.Package;
 import sortingStation.SortingStation;
 import sortingStation.ZoneForUnloadingTruck;
-import sortingStation.sortingSysten.sortingTracks.NormalSortingTrack;
 import sortingStation.sortingSysten.sortingTracks.SortingTrack;
 import sortingStation.sortingSysten.state.Locked;
 import sortingStation.sortingSysten.state.Unlocked;
-
-import java.util.ArrayList;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -22,6 +18,8 @@ public class TestApplication {
 
     @BeforeEach
     public void init() {
+        CsvFileGenerator csvFileGenerator = new CsvFileGenerator();
+        csvFileGenerator.generateAllFiles();
         objectGenerator = new ObjectGenerator();
         sortingStation = objectGenerator.generateSortingStation();
     }
@@ -140,5 +138,4 @@ public class TestApplication {
         sortingStation.getTerminal().getTouchPad().takeCommand(new ShowStatisticsCommand(), sortingStation.getEmployees().get(0));
 
     }
-
 }

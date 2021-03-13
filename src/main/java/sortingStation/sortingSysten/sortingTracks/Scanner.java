@@ -12,7 +12,7 @@ public class Scanner {
 
     public boolean scanForExplosive(String txt){
         try {
-            int result = 0;
+            int result = -2;
             String searchPattern = "exp!os:ve";
             Object searchAlgorithm;
 
@@ -20,20 +20,20 @@ public class Scanner {
                 searchAlgorithm = RabinKarpFactory.build();
                 Method searchMethod = searchAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class, int.class);
 
-                result = (int) searchMethod.invoke(usedAlgorithm, searchPattern, txt, 101);
+                result = (int) searchMethod.invoke(usedAlgorithm, txt, searchPattern, 101);
             } else if (usedAlgorithm == "br") {
                 searchAlgorithm = BoyerMooreFactory.build();
                 Method searchMethod = searchAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class);
 
-                result = (int) searchMethod.invoke(searchAlgorithm, searchPattern, txt);
+                result = (int) searchMethod.invoke(searchAlgorithm, txt, searchPattern);
             } else {
                 throw new RuntimeException("Invalid Algorithm");
             }
 
-            if (result >= 0) {
+            if (result != -1) {
                 return true;
-            } else {
-                return false;
+            }else if(result == -2){
+                System.out.println("Scur");
             }
         }catch (Exception e){
             e.printStackTrace();
