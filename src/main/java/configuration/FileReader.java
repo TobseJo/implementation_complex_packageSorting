@@ -32,7 +32,6 @@ public class FileReader {
         return packages;
     }
 
-
     public LinkedList<Box> readBoxes(String FILEPATH, HashMap<String, Package> packageHashMap) {
         LinkedList<Box> boxes = new LinkedList<>();
         LinkedList<Package> packagesPerBox;
@@ -60,7 +59,6 @@ public class FileReader {
         }
         return boxes;
     }
-
 
     public LinkedList<Pallet> readPalettes(String FILEPATH, HashMap<String, Box> boxHashMap) {
         LinkedList<Pallet> pallets = new LinkedList<>();
@@ -95,7 +93,6 @@ public class FileReader {
 
         return pallets;
     }
-
 
     public Stack<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
         Stack<Truck> trucks = new Stack<Truck>();
@@ -135,6 +132,4 @@ public class FileReader {
         }
         return trucks;
     }
-
-
 }

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class NormalSortingTrack extends SortingTrack {
     private EventBus eventBus;
-    private ArrayList<Package> packages2 = new ArrayList<>();
 
     public NormalSortingTrack(Scanner scanner, SortingTrack successor, SortingSystem sortingSystem, EventBus eventBus) {
         super(scanner, sortingSystem);
@@ -24,15 +23,10 @@ public class NormalSortingTrack extends SortingTrack {
 
     public void scan(Package currentPackage) {
         if (canHandlePackage(currentPackage, Type.NORMAL)) {
-            if(currentPackage.getType() != Type.NORMAL){
-                System.out.println(currentPackage.getType());
-                throw new RuntimeException("Fähler");
-            }
             amountOfScannedPackages++;
             if (getScanner().scanForExplosive(currentPackage.getContentAsString())) {
                 sortingSystem.getPackagesWithExplosive().add(currentPackage);
             }
-//            packages.add(currentPackage);
         } else {
             super.scan(currentPackage);
         }
@@ -47,15 +41,9 @@ public class NormalSortingTrack extends SortingTrack {
         System.out.println(event);
         for (WarehouseTrack track : event.getSortingSystem().getWarehouseTracks()) {
             while(!track.getPackageTrack().isEmpty()) {
-                Package packagee = track.getPackageTrack().poll();
-                scan(packagee);
-                packages2.add(packagee);
+                scan(track.getPackageTrack().poll());
             }
             track.setFull(false);
         }
-    }
-
-    public ArrayList<Package> getPackages2() {
-        return packages2;
     }
 }

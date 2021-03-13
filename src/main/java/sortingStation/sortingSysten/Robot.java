@@ -15,7 +15,6 @@ public class Robot {
     private EventBus eventBus;
     private ZS zs;
     private SortingSystem sortingSystem;
-    private ArrayList<Package> packages = new ArrayList<>();
 
     public Robot(ZS zs, SortingSystem sortingSystem) {
         this.sortingSystem = sortingSystem;
@@ -45,7 +44,6 @@ public class Robot {
                                     for (int n = 0; n < 2; n++) {
                                         for (int o = 0; o < 4; o++) {
                                             Package currentPackage = currentBox.getPackages()[m][n][o];
-                                            packages.add(currentPackage);
 
                                             trackCtr = putCurrentPackageToWarehouseTrack(currentPackage, trackCtr);
                                             currentPackage = null;
@@ -85,7 +83,4 @@ public class Robot {
         return trackCtr;
     }
 
-    public ArrayList<Package> getPackages() {
-        return packages;
-    }
 }

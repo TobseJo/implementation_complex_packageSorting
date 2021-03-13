@@ -12,7 +12,6 @@ public class SortingTrack {
     protected Scanner scanner;
     protected int amountOfScannedPackages;
     protected SortingSystem sortingSystem;
-    protected ArrayList<Package> packages = new ArrayList<>();
 
     public SortingTrack(Scanner scanner, SortingSystem sortingSystem){
         this.sortingSystem = sortingSystem;
@@ -38,10 +37,6 @@ public class SortingTrack {
             System.out.println("unable to find the correct ControlCenter for the message : " + message);
             return null;
         }
-    }
-
-    public ArrayList<Package> getPackages() {
-        return packages;
     }
 
     public Scanner getScanner() {

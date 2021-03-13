@@ -11,14 +11,10 @@ public class ValueSortingTrack extends SortingTrack {
 
     public void scan(Package currentPackage) {
         if (canHandlePackage(currentPackage, Type.VALUE)) {
-            if(currentPackage.getType() != Type.VALUE){
-                throw new RuntimeException("Fähler");
-            }
             amountOfScannedPackages++;
             if (getScanner().scanForExplosive(currentPackage.getContentAsString())) {
                 sortingSystem.getPackagesWithExplosive().add(currentPackage);
             }
-            packages.add(currentPackage);
         } else {
             super.scan(currentPackage);
         }
