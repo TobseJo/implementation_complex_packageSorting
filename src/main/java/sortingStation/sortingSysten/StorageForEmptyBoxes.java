@@ -1,6 +1,6 @@
 package sortingStation.sortingSysten;
 
-import packageSorting.Box;
+import items.Box;
 
 import java.util.ArrayList;
 

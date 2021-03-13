@@ -3,10 +3,10 @@ package configuration;
 import com.google.common.eventbus.EventBus;
 import employee.*;
 import employee.idCard.IDCard;
-import packageSorting.Box;
-import packageSorting.Package;
-import packageSorting.Pallet;
-import packageSorting.Truck;
+import items.Box;
+import items.Package;
+import items.Pallet;
+import items.Truck;
 import sortingStation.*;
 import sortingStation.sortingSysten.SortingSystem;
 
@@ -31,7 +31,6 @@ public class ObjectGenerator {
     }
 
     public SortingStation generateSortingStation() {
-        //TODO einen eventBus oder jeder einen eigenen
         eventBus = new EventBus();
         zs = new ZS(eventBus, this);
         zonesForUnloadingTrucks = new ZoneForUnloadingTruck[7];
@@ -58,7 +57,7 @@ public class ObjectGenerator {
     }
 
     private LinkedList<Box> generateBoxes() {
-        LinkedList<packageSorting.Package> packages = generatePackages();
+        LinkedList<items.Package> packages = generatePackages();
 
         HashMap<String, Package> packageHashMap = new HashMap<>();
 

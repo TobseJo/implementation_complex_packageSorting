@@ -29,11 +29,8 @@ public class CardReader {
             if (validPin == employee.getPin()) {
                 System.out.println("Pin is correct!");
             }
-
         } else if (idCard.getState() instanceof Locked) {
-
             int validSuperPin = Integer.valueOf(readMagnetStripe(idCard).split(";")[4]);
-
             System.out.println("Please insert your SuperPIN!");
             int ctr = 0;
             while (validSuperPin != employee.getSuperPin()) {

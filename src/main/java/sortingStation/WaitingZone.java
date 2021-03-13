@@ -1,11 +1,10 @@
 package sortingStation;
 
-import packageSorting.Truck;
+import items.Truck;
 
 import java.util.Stack;
 
 public class WaitingZone {
-
     private Stack<Truck> trucks;
 
     public WaitingZone() {

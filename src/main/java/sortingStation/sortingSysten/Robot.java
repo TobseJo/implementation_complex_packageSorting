@@ -3,9 +3,9 @@ package sortingStation.sortingSysten;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import event.UnloadBoxOfPallets;
-import packageSorting.Box;
-import packageSorting.Package;
-import packageSorting.Pallet;
+import items.Box;
+import items.Package;
+import items.Pallet;
 import sortingStation.ZS;
 
 public class Robot {

@@ -28,9 +28,11 @@ public enum Configuration {
     public final String allCharsForContent = "abcdefghijklmnopqrstuvwxyz:-!";
     public final String allLettersAndNumbersLowerCase = "abcdefghijklmnopqrstuvwxyz0123456789";
     public final String allLettersAndNumbersUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    public final String key = "dhbw";
     public final String explosiveString = "exp!os:ve";
+
+    public final String key = "dhbw";
     public final IStrategy usedAlgorithm = new DES();
+
     public final int numberOfLengthForMagnetStripe = 10;
     public String commonPathToJavaArchive = userDirectory + fileSeparator + "components" + fileSeparator;
     public String pathToDataDirectory = userDirectory + fileSeparator + "data" + fileSeparator;

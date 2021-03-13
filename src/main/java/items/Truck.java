@@ -1,9 +1,8 @@
-package packageSorting;
+package items;
 
 import java.util.LinkedList;
 
 public class Truck {
-
     private String id;
     private Trailer trailer;
 

@@ -1,9 +1,8 @@
-package packageSorting;
+package items;
 
 import java.util.LinkedList;
 
 public class Box {
-
     private String id;
     private Package[][][] packages;
 
@@ -14,7 +13,6 @@ public class Box {
 
     private Package[][][] getContentArray(LinkedList<Package> packageList) {
         Package[][][] packages = new Package[5][2][4];
-
         for (int k = 0; k < 5; k++) {
             for (int j = 0; j < 2; j++) {
                 for (int i = 0; i < 4; i++) {
@@ -22,13 +20,11 @@ public class Box {
                 }
             }
         }
-
         return packages;
     }
 
     public String getPackagesAsString() {
         StringBuilder stringBuilder = new StringBuilder();
-
         for (Package[][] packages : getPackages()) {
             for (Package[] packages1 : packages) {
                 for (Package packages2 : packages1) {
@@ -37,7 +33,6 @@ public class Box {
                 }
             }
         }
-
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         return stringBuilder.toString();
     }

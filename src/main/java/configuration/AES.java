@@ -8,10 +8,8 @@ import java.util.Arrays;
 import java.util.Base64;
 
 public class AES implements IStrategy {
-
     private static SecretKeySpec generate(String inputKey) {
         MessageDigest sha;
-
         try {
             byte[] key = inputKey.getBytes(StandardCharsets.UTF_8);
             sha = MessageDigest.getInstance("SHA-1");
@@ -21,7 +19,6 @@ public class AES implements IStrategy {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
         return null;
     }
 
@@ -34,7 +31,6 @@ public class AES implements IStrategy {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
         return null;
     }
 
@@ -47,8 +43,6 @@ public class AES implements IStrategy {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
         return null;
     }
-
 }

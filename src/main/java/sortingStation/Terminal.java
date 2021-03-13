@@ -11,10 +11,10 @@ public class Terminal {
     private TouchPad touchPad;
     private CardReader cardReader;
     private ZS zs;
-
-    private List<ICommand> commandList = new ArrayList<>();
+    private List<ICommand> commandList;
 
     public Terminal(TouchPad touchPad, CardReader cardReader, ZS zs) {
+        commandList = new ArrayList<>();
         this.touchPad = touchPad;
         this.cardReader = cardReader;
         this.zs = zs;

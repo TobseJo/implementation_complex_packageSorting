@@ -1,7 +1,7 @@
 package sortingStation.sortingSysten.sortingTracks;
 
-import packageSorting.Package;
-import packageSorting.Type;
+import items.Package;
+import items.Type;
 import sortingStation.sortingSysten.SortingSystem;
 
 public class SortingTrack {
@@ -24,15 +24,6 @@ public class SortingTrack {
             getSuccessor().scan(currentPackage);
         } else {
             System.out.println("Unable to find the correct sortingTrack for the package: " + currentPackage.getId());
-        }
-    }
-
-    public String execute(String message) {
-        if (getSuccessor() != null) {
-            return getSuccessor().execute(message);
-        } else {
-            System.out.println("unable to find the correct ControlCenter for the message : " + message);
-            return null;
         }
     }
 

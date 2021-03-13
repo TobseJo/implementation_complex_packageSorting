@@ -7,7 +7,6 @@ import factory.RabinKarpFactory;
 import java.lang.reflect.Method;
 
 public class Scanner {
-
     private String usedAlgorithm = Configuration.instance.usedSearchAlgorithm;
 
     public boolean scanForExplosive(String txt) {
@@ -15,21 +14,17 @@ public class Scanner {
             int result = -2;
             String searchPattern = "exp!os:ve";
             Object searchAlgorithm;
-
             if (usedAlgorithm == "rk") {
                 searchAlgorithm = RabinKarpFactory.build();
                 Method searchMethod = searchAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class, int.class);
-
                 result = (int) searchMethod.invoke(usedAlgorithm, txt, searchPattern, 101);
             } else if (usedAlgorithm == "br") {
                 searchAlgorithm = BoyerMooreFactory.build();
                 Method searchMethod = searchAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class);
-
                 result = (int) searchMethod.invoke(searchAlgorithm, txt, searchPattern);
             } else {
                 throw new RuntimeException("Invalid Algorithm");
             }
-
             if (result != -1) {
                 return true;
             }

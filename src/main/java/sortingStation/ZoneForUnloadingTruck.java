@@ -1,13 +1,12 @@
 package sortingStation;
 
-import packageSorting.Truck;
+import items.Truck;
 
 public class ZoneForUnloadingTruck {
     private int id;
     private ZS zs;
     private Truck truck;
     private Sensor sensor;
-
 
     public ZoneForUnloadingTruck(int id, ZS zs) {
         this.id = id;

@@ -1,7 +1,7 @@
 package sortingStation.sortingSysten.sortingTracks;
 
-import packageSorting.Package;
-import packageSorting.Type;
+import items.Package;
+import items.Type;
 import sortingStation.sortingSysten.SortingSystem;
 
 public class ExpressSortingTrack extends SortingTrack {

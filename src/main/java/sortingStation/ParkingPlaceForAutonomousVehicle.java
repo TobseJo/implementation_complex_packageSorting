@@ -4,7 +4,6 @@ import com.google.common.eventbus.EventBus;
 import sortingStation.sortingSysten.SortingSystem;
 
 public class ParkingPlaceForAutonomousVehicle {
-
     private AutonomousVehicle[] autonomousVehicles;
 
     public ParkingPlaceForAutonomousVehicle(EventBus eventBus, ZS zs, SortingSystem sortingSystem) {

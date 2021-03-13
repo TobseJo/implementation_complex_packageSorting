@@ -1,4 +1,4 @@
-package packageSorting;
+package items;
 
 public enum Type {
     NORMAL,

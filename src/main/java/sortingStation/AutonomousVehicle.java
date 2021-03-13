@@ -5,7 +5,7 @@ import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
 import event.FinishedTruckUnload;
 import event.UnloadTruckAndLoadInterimStorage;
-import packageSorting.Pallet;
+import items.Pallet;
 import sortingStation.sortingSysten.SortingSystem;
 
 import java.util.ArrayList;

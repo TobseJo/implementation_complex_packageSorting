@@ -1,7 +1,7 @@
-package reporter;
+package configuration;
 
-import packageSorting.Package;
-import packageSorting.Type;
+import items.Package;
+import items.Type;
 
 import java.util.ArrayList;
 import java.util.Date;

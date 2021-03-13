@@ -15,9 +15,10 @@ public class SortingStation {
     private SortingSystem sortingSystem;
     private EventBus eventBus;
     private Terminal terminal;
-    private WaitingZone waitingZone = new WaitingZone();
+    private WaitingZone waitingZone;
 
     public SortingStation(ZS zs, ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle, ZoneForUnloadingTruck[] zonesForUnloadingTrucks, SortingSystem sortingSystem, EventBus eventBus, Terminal terminal, ArrayList<Employee> employees) {
+        waitingZone = new WaitingZone();
         this.zs = zs;
         this.parkingPlaceForAutonomousVehicle = parkingPlaceForAutonomousVehicle;
         this.zonesForUnloadingTrucks = zonesForUnloadingTrucks;

@@ -3,8 +3,8 @@ package sortingStation.sortingSysten.sortingTracks;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import event.SortEveryThing;
-import packageSorting.Package;
-import packageSorting.Type;
+import items.Package;
+import items.Type;
 import sortingStation.sortingSysten.SortingSystem;
 import sortingStation.sortingSysten.WarehouseTrack;
 

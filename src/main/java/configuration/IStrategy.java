@@ -1,7 +1,6 @@
 package configuration;
 
 public interface IStrategy {
-    public String encrypt(String magnetStripe);
-
-    public String decrypt(String encryptedMessage);
+    String encrypt(String magnetStripe);
+    String decrypt(String encryptedMessage);
 }

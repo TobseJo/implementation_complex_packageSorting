@@ -1,4 +1,4 @@
-package packageSorting;
+package items;
 
 public class Package {
 
@@ -18,7 +18,6 @@ public class Package {
 
     private char[][][] getContentArray(String content) {
         char[][][] contentArray = new char[25][10][10];
-
         int position = 0;
         for (int i = 0; i < 25; i++) {
             for (int j = 0; j < 10; j++) {
@@ -28,7 +27,6 @@ public class Package {
                 }
             }
         }
-
         return contentArray;
     }
 
@@ -48,7 +46,6 @@ public class Package {
 
     public String getContentAsString() {
         StringBuilder stringBuilder = new StringBuilder();
-
         for (char[][] chars : getContent()) {
             for (char[] chars1 : chars) {
                 for (char chars2 : chars1) {

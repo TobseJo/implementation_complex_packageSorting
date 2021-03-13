@@ -1,6 +1,6 @@
 package sortingStation.sortingSysten;
 
-import packageSorting.Pallet;
+import items.Pallet;
 
 public class InterimStorage {
     private Pallet[][] pallets;

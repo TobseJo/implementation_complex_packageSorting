@@ -1,11 +1,10 @@
-package packageSorting;
+package items;
 
 import configuration.Configuration;
 
 import java.util.LinkedList;
 
 public class Pallet {
-
     private int id;
     private Box[][] boxes;
 
@@ -21,29 +20,24 @@ public class Pallet {
 
     private Box[][] getBoxes(LinkedList<Box> boxList) {
         Box[][] boxes = new Box[4][3];
-
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 3; j++) {
                 boxes[i][j] = boxList.poll();
             }
         }
-
         return boxes;
     }
 
     public String getBoxesAsString() {
         StringBuilder stringBuilder = new StringBuilder();
-
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 3; j++) {
                 stringBuilder.append(getId() + "," + i + "," + j + "," + getBoxes()[i][j].getId());
                 stringBuilder.append(Configuration.instance.lineSeparator);
             }
         }
-
         return stringBuilder.toString();
     }
-
 
     public Box[][] getBoxes() {
         return boxes;
