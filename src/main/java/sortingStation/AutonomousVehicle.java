@@ -42,7 +42,7 @@ public class AutonomousVehicle {
         zs.post(new FinishedTruckUnload());
     }
 
-    private void searchForFreeParkingSpace(){
+    public void searchForFreeParkingSpace(){
         for (var parkingSpace : parkingPlaceForAutonomousVehicle.getAutonomousVehicles()) {
             if(parkingSpace == null){
                 parkingSpace = this;
@@ -51,7 +51,7 @@ public class AutonomousVehicle {
         }
     }
 
-    private void loadInterimStorage() {
+    public void loadInterimStorage() {
         for (int i = 0; i < Configuration.instance.numberOfPalletsPerTruck / 2; i++) {
             for (int j = 0; j < 2; j++) {
                 sortingSystem.getInterimStorage().getPallets()[i][j] = palletsFromTruck.remove(0);
@@ -59,11 +59,20 @@ public class AutonomousVehicle {
         }
     }
 
-    private void unloadTruck() {
+    public void unloadTruck() {
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < Configuration.instance.numberOfPalletsPerTruck / 2; j++) {
                 palletsFromTruck.add(zoneForUnloadingTruck.getTruck().getTrailer().getPallets()[i][j]);
+                zoneForUnloadingTruck.getTruck().getTrailer().getPallets()[i][j] = null;
             }
         }
+    }
+
+    public void setZoneForUnloadingTruck(ZoneForUnloadingTruck zoneForUnloadingTruck) {
+        this.zoneForUnloadingTruck = zoneForUnloadingTruck;
+    }
+
+    public ZoneForUnloadingTruck getZoneForUnloadingTruck() {
+        return zoneForUnloadingTruck;
     }
 }

@@ -4,6 +4,7 @@ import configuration.CsvFileGenerator;
 import configuration.ObjectGenerator;
 import org.junit.jupiter.api.*;
 import packageSorting.*;
+import sortingStation.AutonomousVehicle;
 import sortingStation.SortingStation;
 import sortingStation.ZoneForUnloadingTruck;
 import sortingStation.sortingSysten.sortingTracks.SortingTrack;
@@ -26,7 +27,7 @@ public class TestApplication {
 
     @Test
     @Order(1)
-    public void idCard(){
+    public void idCard() {
         sortingStation.getTerminal().getCardReader().readCardFromEmployee(sortingStation.getEmployees().get(0));
         sortingStation.getTerminal().getCardReader().readCardFromEmployee(sortingStation.getEmployees().get(1));
         sortingStation.getTerminal().getCardReader().readCardFromEmployee(sortingStation.getEmployees().get(2));
@@ -65,8 +66,8 @@ public class TestApplication {
             Truck truck = sortingStation.getWaitingZone().getTrucks().peek();
 
             Assertions.assertNotNull(truck);
-            for (int j = 0; j < 2; j++){
-                for (int k = 0; k < 5; k++){
+            for (int j = 0; j < 2; j++) {
+                for (int k = 0; k < 5; k++) {
                     Assertions.assertNotNull(truck.getTrailer().getPallets()[j][k]);
                     for (int l = 0; l < 4; l++) {
                         for (int m = 0; m < 3; m++) {
@@ -90,7 +91,7 @@ public class TestApplication {
         for (var zone : sortingStation.getZonesForUnloadingTrucks()) {
             for (int i = 0; i < 2; i++) {
                 for (int j = 0; j < 5; j++) {
-                    if(zone.getTruck() != null){
+                    if (zone.getTruck() != null) {
                         Assertions.assertNull(zone.getTruck().getTrailer().getPallets()[i][j]);
                     }
                 }
@@ -102,10 +103,10 @@ public class TestApplication {
     @Order(5)
     public void shutdownCommand() {
         sortingStation.getTerminal().getTouchPad().takeCommand(new ShutdownCommand(), sortingStation.getEmployees().get(0));
-        for(ZoneForUnloadingTruck zoneForUnloadingTruck : sortingStation.getZonesForUnloadingTrucks()){
+        for (ZoneForUnloadingTruck zoneForUnloadingTruck : sortingStation.getZonesForUnloadingTrucks()) {
             Assertions.assertEquals(zoneForUnloadingTruck.getSensor().getState().getClass(), Locked.class);
         }
-        for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()){
+        for (SortingTrack sortingTrack : sortingStation.getSortingSystem().getSortingTracks()) {
             Assertions.assertNull(sortingTrack.getScanner().getUsedAlgorithm());
         }
     }
@@ -137,5 +138,58 @@ public class TestApplication {
         sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
         sortingStation.getTerminal().getTouchPad().takeCommand(new ShowStatisticsCommand(), sortingStation.getEmployees().get(0));
 
+    }
+
+    @Test
+    @Order(9)
+    public void palletsGetTransportedToInterimStorage() {
+        int palletCtr = 0;
+        sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
+        sortingStation.getTerminal().getTouchPad().takeCommand(new LockCommand(), sortingStation.getEmployees().get(0));
+        sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
+
+        int randomNumber = (int) (Math.random() * sortingStation.getZonesForUnloadingTrucks().length);
+        ZoneForUnloadingTruck zone = sortingStation.getZonesForUnloadingTrucks()[randomNumber];
+        zone.setTruck(sortingStation.getWaitingZone().getTrucks().pop());
+
+        AutonomousVehicle autonomousVehicle = null;
+        randomNumber = 0;
+        while (autonomousVehicle == null) {
+            randomNumber = (int) (Math.random() * 5);
+            autonomousVehicle = sortingStation.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber];
+        }
+        sortingStation.getParkingPlaceForAutonomousVehicle().getAutonomousVehicles()[randomNumber] = null;
+        for (var currentZone : sortingStation.getZonesForUnloadingTrucks()) {
+            if (currentZone.getTruck() != null) {
+                zone = currentZone;
+                break;
+            }
+        }
+        autonomousVehicle.setZoneForUnloadingTruck(zone);
+        autonomousVehicle.unloadTruck();
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 5; j++) {
+                Pallet pallet = autonomousVehicle.getZoneForUnloadingTruck().getTruck().getTrailer().getPallets()[i][j];
+                if (pallet != null) {
+                    palletCtr++;
+                }
+
+            }
+        }
+        Assertions.assertEquals(0, palletCtr);
+
+        autonomousVehicle.getZoneForUnloadingTruck().setTruck(null);
+        autonomousVehicle.loadInterimStorage();
+        autonomousVehicle.searchForFreeParkingSpace();
+
+        for (var yeah : sortingStation.getSortingSystem().getInterimStorage().getPallets()) {
+            for (var yeah2 : yeah) {
+                if (yeah2 != null) {
+                    palletCtr++;
+                }
+            }
+        }
+        Assertions.assertEquals(10, palletCtr);
     }
 }
