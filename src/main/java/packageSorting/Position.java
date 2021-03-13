@@ -4,7 +4,7 @@ public class Position {
 
     private Box[] boxes;
 
-    public Position(){
+    public Position() {
         boxes = new Box[3];
     }
 }

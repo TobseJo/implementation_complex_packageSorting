@@ -9,17 +9,17 @@ public class Pallet {
     private int id;
     private Box[][] boxes;
 
-    public Pallet(int id, LinkedList<Box> boxList){
+    public Pallet(int id, LinkedList<Box> boxList) {
         this.id = id;
         this.boxes = getBoxes(boxList);
     }
 
-    public Pallet(int id, Box[][] boxes){
+    public Pallet(int id, Box[][] boxes) {
         this.id = id;
         this.boxes = boxes;
     }
 
-    private Box[][] getBoxes(LinkedList<Box> boxList){
+    private Box[][] getBoxes(LinkedList<Box> boxList) {
         Box[][] boxes = new Box[4][3];
 
         for (int i = 0; i < 4; i++) {
@@ -31,7 +31,7 @@ public class Pallet {
         return boxes;
     }
 
-    public String getBoxesAsString(){
+    public String getBoxesAsString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < 4; i++) {

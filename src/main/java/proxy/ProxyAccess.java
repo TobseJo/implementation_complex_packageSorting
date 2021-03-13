@@ -4,8 +4,8 @@ import command.ICommand;
 import command.NextCommand;
 import command.ShowStatisticsCommand;
 import command.ShutdownCommand;
-import sortingStation.Terminal;
 import employee.*;
+import sortingStation.Terminal;
 
 public class ProxyAccess implements IAccess {
     private Employee employee;

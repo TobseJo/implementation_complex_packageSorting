@@ -13,7 +13,7 @@ public class Report {
     private final HashMap<Type, Integer> amountOfScannedPackets;
     private final ArrayList<Package> dangerousPackages;
 
-    private Report(Builder builder){
+    private Report(Builder builder) {
         date = builder.date;
         amountOfTruck = builder.amountOfTruck;
         amountOfScannedPackets = builder.amountOfScannedPackets;
@@ -36,33 +36,33 @@ public class Report {
         return amountOfTruck;
     }
 
-    public static class Builder{
+    public static class Builder {
         private Date date;
         private int amountOfTruck;
         private HashMap<Type, Integer> amountOfScannedPackets;
         private ArrayList<Package> dangerousPackages;
 
-        public Builder date(Date date){
+        public Builder date(Date date) {
             this.date = date;
             return this;
         }
 
-        public Builder amountOfTruck(int amountOfTruck){
+        public Builder amountOfTruck(int amountOfTruck) {
             this.amountOfTruck = amountOfTruck;
             return this;
         }
 
-        public Builder amountOfScannedPackets(HashMap<Type, Integer> amountOfScannedPackets){
+        public Builder amountOfScannedPackets(HashMap<Type, Integer> amountOfScannedPackets) {
             this.amountOfScannedPackets = amountOfScannedPackets;
             return this;
         }
 
-        public Builder dangerousPackages(ArrayList<Package> dangerousPackages){
+        public Builder dangerousPackages(ArrayList<Package> dangerousPackages) {
             this.dangerousPackages = dangerousPackages;
             return this;
         }
 
-        public Report build(){
+        public Report build() {
             return new Report(this);
         }
     }

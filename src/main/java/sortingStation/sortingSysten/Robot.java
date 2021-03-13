@@ -1,15 +1,12 @@
 package sortingStation.sortingSysten;
 
-import org.checkerframework.checker.units.qual.A;
-import sortingStation.ZS;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import event.UnloadBoxOfPallets;
 import packageSorting.Box;
-import packageSorting.Pallet;
 import packageSorting.Package;
-
-import java.util.ArrayList;
+import packageSorting.Pallet;
+import sortingStation.ZS;
 
 public class Robot {
     private EventBus eventBus;
@@ -34,11 +31,11 @@ public class Robot {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 2; j++) {
                 Pallet currentPallet = sortingSystem.getInterimStorage().getPallets()[i][j];
-                if(currentPallet != null){
+                if (currentPallet != null) {
                     for (int k = 0; k < 4; k++) {
                         for (int l = 0; l < 3; l++) {
                             Box currentBox = currentPallet.getBoxes()[k][l];
-                            if(currentBox != null){
+                            if (currentBox != null) {
 
                                 for (int m = 0; m < 5; m++) {
                                     for (int n = 0; n < 2; n++) {
@@ -64,20 +61,20 @@ public class Robot {
 
     private int putCurrentPackageToWarehouseTrack(Package currentPackage, int trackCtr) {
         int breakCtr = 0;
-        if(!sortingSystem.getWarehouseTracks()[trackCtr].addToPackageTrack(currentPackage)){
-            if(breakCtr < 7){
-                setTrackCtr(trackCtr);
-            }else{
-                return -1;
-            }
+        sortingSystem.getWarehouseTracks()[trackCtr].addToPackageTrack(currentPackage);
+        if (breakCtr < 7) {
+            setTrackCtr(trackCtr);
+        } else {
+            return -1;
         }
+
         return setTrackCtr(trackCtr);
     }
 
-    private int setTrackCtr(int trackCtr){
-        if(trackCtr < 7){
+    private int setTrackCtr(int trackCtr) {
+        if (trackCtr < 7) {
             trackCtr++;
-        }else {
+        } else {
             trackCtr = 0;
         }
         return trackCtr;

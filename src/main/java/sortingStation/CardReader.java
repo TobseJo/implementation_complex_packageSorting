@@ -26,7 +26,7 @@ public class CardReader {
                     break;
                 }
             }
-            if(validPin == employee.getPin()){
+            if (validPin == employee.getPin()) {
                 System.out.println("Pin is correct!");
             }
 
@@ -54,10 +54,10 @@ public class CardReader {
         }
     }
 
-    private String readMagnetStripe(IDCard idCard){
+    private String readMagnetStripe(IDCard idCard) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 100; i++) {
-            if(idCard.getMagnetStripe()[i][0] != 0){
+            if (idCard.getMagnetStripe()[i][0] != 0) {
                 stringBuilder.append(idCard.getMagnetStripe()[i][0]);
             }
         }

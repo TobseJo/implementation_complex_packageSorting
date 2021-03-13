@@ -1,7 +1,7 @@
 package event;
 
 public class Lock {
-    public String toString(){
+    public String toString() {
         return "Event: Lock";
     }
 }

@@ -10,7 +10,7 @@ public class Scanner {
 
     private String usedAlgorithm = Configuration.instance.usedSearchAlgorithm;
 
-    public boolean scanForExplosive(String txt){
+    public boolean scanForExplosive(String txt) {
         try {
             int result = -2;
             String searchPattern = "exp!os:ve";
@@ -33,17 +33,17 @@ public class Scanner {
             if (result != -1) {
                 return true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    public void setUsedAlgorithm(String usedAlgorithm) {
-        this.usedAlgorithm = usedAlgorithm;
-    }
-
     public Object getUsedAlgorithm() {
         return usedAlgorithm;
+    }
+
+    public void setUsedAlgorithm(String usedAlgorithm) {
+        this.usedAlgorithm = usedAlgorithm;
     }
 }

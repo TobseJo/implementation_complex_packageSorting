@@ -1,6 +1,5 @@
 package packageSorting;
 
-import packageSorting.Package;
 import java.util.LinkedList;
 
 public class Box {
@@ -27,7 +26,7 @@ public class Box {
         return packages;
     }
 
-    public String getPackagesAsString(){
+    public String getPackagesAsString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Package[][] packages : getPackages()) {
@@ -39,7 +38,7 @@ public class Box {
             }
         }
 
-        stringBuilder.deleteCharAt(stringBuilder.length()-1);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         return stringBuilder.toString();
     }
 

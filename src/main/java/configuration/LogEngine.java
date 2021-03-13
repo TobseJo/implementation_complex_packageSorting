@@ -1,7 +1,5 @@
 package configuration;
 
-import configuration.Configuration;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;

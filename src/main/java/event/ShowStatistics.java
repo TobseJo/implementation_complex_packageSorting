@@ -1,7 +1,7 @@
 package event;
 
 public class ShowStatistics {
-    public String toString(){
+    public String toString() {
         return "Event: ShowStatistics";
     }
 }

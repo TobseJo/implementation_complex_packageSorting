@@ -1,8 +1,8 @@
 package sortingStation;
 
 import command.ICommand;
-import proxy.ProxyAccess;
 import employee.Employee;
+import proxy.ProxyAccess;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class Terminal {
         touchPad.setTerminal(this);
     }
 
-    public void tryToTakeCommand(ICommand command, Employee employee){
+    public void tryToTakeCommand(ICommand command, Employee employee) {
         ProxyAccess proxyAccess = new ProxyAccess(employee, command, this);
         proxyAccess.grant();
     }

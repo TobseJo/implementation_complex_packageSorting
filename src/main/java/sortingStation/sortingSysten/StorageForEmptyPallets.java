@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class StorageForEmptyPallets {
     private ArrayList<Pallet> pallets;
 
-    public StorageForEmptyPallets(){
+    public StorageForEmptyPallets() {
         pallets = new ArrayList<>();
     }
 

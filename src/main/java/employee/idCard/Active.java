@@ -1,6 +1,6 @@
 package employee.idCard;
 
-public class Active implements ICardState{
+public class Active implements ICardState {
 
     @Override
     public void promote(IDCard idCard) {

@@ -9,7 +9,7 @@ public class ZoneForUnloadingTruck {
     private Sensor sensor;
 
 
-    public ZoneForUnloadingTruck(int id, ZS zs){
+    public ZoneForUnloadingTruck(int id, ZS zs) {
         this.id = id;
         this.zs = zs;
         sensor = new Sensor(zs, id);
@@ -20,12 +20,12 @@ public class ZoneForUnloadingTruck {
         sensor.informZsTruckArriving();
     }
 
-    public void setTruck(Truck truck) {
-        this.truck = truck;
-    }
-
     public Truck getTruck() {
         return truck;
+    }
+
+    public void setTruck(Truck truck) {
+        this.truck = truck;
     }
 
     public Sensor getSensor() {

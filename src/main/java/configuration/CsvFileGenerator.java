@@ -1,9 +1,9 @@
 package configuration;
 
-import packageSorting.Pallet;
-import packageSorting.Truck;
 import packageSorting.Box;
 import packageSorting.Package;
+import packageSorting.Pallet;
+import packageSorting.Truck;
 
 import java.util.*;
 
@@ -21,7 +21,7 @@ public class CsvFileGenerator {
         this.trucks = new ArrayList<>();
     }
 
-    public void generateAllFiles(){
+    public void generateAllFiles() {
         generateBasePackageFile();
         generateBaseBoxFile();
         generateBasePalletFile();
@@ -82,7 +82,7 @@ public class CsvFileGenerator {
         LogEngine.instance.close();
     }
 
-    private void generateBasePalletFile(){
+    private void generateBasePalletFile() {
         LogEngine.instance.init(Configuration.instance.pathToDataDirectory + "base_pallet.csv");
 
         Iterator<Box> iteratorBox = boxes.iterator();
@@ -152,7 +152,12 @@ public class CsvFileGenerator {
 
             stringBuilder.replace(position, position + exp.length(), exp);
             System.out.println("Added " + exp + " at package: " + packageNumber + " at position: " + position);
+        } else {
+            if (stringBuilder.toString().contains(Configuration.instance.explosiveString)) {
+                return getContent(packageNumber);
+            }
         }
+
         return stringBuilder.toString();
     }
 
@@ -198,7 +203,7 @@ public class CsvFileGenerator {
         return packagesPerBox;
     }
 
-    private LinkedList<Box> getBoxesPerPallet(Iterator<Box> iterator){
+    private LinkedList<Box> getBoxesPerPallet(Iterator<Box> iterator) {
         LinkedList<Box> boxesPerPallet = new LinkedList<>();
 
         for (int j = 0; j < Configuration.instance.numberOfBoxesPerPallet; j++) {
@@ -208,7 +213,7 @@ public class CsvFileGenerator {
         return boxesPerPallet;
     }
 
-    private LinkedList<Pallet> getPalletPerTrailer(Iterator<Pallet> iterator){
+    private LinkedList<Pallet> getPalletPerTrailer(Iterator<Pallet> iterator) {
         LinkedList<Pallet> palletsPerTrailer = new LinkedList<>();
 
         for (int j = 0; j < Configuration.instance.numberOfPalletsPerTruck; j++) {

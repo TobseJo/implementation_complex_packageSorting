@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class StorageForEmptyBoxes {
     private ArrayList<Box> boxes;
 
-    public StorageForEmptyBoxes(){
+    public StorageForEmptyBoxes() {
         boxes = new ArrayList<>();
     }
 

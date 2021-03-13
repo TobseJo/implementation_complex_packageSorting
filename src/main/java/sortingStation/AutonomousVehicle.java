@@ -1,12 +1,12 @@
 package sortingStation;
 
-import sortingStation.sortingSysten.SortingSystem;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
 import event.FinishedTruckUnload;
 import event.UnloadTruckAndLoadInterimStorage;
 import packageSorting.Pallet;
+import sortingStation.sortingSysten.SortingSystem;
 
 import java.util.ArrayList;
 
@@ -42,9 +42,9 @@ public class AutonomousVehicle {
         zs.post(new FinishedTruckUnload());
     }
 
-    public void searchForFreeParkingSpace(){
+    public void searchForFreeParkingSpace() {
         for (var parkingSpace : parkingPlaceForAutonomousVehicle.getAutonomousVehicles()) {
-            if(parkingSpace == null){
+            if (parkingSpace == null) {
                 parkingSpace = this;
                 break;
             }
@@ -68,11 +68,11 @@ public class AutonomousVehicle {
         }
     }
 
-    public void setZoneForUnloadingTruck(ZoneForUnloadingTruck zoneForUnloadingTruck) {
-        this.zoneForUnloadingTruck = zoneForUnloadingTruck;
-    }
-
     public ZoneForUnloadingTruck getZoneForUnloadingTruck() {
         return zoneForUnloadingTruck;
+    }
+
+    public void setZoneForUnloadingTruck(ZoneForUnloadingTruck zoneForUnloadingTruck) {
+        this.zoneForUnloadingTruck = zoneForUnloadingTruck;
     }
 }

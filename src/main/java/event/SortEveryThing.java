@@ -5,11 +5,11 @@ import sortingStation.sortingSysten.SortingSystem;
 public class SortEveryThing {
     private SortingSystem sortingSystem;
 
-    public SortEveryThing(SortingSystem sortingSystem){
+    public SortEveryThing(SortingSystem sortingSystem) {
         this.sortingSystem = sortingSystem;
     }
 
-    public String toString(){
+    public String toString() {
         return "Event: SortEveryThing";
     }
 

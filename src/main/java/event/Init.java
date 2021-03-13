@@ -1,7 +1,7 @@
 package event;
 
 public class Init {
-    public String toString(){
+    public String toString() {
         return "Event: Init";
     }
 }

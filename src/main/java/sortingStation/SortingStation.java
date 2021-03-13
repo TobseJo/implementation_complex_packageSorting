@@ -1,8 +1,8 @@
 package sortingStation;
 
-import sortingStation.sortingSysten.SortingSystem;
 import com.google.common.eventbus.EventBus;
 import employee.Employee;
+import sortingStation.sortingSysten.SortingSystem;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class SortingStation {
     private Terminal terminal;
     private WaitingZone waitingZone = new WaitingZone();
 
-    public SortingStation(ZS zs, ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle, ZoneForUnloadingTruck[] zonesForUnloadingTrucks, SortingSystem sortingSystem, EventBus eventBus, Terminal terminal, ArrayList<Employee> employees){
+    public SortingStation(ZS zs, ParkingPlaceForAutonomousVehicle parkingPlaceForAutonomousVehicle, ZoneForUnloadingTruck[] zonesForUnloadingTrucks, SortingSystem sortingSystem, EventBus eventBus, Terminal terminal, ArrayList<Employee> employees) {
         this.zs = zs;
         this.parkingPlaceForAutonomousVehicle = parkingPlaceForAutonomousVehicle;
         this.zonesForUnloadingTrucks = zonesForUnloadingTrucks;
@@ -33,16 +33,16 @@ public class SortingStation {
         return employees;
     }
 
+    public void setEmployees(ArrayList<Employee> employees) {
+        this.employees = employees;
+    }
+
     public SortingSystem getSortingSystem() {
         return sortingSystem;
     }
 
     public ParkingPlaceForAutonomousVehicle getParkingPlaceForAutonomousVehicle() {
         return parkingPlaceForAutonomousVehicle;
-    }
-
-    public void setEmployees(ArrayList<Employee> employees) {
-        this.employees = employees;
     }
 
     public ZoneForUnloadingTruck[] getZonesForUnloadingTrucks() {

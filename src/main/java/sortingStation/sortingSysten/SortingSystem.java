@@ -71,12 +71,12 @@ public class SortingSystem {
         return warehouseTracks;
     }
 
-    public SortingTrack[] getSortingTracks() {
-        return sortingTracks;
-    }
-
     public void setWarehouseTracks(WarehouseTrack[] warehouseTracks) {
         this.warehouseTracks = warehouseTracks;
+    }
+
+    public SortingTrack[] getSortingTracks() {
+        return sortingTracks;
     }
 
     public void setSortingTracks(SortingTrack[] sortingTracks) {
@@ -91,12 +91,12 @@ public class SortingSystem {
         state.unlock(this);
     }
 
-    public void setState(IState state) {
-        this.state = state;
-    }
-
     public IState getState() {
         return state;
+    }
+
+    public void setState(IState state) {
+        this.state = state;
     }
 
     public ArrayList<Package> getPackagesWithExplosive() {

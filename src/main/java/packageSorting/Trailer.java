@@ -8,16 +8,16 @@ public class Trailer {
 
     private Pallet[][] pallets;
 
-    public Trailer(LinkedList<Pallet> palletList){
+    public Trailer(LinkedList<Pallet> palletList) {
         this.pallets = getPallets(palletList);
     }
 
-    public Trailer(Pallet[][] pallets){
+    public Trailer(Pallet[][] pallets) {
         this.pallets = pallets;
     }
 
 
-    private Pallet[][] getPallets(LinkedList<Pallet> palletList){
+    private Pallet[][] getPallets(LinkedList<Pallet> palletList) {
         Pallet[][] pallets = new Pallet[2][5];
 
         for (int i = 0; i < 2; i++) {
@@ -30,13 +30,13 @@ public class Trailer {
     }
 
 
-    public String getPalletsPerTrailer(Truck truck){
+    public String getPalletsPerTrailer(Truck truck) {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < 2; i++) {
             String position = "right";
 
-            if(i == 0){
+            if (i == 0) {
                 position = "left";
             }
 

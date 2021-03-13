@@ -1,13 +1,13 @@
 package sortingStation;
 
-import command.*;
+import command.ICommand;
 import employee.Employee;
 
 public class TouchPad {
 
     private Terminal terminal;
 
-    public void takeCommand(ICommand command, Employee employee){
+    public void takeCommand(ICommand command, Employee employee) {
         terminal.tryToTakeCommand(command, employee);
     }
 

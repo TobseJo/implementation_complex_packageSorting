@@ -10,7 +10,10 @@ import packageSorting.Truck;
 import sortingStation.*;
 import sortingStation.sortingSysten.SortingSystem;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class ObjectGenerator {
     private ZS zs;
@@ -35,7 +38,7 @@ public class ObjectGenerator {
         truckDetectors = new TruckDetector[7];
         for (int i = 0; i < 7; i++) {
             truckDetectors[i] = new TruckDetector();
-            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i+1, zs);
+            zonesForUnloadingTrucks[i] = new ZoneForUnloadingTruck(i + 1, zs);
             truckDetectors[i].addListener(zonesForUnloadingTrucks[i].getSensor());
         }
         sortingSystem = new SortingSystem(zs);
@@ -98,11 +101,11 @@ public class ObjectGenerator {
     private ArrayList<Employee> generateAllEmployees() {
         ArrayList<Employee> employees = new ArrayList<>();
 
-        Employee employee1 = new Supervisor(1, "Johannes Hinkler", true,1234, 123456);
+        Employee employee1 = new Supervisor(1, "Johannes Hinkler", true, 1234, 123456);
         employee1.setIdCard(generateIDCardForEmployee(employee1));
         employees.add(employee1);
 
-        Employee employee2 = new Administrator(2, "Peter Lustig", Profile.A,1212, 112233);
+        Employee employee2 = new Administrator(2, "Peter Lustig", Profile.A, 1212, 112233);
         employee2.setIdCard(generateIDCardForEmployee(employee2));
         employees.add(employee2);
 

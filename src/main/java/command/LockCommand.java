@@ -1,9 +1,9 @@
 package command;
 
-import sortingStation.ZS;
 import event.Lock;
+import sortingStation.ZS;
 
-public class LockCommand implements ICommand{
+public class LockCommand implements ICommand {
     @Override
     public void execute(ZS zs) {
         zs.post(new Lock());

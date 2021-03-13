@@ -7,12 +7,12 @@ public class Truck {
     private String id;
     private Trailer trailer;
 
-    public Truck(String id, LinkedList<Pallet> pallets){
+    public Truck(String id, LinkedList<Pallet> pallets) {
         this.id = id;
         this.trailer = new Trailer(pallets);
     }
 
-    public Truck (String id, Pallet[][] pallets){
+    public Truck(String id, Pallet[][] pallets) {
         this.id = id;
         this.trailer = new Trailer(pallets);
     }

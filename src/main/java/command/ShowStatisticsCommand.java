@@ -1,7 +1,7 @@
 package command;
 
-import sortingStation.ZS;
 import event.ShowStatistics;
+import sortingStation.ZS;
 
 public class ShowStatisticsCommand implements ICommand {
 

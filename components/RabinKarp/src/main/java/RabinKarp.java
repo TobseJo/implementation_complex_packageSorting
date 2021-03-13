@@ -1,14 +1,16 @@
-public class RabinKarp{
-
-    private static final RabinKarp instance = new RabinKarp();
-
-    public Port port;
+public class RabinKarp {
 
     // d is the number of characters in the input alphabet
     public final static int d = 256;
+    private static final RabinKarp instance = new RabinKarp();
+    public Port port;
 
-    public RabinKarp(){
+    public RabinKarp() {
         port = new Port();
+    }
+
+    public static RabinKarp getInstance() {
+        return instance;
     }
 
     /* pat -> pattern
@@ -67,13 +69,9 @@ public class RabinKarp{
         return -1;
     }
 
-    public static RabinKarp getInstance(){
-        return instance;
-    }
+    public class Port implements IRabinKarp {
 
-    public class Port implements IRabinKarp{
-
-        public int search(String pat, String txt, int q){
+        public int search(String pat, String txt, int q) {
             return innerSearch(pat, txt, q);
         }
     }

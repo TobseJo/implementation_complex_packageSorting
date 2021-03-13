@@ -1,14 +1,12 @@
 package configuration;
 
-import employee.idCard.IDCard;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.Base64;
 
-public class DES implements IStrategy{
+public class DES implements IStrategy {
 
     private static SecretKeySpec secretKey;
 

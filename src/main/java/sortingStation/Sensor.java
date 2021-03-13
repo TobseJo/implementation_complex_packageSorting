@@ -1,15 +1,15 @@
 package sortingStation;
 
-import sortingStation.sortingSysten.state.Unlocked;
 import event.TruckArrivedSendVehicle;
 import sortingStation.sortingSysten.state.IState;
+import sortingStation.sortingSysten.state.Unlocked;
 
 public class Sensor implements ITruckArriving {
     private ZS zs;
     private int id;
     private IState state;
 
-    public Sensor(ZS zs, int id){
+    public Sensor(ZS zs, int id) {
         this.zs = zs;
         this.id = id;
         this.state = new Unlocked();
@@ -17,20 +17,20 @@ public class Sensor implements ITruckArriving {
 
     @Override
     public void informZsTruckArriving() {
-        if(state instanceof Unlocked) {
+        if (state instanceof Unlocked) {
             System.out.println("Truck is arriving!");
             zs.getSortingStation().increaseAmountOfTrucks();
             zs.post(new TruckArrivedSendVehicle(id));
-        }else {
+        } else {
             throw new RuntimeException("Sensor State is locked");
         }
     }
 
-    public void setState(IState state) {
-        this.state = state;
-    }
-
     public IState getState() {
         return state;
+    }
+
+    public void setState(IState state) {
+        this.state = state;
     }
 }

@@ -8,7 +8,7 @@ public class WaitingZone {
 
     private Stack<Truck> trucks;
 
-    public WaitingZone(){
+    public WaitingZone() {
         trucks = new Stack<>();
     }
 

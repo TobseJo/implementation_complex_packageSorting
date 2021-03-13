@@ -9,14 +9,14 @@ public abstract class Employee {
     protected int pin;
     protected int superPin;
 
-    public Employee(int id, String name, int pin, int superPin){
+    public Employee(int id, String name, int pin, int superPin) {
         this.id = id;
         this.name = name;
         this.pin = pin;
         this.superPin = superPin;
     }
 
-    public IDCard swipeCard(){
+    public IDCard swipeCard() {
         return idCard;
     }
 

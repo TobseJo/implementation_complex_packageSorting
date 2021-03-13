@@ -8,6 +8,10 @@ public class BoyerMoore {
         port = new Port();
     }
 
+    public static BoyerMoore getInstance() {
+        return instance;
+    }
+
     public int innerSearch(String text, String pattern) {
         int[] last = buildLast(pattern);
         int n = text.length();
@@ -50,10 +54,6 @@ public class BoyerMoore {
         }
 
         return last;
-    }
-
-    public static BoyerMoore getInstance() {
-        return instance;
     }
 
     public class Port implements IBoyerMoore {

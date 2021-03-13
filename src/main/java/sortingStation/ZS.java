@@ -1,10 +1,5 @@
 package sortingStation;
 
-import packageSorting.Package;
-import sortingStation.sortingSysten.sortingTracks.NormalSortingTrack;
-import sortingStation.sortingSysten.state.Locked;
-import reporter.Report;
-import sortingStation.sortingSysten.sortingTracks.SortingTrack;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
@@ -12,7 +7,12 @@ import configuration.LogEngine;
 import configuration.ObjectGenerator;
 import event.Shutdown;
 import event.*;
+import packageSorting.Package;
 import packageSorting.Type;
+import reporter.Report;
+import sortingStation.sortingSysten.sortingTracks.NormalSortingTrack;
+import sortingStation.sortingSysten.sortingTracks.SortingTrack;
+import sortingStation.sortingSysten.state.Locked;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -155,16 +155,16 @@ public class ZS {
         LogEngine.instance.close();
     }
 
-    public void setSortingStation(SortingStation sortingStation) {
-        this.sortingStation = sortingStation;
-    }
-
     public EventBus getEventBus() {
         return eventBus;
     }
 
     public SortingStation getSortingStation() {
         return sortingStation;
+    }
+
+    public void setSortingStation(SortingStation sortingStation) {
+        this.sortingStation = sortingStation;
     }
 
     public Report getReport() {

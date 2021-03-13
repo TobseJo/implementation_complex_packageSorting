@@ -1,13 +1,15 @@
 package configuration;
 
 import packageSorting.Box;
+import packageSorting.Package;
 import packageSorting.Pallet;
 import packageSorting.Truck;
-import packageSorting.Package;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Stack;
 
 
 public class FileReader {
@@ -72,7 +74,7 @@ public class FileReader {
             for (int i = 0; i < Configuration.instance.numberOfPallets; i++) {
                 int palletID = 0;
                 boxesPerPallet = new Box[4][3];
-                
+
                 for (int j = 0; j < Configuration.instance.numberOfBoxesPerPallet; j++) {
                     line = br.readLine();
                     String[] content = line.split(",");
@@ -113,7 +115,7 @@ public class FileReader {
                     truckID = content[0];
                     int side = 0;
 
-                    switch (content[1]){
+                    switch (content[1]) {
                         case "left":
                             side = 0;
                             break;

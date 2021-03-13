@@ -1,7 +1,7 @@
 package employee;
 
 
-public class Supervisor extends Employee{
+public class Supervisor extends Employee {
     private boolean isSenior;
 
     public Supervisor(int id, String name, boolean isSenior, int pin, int superPin) {

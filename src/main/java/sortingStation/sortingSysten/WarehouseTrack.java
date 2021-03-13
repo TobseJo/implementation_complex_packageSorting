@@ -1,11 +1,10 @@
 package sortingStation.sortingSysten;
 
-import sortingStation.ZS;
 import packageSorting.Package;
+import sortingStation.ZS;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class WarehouseTrack {
@@ -18,21 +17,19 @@ public class WarehouseTrack {
         this.zs = zs;
         packageTrack = new LinkedList<>();
         listeners = new ArrayList<>();
-        listeners.add( new SensorForFilling(zs, id));
+        listeners.add(new SensorForFilling(zs, id));
         isFull = false;
     }
 
-    public boolean addToPackageTrack(Package currentPackage) {
+    public void addToPackageTrack(Package currentPackage) {
         if (!isFull) {
             packageTrack.add(currentPackage);
             if (packageTrack.size() < 600) {
-
-            }else {
+            } else {
                 notifyViaEventbus();
                 isFull = true;
             }
         }
-        return isFull;
     }
 
     public void addListener(ITrackObserver listener) {

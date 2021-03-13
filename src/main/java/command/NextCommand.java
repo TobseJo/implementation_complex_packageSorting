@@ -1,9 +1,9 @@
 package command;
 
-import sortingStation.ZS;
 import event.Next;
+import sortingStation.ZS;
 
-public class NextCommand implements ICommand{
+public class NextCommand implements ICommand {
 
     @Override
     public void execute(ZS zs) {

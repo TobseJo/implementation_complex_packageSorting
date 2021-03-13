@@ -8,7 +8,7 @@ public class Package {
     private Type type;
     private double weight;
 
-    public Package(String id, String content, String zipCode, String type, String weight){
+    public Package(String id, String content, String zipCode, String type, String weight) {
         this.id = id;
         this.content = getContentArray(content);
         this.zipCode = Integer.valueOf(zipCode);
@@ -16,7 +16,7 @@ public class Package {
         this.weight = Double.valueOf(weight);
     }
 
-    private char[][][] getContentArray(String content){
+    private char[][][] getContentArray(String content) {
         char[][][] contentArray = new char[25][10][10];
 
         int position = 0;
@@ -32,8 +32,8 @@ public class Package {
         return contentArray;
     }
 
-    private Type getType(String type){
-        switch (type){
+    private Type getType(String type) {
+        switch (type) {
             case "NORMAL":
                 return Type.NORMAL;
             case "EXPRESS":
@@ -46,7 +46,7 @@ public class Package {
         }
     }
 
-    public String getContentAsString(){
+    public String getContentAsString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (char[][] chars : getContent()) {

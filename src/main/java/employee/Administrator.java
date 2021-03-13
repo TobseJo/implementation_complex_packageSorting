@@ -2,7 +2,7 @@ package employee;
 
 //import employee.Profile;
 
-public class Administrator extends Employee{
+public class Administrator extends Employee {
 
     private Profile profile;
 
