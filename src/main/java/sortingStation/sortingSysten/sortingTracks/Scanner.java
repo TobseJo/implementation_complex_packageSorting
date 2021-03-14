@@ -14,11 +14,11 @@ public class Scanner {
             int result = -2;
             String searchPattern = "exp!os:ve";
             Object searchAlgorithm;
-            if (usedAlgorithm == "rk") {
+            if (usedAlgorithm.equals("rk")) {
                 searchAlgorithm = RabinKarpFactory.build();
                 Method searchMethod = searchAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class, int.class);
                 result = (int) searchMethod.invoke(usedAlgorithm, txt, searchPattern, 101);
-            } else if (usedAlgorithm == "br") {
+            } else if (usedAlgorithm.equals("br")) {
                 searchAlgorithm = BoyerMooreFactory.build();
                 Method searchMethod = searchAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class);
                 result = (int) searchMethod.invoke(searchAlgorithm, txt, searchPattern);

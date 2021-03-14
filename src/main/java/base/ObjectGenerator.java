@@ -124,8 +124,7 @@ public class ObjectGenerator {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(employee.getId()).append(";").append(employee.getName()).append(";").append(getRoleOfEmployee(employee)).append(";").append(employee.getPin()).append(";").append(employee.getSuperPin());
 
-        IDCard idCard = new IDCard(Configuration.instance.usedAlgorithm.encrypt(stringBuilder.toString()));
-        return idCard;
+        return new IDCard(Configuration.instance.usedAlgorithm.encrypt(stringBuilder.toString()));
     }
 
     private String getRoleOfEmployee(Employee employee) {

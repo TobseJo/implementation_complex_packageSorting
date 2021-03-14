@@ -1,7 +1,6 @@
 package items;
 
 public class Package {
-
     private String id;
     private char[][][] content;
     private int zipCode;
