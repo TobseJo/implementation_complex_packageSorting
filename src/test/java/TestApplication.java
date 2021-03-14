@@ -1,11 +1,11 @@
-import command.*;
 import base.Configuration;
 import base.CsvFileGenerator;
 import base.ObjectGenerator;
-import org.junit.jupiter.api.*;
+import command.*;
 import items.Pallet;
 import items.Truck;
 import items.Type;
+import org.junit.jupiter.api.*;
 import sortingStation.AutonomousVehicle;
 import sortingStation.SortingStation;
 import sortingStation.ZoneForUnloadingTruck;

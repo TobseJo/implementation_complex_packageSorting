@@ -1,8 +1,8 @@
 package sortingStation;
 
+import base.Configuration;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
-import base.Configuration;
 import event.FinishedTruckUnload;
 import event.UnloadTruckAndLoadInterimStorage;
 import items.Pallet;

@@ -1,15 +1,15 @@
 package sortingStation;
 
-import com.google.common.eventbus.EventBus;
-import com.google.common.eventbus.Subscribe;
 import base.Configuration;
 import base.LogEngine;
 import base.ObjectGenerator;
+import base.Report;
+import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
 import event.Shutdown;
 import event.*;
 import items.Package;
 import items.Type;
-import base.Report;
 import sortingStation.sortingSysten.sortingTracks.NormalSortingTrack;
 import sortingStation.sortingSysten.sortingTracks.SortingTrack;
 import sortingStation.sortingSysten.state.Locked;
