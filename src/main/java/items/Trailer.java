@@ -34,7 +34,7 @@ public class Trailer {
                 position = "left";
             }
             for (int j = 0; j < 5; j++) {
-                stringBuilder.append(truck.getId() + "," + position + "," + j + "," + getPallets()[i][j].getId());
+                stringBuilder.append(truck.getId()).append(",").append(position).append(",").append(j).append(",").append(getPallets()[i][j].getId());
                 stringBuilder.append(Configuration.instance.lineSeparator);
             }
         }

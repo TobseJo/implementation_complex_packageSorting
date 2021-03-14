@@ -128,11 +128,11 @@ public class CsvFileGenerator {
     }
 
     public String getZipCode() {
-        String zipCode = String.valueOf((int) (Configuration.instance.rangeOfZipCodeMin + (Configuration.instance.rangeOfZipCodeMax - Configuration.instance.rangeOfZipCodeMin) * Math.random()));
+        StringBuilder zipCode = new StringBuilder(String.valueOf((int) (Configuration.instance.rangeOfZipCodeMin + (Configuration.instance.rangeOfZipCodeMax - Configuration.instance.rangeOfZipCodeMin) * Math.random())));
         while (zipCode.length() != Configuration.instance.numberOfCharsPerZipCode) {
-            zipCode = "0" + zipCode;
+            zipCode.insert(0, "0");
         }
-        return zipCode;
+        return zipCode.toString();
     }
 
     private LinkedList<String> getTypes() {

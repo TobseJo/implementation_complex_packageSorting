@@ -32,7 +32,7 @@ public class Pallet {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 3; j++) {
-                stringBuilder.append(getId() + "," + i + "," + j + "," + getBoxes()[i][j].getId());
+                stringBuilder.append(getId()).append(",").append(i).append(",").append(j).append(",").append(getBoxes()[i][j].getId());
                 stringBuilder.append(Configuration.instance.lineSeparator);
             }
         }

@@ -122,7 +122,7 @@ public class ObjectGenerator {
 
     private IDCard generateIDCardForEmployee(Employee employee) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(employee.getId() + ";" + employee.getName() + ";" + getRoleOfEmployee(employee) + ";" + employee.getPin() + ";" + employee.getSuperPin());
+        stringBuilder.append(employee.getId()).append(";").append(employee.getName()).append(";").append(getRoleOfEmployee(employee)).append(";").append(employee.getPin()).append(";").append(employee.getSuperPin());
 
         IDCard idCard = new IDCard(Configuration.instance.usedAlgorithm.encrypt(stringBuilder.toString()));
         return idCard;

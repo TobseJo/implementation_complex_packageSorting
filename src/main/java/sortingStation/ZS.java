@@ -143,11 +143,11 @@ public class ZS {
         for (Map.Entry<Type, Integer> entry : report.getAmountOfScannedPackets().entrySet()) {
             Type type = entry.getKey();
             Integer value = entry.getValue();
-            stringBuilder.append(type.toString() + " : " + value + "; ");
+            stringBuilder.append(type.toString()).append(" : ").append(value).append("; ");
         }
-        stringBuilder.append(report.getDangerousPackages().size() + " Dangerous Packages: ");
+        stringBuilder.append(report.getDangerousPackages().size()).append(" Dangerous Packages: ");
         for (Package packageEntity : report.getDangerousPackages()) {
-            stringBuilder.append(packageEntity.getId() + ", ");
+            stringBuilder.append(packageEntity.getId()).append(", ");
         }
         stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "");
         LogEngine.instance.write(stringBuilder.toString());

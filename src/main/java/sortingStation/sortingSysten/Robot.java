@@ -60,14 +60,7 @@ public class Robot {
     }
 
     private int putCurrentPackageToWarehouseTrack(Package currentPackage, int trackCtr) {
-        int breakCtr = 0;
         sortingSystem.getWarehouseTracks()[trackCtr].addToPackageTrack(currentPackage);
-        if (breakCtr < 7) {
-            setTrackCtr(trackCtr);
-        } else {
-            return -1;
-        }
-
         return setTrackCtr(trackCtr);
     }
 
