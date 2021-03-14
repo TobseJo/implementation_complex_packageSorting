@@ -1,6 +1,6 @@
 package sortingStation.sortingSysten.sortingTracks;
 
-import configuration.Configuration;
+import base.Configuration;
 import factory.BoyerMooreFactory;
 import factory.RabinKarpFactory;
 

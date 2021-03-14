@@ -1,6 +1,6 @@
 package items;
 
-import configuration.Configuration;
+import base.Configuration;
 
 import java.util.LinkedList;
 

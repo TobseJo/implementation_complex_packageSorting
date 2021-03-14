@@ -1,6 +1,6 @@
 package sortingStation;
 
-import configuration.Configuration;
+import base.Configuration;
 import employee.Employee;
 import employee.idCard.Active;
 import employee.idCard.IDCard;

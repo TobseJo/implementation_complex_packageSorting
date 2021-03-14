@@ -1,4 +1,4 @@
-package configuration;
+package base;
 
 import com.google.common.eventbus.EventBus;
 import employee.*;

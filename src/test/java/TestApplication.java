@@ -1,7 +1,7 @@
 import command.*;
-import configuration.Configuration;
-import configuration.CsvFileGenerator;
-import configuration.ObjectGenerator;
+import base.Configuration;
+import base.CsvFileGenerator;
+import base.ObjectGenerator;
 import org.junit.jupiter.api.*;
 import items.Pallet;
 import items.Truck;

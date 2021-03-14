@@ -1,4 +1,4 @@
-package configuration;
+package base;
 
 public interface IStrategy {
     String encrypt(String magnetStripe);

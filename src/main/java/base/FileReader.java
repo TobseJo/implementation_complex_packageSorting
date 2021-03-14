@@ -1,4 +1,4 @@
-package configuration;
+package base;
 
 import items.Box;
 import items.Package;

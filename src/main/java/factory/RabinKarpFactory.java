@@ -1,6 +1,6 @@
 package factory;
 
-import configuration.Configuration;
+import base.Configuration;
 
 import java.io.File;
 import java.net.URL;

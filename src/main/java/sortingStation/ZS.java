@@ -2,14 +2,14 @@ package sortingStation;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
-import configuration.Configuration;
-import configuration.LogEngine;
-import configuration.ObjectGenerator;
+import base.Configuration;
+import base.LogEngine;
+import base.ObjectGenerator;
 import event.Shutdown;
 import event.*;
 import items.Package;
 import items.Type;
-import configuration.Report;
+import base.Report;
 import sortingStation.sortingSysten.sortingTracks.NormalSortingTrack;
 import sortingStation.sortingSysten.sortingTracks.SortingTrack;
 import sortingStation.sortingSysten.state.Locked;

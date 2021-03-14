@@ -1,5 +1,5 @@
-import configuration.CsvFileGenerator;
-import configuration.ObjectGenerator;
+import base.CsvFileGenerator;
+import base.ObjectGenerator;
 
 public class Application {
     public static void main(String[] args) {

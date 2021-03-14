@@ -1,4 +1,4 @@
-package configuration;
+package base;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
