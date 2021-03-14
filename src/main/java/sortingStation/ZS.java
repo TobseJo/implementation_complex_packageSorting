@@ -47,7 +47,6 @@ public class ZS {
     public void receive(Next event) {
         System.out.println(event);
         int randomNumber = (int) (Math.random() * sortingStation.getZonesForUnloadingTrucks().length);
-
         sortingStation.getZonesForUnloadingTrucks()[randomNumber].setTruckAndNotify(sortingStation.getWaitingZone().getTrucks().pop());
     }
 
