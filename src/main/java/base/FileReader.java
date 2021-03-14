@@ -78,7 +78,7 @@ public class FileReader {
     }
 
     public Stack<Truck> readTruck(String FILEPATH, HashMap<Integer, Pallet> palletHashMap) {
-        Stack<Truck> trucks = new Stack<Truck>();
+        Stack<Truck> trucks = new Stack<>();
         BufferedReader br = null;
         try {
             br = new BufferedReader(new java.io.FileReader(new File(Configuration.instance.pathToDataDirectory + FILEPATH)));
@@ -88,16 +88,12 @@ public class FileReader {
                 Pallet[][] palletsArray = new Pallet[2][5];
                 for (int j = 0; j < Configuration.instance.numberOfPalletsPerTruck; j++) {
                     line = br.readLine();
-                    String content[] = line.split(",");
+                    String[] content = line.split(",");
                     truckID = content[0];
-                    int side = 0;
-                    switch (content[1]) {
-                        case "left":
-                            side = 0;
-                            break;
-                        case "right":
-                            side = 1;
-                    }
+                    int side = switch (content[1]) {
+                        case "right" -> 1;
+                        default -> 0;
+                    };
                     int position = Integer.valueOf(content[2]);
                     palletsArray[side][position] = palletHashMap.get(Integer.valueOf(content[3]));
                 }
