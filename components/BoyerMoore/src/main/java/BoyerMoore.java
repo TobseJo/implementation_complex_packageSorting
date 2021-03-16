@@ -58,8 +58,8 @@ public class BoyerMoore {
 
     public class Port implements IBoyerMoore {
 
-        public int search(String pat, String txt) {
-            return innerSearch(pat, txt);
+        public int search(String txt, String pat) {
+            return innerSearch(txt, pat);
         }
     }
 }

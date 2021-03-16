@@ -2,6 +2,7 @@ import base.Configuration;
 import base.CsvFileGenerator;
 import base.ObjectGenerator;
 import command.*;
+import event.ShowStatistics;
 import items.Pallet;
 import items.Truck;
 import items.Type;
@@ -192,5 +193,17 @@ public class TestApplication {
             }
         }
         Assertions.assertEquals(10, palletCtr);
+    }
+
+    @Test
+    public void testRabinCarp(){
+        sortingStation.getTerminal().getTouchPad().takeCommand(new InitCommand(), sortingStation.getEmployees().get(0));
+        sortingStation.getTerminal().getTouchPad().takeCommand(new ChangeSearchAlgoCommandTo("rk"), sortingStation.getEmployees().get(0));
+
+        for (int i = 0; i < 5; i++) {
+            sortingStation.getTerminal().getTouchPad().takeCommand(new NextCommand(), sortingStation.getEmployees().get(0));
+        }
+
+        sortingStation.getTerminal().getTouchPad().takeCommand(new ShowStatisticsCommand(), sortingStation.getEmployees().get(0));
     }
 }

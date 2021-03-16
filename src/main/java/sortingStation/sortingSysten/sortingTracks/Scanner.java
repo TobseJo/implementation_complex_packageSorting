@@ -17,8 +17,8 @@ public class Scanner {
             if (usedAlgorithm.equals("rk")) {
                 searchAlgorithm = RabinKarpFactory.build();
                 Method searchMethod = searchAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class, int.class);
-                result = (int) searchMethod.invoke(usedAlgorithm, txt, searchPattern, 101);
-            } else if (usedAlgorithm.equals("br")) {
+                result = (int) searchMethod.invoke(searchAlgorithm, searchPattern, txt, 101);
+            } else if (usedAlgorithm.equals("bm")) {
                 searchAlgorithm = BoyerMooreFactory.build();
                 Method searchMethod = searchAlgorithm.getClass().getDeclaredMethod("search", String.class, String.class);
                 result = (int) searchMethod.invoke(searchAlgorithm, txt, searchPattern);

@@ -31,12 +31,12 @@ public enum Configuration {
     public final String explosiveString = "exp!os:ve";
 
     public final String key = "dhbw";
-    public final IStrategy usedAlgorithm = new DES();
+    public final IStrategy usedAlgorithm = new AES();
 
     public final int numberOfLengthForMagnetStripe = 10;
     public String commonPathToJavaArchive = userDirectory + fileSeparator + "components" + fileSeparator;
     public String pathToDataDirectory = userDirectory + fileSeparator + "data" + fileSeparator;
     public String pathToBoyerMooreJavaArchive = commonPathToJavaArchive + "BoyerMoore" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "boyerMoore.jar";
     public String pathToRabinKarpJavaArchive = commonPathToJavaArchive + "RabinKarp" + fileSeparator + "build" + fileSeparator + "libs" + fileSeparator + "rabinKarp.jar";
-    public String usedSearchAlgorithm = "br";
+    public String usedSearchAlgorithm = "bm";
 }
